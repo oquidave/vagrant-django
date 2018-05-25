@@ -1,0 +1,37 @@
+---
+- hosts: django_ubuntu
+  vars_files:
+    - vars.yml
+  gather_facts: false
+  become: yes
+
+  tasks:
+    - name: Install system packages
+      apt: pkg={{ item }} update-cache=yes
+      with_items: "{{ system_packages }}"
+
+    - name:    Add PPA GPG key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 6A755776
+
+    - name:  Python 3.6 PPA 
+      apt_repository:
+        repo: deb [arch=amd64] http://ppa.launchpad.net/deadsnakes/ppa/ubuntu xenial main
+    - name:    Install Python 3.6
+      apt: name={{item}} state=present
+      with_items:
+       - python3.6
+       - python3-pip
+
+    - name: Install python packages
+      pip: name=django version=1.8 state=present executable=pip3
+
+    - name: Create directory for app
+      file: path={{ install_root }}/{{ project_name }} state=directory
+
+    #- name: make sure mysql server is running
+    # service: name=mysql state=started
+
+    #- name: remove default nginx site
+    #  file: path=/etc/nginx/sites-enabled/default state=absent
