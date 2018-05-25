@@ -4,6 +4,3 @@ project_name: django_hello
 install_root: /var/www/
 system_packages:
   - git
-  #- nginx
-  #- gunicorn
-  #- mysql-server
