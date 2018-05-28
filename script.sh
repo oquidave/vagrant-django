@@ -5,7 +5,7 @@ export PATH="/home/vagrant/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 EOF
-
+source /home/vagrant/.bash_profile
 pyenv install 3.6.0
 pyenv virtualenv 3.6.0 venv36
 pyenv activate venv36
