@@ -2,8 +2,10 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/xenial64"
   config.vm.define "django_ubuntu"
+  config.vm.network "private_network", ip: "192.168.10.190"
+  config.vm.network :forwarded_port, host: 9000, guest: 8000
 
-  config.vm.provision "shell", inline: "apt-get update && apt-get -y install python"
+  config.vm.provision "shell", inline: "apt-get -y install python"
   config.vm.provision "shell" do |s|
   	s.inline = "wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py"
   	s.inline = "apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
