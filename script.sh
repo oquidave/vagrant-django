@@ -7,6 +7,7 @@ eval "$(pyenv virtualenv-init -)"
 EOF
 source /home/vagrant/.bash_profile
 pyenv install 3.6.0
-pyenv virtualenv 3.6.0 venv36
-pyenv activate venv36
+pyenv virtualenv 3.6.0 django1.8
+pyenv activate django1.8
 pip install django==1.8
+#django-admin startproject vm_app

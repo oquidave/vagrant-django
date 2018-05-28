@@ -3,8 +3,6 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/xenial64"
   config.vm.define "django_ubuntu"
   config.vm.network "private_network", ip: "192.168.10.190"
-  config.vm.network :forwarded_port, host: 9000, guest: 8000
-
   config.vm.provision "shell", inline: "apt-get -y install python"
   config.vm.provision "shell" do |s|
   	s.inline = "wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py"
@@ -15,7 +13,8 @@ Vagrant.configure(2) do |config|
 
   #install pyenv and virtualenv
   config.vm.provision "shell", path: "script.sh", privileged:false
-
+  config.vm.synced_folder "vm_apps/", "/home/vagrant/vm_apps", type: "virtualbox", create: true
+  config.vm.network :forwarded_port, host: 9000, guest: 8000
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
     ansible.playbook = "django.yml"
