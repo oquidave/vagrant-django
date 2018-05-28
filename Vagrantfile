@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
 
   #install pyenv and virtualenv
   config.vm.provision "shell", path: "script.sh", privileged:false
-  config.vm.synced_folder "vm_apps/", "/home/vagrant/vm_apps", type: "virtualbox", create: true
+  config.vm.synced_folder "vm_apps/", "/home/vagrant/vm_apps", type: "virtualbox", create: false
   config.vm.network :forwarded_port, host: 9000, guest: 8000
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"

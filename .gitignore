@@ -1,3 +1,4 @@
+vm_apps/
 dev*
 .vagrant/
 django.retry
