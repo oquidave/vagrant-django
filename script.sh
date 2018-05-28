@@ -11,4 +11,3 @@ pyenv virtualenv 3.6.0 django1.8
 pyenv activate django1.8
 pip install django==1.8
 mkdir -p /home/vagrant/vm_apps
-#django-admin startproject vm_app
