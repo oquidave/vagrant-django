@@ -1,3 +1,4 @@
+*.pyc
 vm_apps/hellodjango/db.sqlite3
 dev*
 .vagrant/

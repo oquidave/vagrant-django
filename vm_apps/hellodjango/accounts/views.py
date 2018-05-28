@@ -9,8 +9,8 @@ def login(request):
 		return render(request, "accounts/login.html")
 	elif request.method == "POST":
 		#process the form, authenticate the user 
-		username = request.POST.get('username')
-		password = request.POST.get('password')
+		username = request.POST.get('uname')
+		password = request.POST.get('psw')
 		user = auth.authenticate(username=username, password=password)
 		if user is not None and user.is_active:
 			auth.login(request, user)
