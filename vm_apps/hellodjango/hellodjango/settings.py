@@ -28,6 +28,8 @@ SECRET_KEY = 'a(w-%+cmy66mb1gbb^+hx_*^!_rd_$*fhqa-)^6v_a0z-w@+yr'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+#LOGIN_URL='/accounts/login/'
+#LOGIN_REDIRECT_URL='/'
 
 
 # Application definition
