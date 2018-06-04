@@ -1,0 +1,6 @@
+# a unix path-friendly name (IE, no spaces or special characters)
+project_name: django_hello
+# the base path to install to. You should not need to change this.
+install_root: /var/www/
+system_packages:
+  - git

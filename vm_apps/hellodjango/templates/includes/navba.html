@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <table class="nav navbar-nav">
+          <tr>
+            <td>
+              {% if user.is_authenticated  %}
+              <a href="/dashboard/">
+               Dashboard
+              </a>
+            </td>
+            <td>
+              <a href="/accounts/profile/">
+               Profile
+              </a>
+            </td>
+            <td>
+              <a href="/accounts/logout/">
+               Sign out
+              </a>
+            </td>
+            {% else %}
+            <td>
+              <a href="/accounts/login/">
+                Sign In
+              </a>
+            </td>
+            <td>
+              <a class="signup-btn btn btn-success" href="/accounts/signup/">
+               Get started
+              </a>
+            </td>
+          {% endif %}
+      </table>
+      </div>
+    </nav>

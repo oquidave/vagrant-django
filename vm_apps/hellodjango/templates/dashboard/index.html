@@ -1,0 +1,17 @@
+
+<div>
+	{% include 'includes/N.html' %}
+</div>
+
+{% block body_block%} 
+<center>
+<h1>AT Products</h1>
+
+  {% if request.user.is_authenticated %} 
+    	Welcome '{{ request.user.username }}'
+	{% endif %}
+
+
+</center>
+
+{% endblock %}
