@@ -1,4 +1,4 @@
-{% extends 'includes/base.html' %}
+{% include 'includes/base.html' %}
 
 {% block body_block%} 
 
@@ -9,7 +9,6 @@
 	{% endif %}
 
 <ul>
-	<li><a href="{% url 'sms' %}">SMS Page</a></li>
 	<li><a href="{% url 'airtime_page' %}">Airtime Page</a></li>
 	<li><a href="{% url 'voice_page' %}">Voice Page</a></li>
 	<li><a href="{% url 'payments_page' %}">Payments Page</a></li>

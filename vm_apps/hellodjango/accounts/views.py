@@ -20,12 +20,12 @@ def login(request):
 		username = request.POST.get('username')
 		password = request.POST.get('password')
 		user = auth.authenticate(username=username, password=password)
-		if user is not None and user.is_active:
-			auth.login(request, user)
-			return redirect('dashboard')
-		else:
-			messages.success(request, 'username or password is wrong')
-			return redirect('login')
+	if user is not None and user.is_active:
+		auth.login(request, user)
+		return redirect('dashboard')
+	else:
+		messages.success(request, 'username or password is wrong')
+		return redirect('login')
 
 #@logout_required
 def signup(request):
@@ -39,21 +39,15 @@ def signup(request):
 		email = request.POST.get('email')
 		phone = request.POST.get('phone')
 		password = request.POST.get('password')
-		user = User.objects.create_user(username = username,
-										first_name = first_name,
-										last_name = last_name,
-		 								email = email,
-		 								password = password)
-
-
+		user = User.objects.create_user(username = username,first_name = first_name,last_name = last_name,email = email,password = password)
 		user.profile.phone = phone
 		user.save()
 		if user.pk:
 			messages.success(request, 'registration was successful')
 			return redirect('login')
-		else:
-			messages.success(request, 'registration was failed')
-			return redirect('signup')
+		else:m
+		essages.success(request, 'registration was failed')
+		return redirect('signup')
 
 def profile(request):
 	if request.method == 'GET':
@@ -64,14 +58,13 @@ def profile(request):
 		email = request.POST.get('email')
 		phone = request.POST.get('phone')
 		password = request.POST.get('password')
-
-		user = request.user 
+		user = request.user
 		user.first_name = first_name
 		user.last_name = last_name
 		user.email = email
 		user.profile.phone = phone
-		if password.strip() is not None:
-			user.password = password
+	if password.strip() is not None:
+		user.password = password
 		user.save()
 		messages.success(request, 'profile has been saved')
 		return redirect('profile')

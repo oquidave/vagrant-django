@@ -1,6 +1,41 @@
-{% extends 'includes/base.html' %}
-
-{% block body_block%} 
-
-<h2>Airtime home page</h2>
+<div>
+{% include 'includes/navba.html' %}
+</div>
+<div>
+{% block body %}
+<h1 style="color:green;">
+	Your airtime buddy
+</h1>
+<h2>
+	<form method="POST" action="{% url 'at' %}">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<td>
+					Buy For:
+			    </td>
+			   	<td>
+			   		<input placeholder="Enter phone number here" name="phone">
+			   	</td>
+			</tr>
+			<tr>
+				<td>
+				  Amount
+				</td>
+				<td>
+					<input placeholder="Enter amount here" name="amount">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" style="color:green;" name="Send" value="Buy Airtime">
+				</td>
+			</tr>
+		</table>
+	</form>
+</h2>
 {% endblock %}
+</div>
+<div>
+{% include 'includes/footer.html' %}
+</div>
