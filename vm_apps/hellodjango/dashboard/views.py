@@ -7,6 +7,9 @@ import africastalking
 def index(request):
    return render(request, "dashboard/index.html")
 
+def profile(request):
+   return render(request, "accounts/profile.html")
+
 def sms(request):
    return render(request,"sms/send.html")
 
