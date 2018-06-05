@@ -1,22 +1,28 @@
 <html>
 <div>
-{% include 'includes/N.html' %}
+{% include 'includes/topnav.html' %}
+</div>
+<div>
+	<header style="color:green;">
+		<center>
+			<h1>
+			  Airtime buddy
+			</h1>
+		</center>
+        </header>
 </div>
 
 {% block body %}
 <div>
-<center>
 <body>
-<h1 style="color:green;">
-	Your airtime buddy
-</h1>
-<h2>
+<center>
+	<h1>
 	<form method="POST" action="{% url 'at' %}">
 		{% csrf_token %}
 		<table>
 			<tr>
 				<td>
-					Charge Number:
+					Mobile Money No:
 				</td>
 				<td>
 					<input name="chargephone" placeholder="Enter Mobile Money No. here">
@@ -45,7 +51,7 @@
 			</tr>
 		</table>
 	</form>
-</h2>
+</h1>
 </div>
 </body>
 </center>

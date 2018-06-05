@@ -16,17 +16,7 @@ ul.topnav {
 ul.topnav li {float: left;}
 ul.topnav li.right {float: right;}
 
-ul.topnav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-ul.topnav li a:hover:not(.active) {background-color: #111;}
-
-ul.topnav li a.active {background-color: orange;}
+ul.topnav a.active {background-color: green;}
 
 
 
@@ -34,17 +24,100 @@ ul.topnav li a.active {background-color: orange;}
     ul.topnav li.right, 
     ul.topnav li {float: none;}
 }
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: green;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 </style>
 </head>
 <body>
 
 <ul class="topnav">
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">SMS</a></li>
-  <li><a href="#contact">Airtime</a></li>
-  <li class="right"><a href="#about">About</a></li>
-  <li class="right"><a href="#about">Payments</a></li>
-  <li class="right"><a href="#about">Voice</a></li>
+  <li>
+    <a class="active" href="{% url 'dashboard' %}">
+      Home
+    </a>
+  </li>
+    <li class="dropdown">
+      <a href="{% url 'sms' %}" class="dropbtn" href="javascript:void(0)">
+        SMS
+      </a>
+        <div class="dropdown-content">
+          <a href="#">Send sms</a>
+          <a href="#">Bulk sms</a>
+          <a href="#">History</a>
+        </div>
+    </li>
+    <li class="dropdown">
+      <a href="{% url 'airtime' %}" class="dropbtn">
+        Airtime
+      </a>
+      <div class="dropdown-content">
+        <a href="#">Buy</a>
+        <a href="#">History</a>
+      </div>
+    </li>
+    <li class="right" >
+      <a href="{% url 'profile' %}">
+        Profile
+      </a>
+    </li>  
+    <li class="dropdown">
+      <a href="{% url 'payments' %}" class="dropbtn">
+        Payments
+      </a>
+      <div class="dropdown-content">
+        <a href="#">Make Payments</a>
+        <a href="#">History</a>       
+      </div>
+    </li>  
+    <li class="dropdown">
+      <a href="{% url 'voice' %}" class="dropbtn">
+        Voice
+      </a>
+      <div class="dropdown-content">
+        <a href="#">Make Call</a>
+        <a href="#">Conference Calls</a>
+        <a href="#">History</a>       
+      </div>
+    </li> 
 </ul>
 
 <div style="padding:0 16px;">

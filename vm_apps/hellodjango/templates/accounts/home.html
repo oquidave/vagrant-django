@@ -1,11 +1,13 @@
 
-
+<html>
   <div class="imgcontainer">
     <img src="img_avatar2.png" alt="Avatar" class="avatar">
     {% if request.user.is_authenticated %} 
-    	Welcome '{{ request.user.username }}' |
+    	Hi '{{ request.user.username }}' |
     	<a href="{% url 'logout' %}">Log out</a>
 	{% else %}
 		<a href="{% url django.contrib.auth.login %}">Login</a>
 	{% endif %}
   </div>
+  
+  </html>
