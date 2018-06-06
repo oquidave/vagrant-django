@@ -1,1 +1,0 @@
-{"virtualbox":{"/home/vagrant/vm_apps":{"type":"virtualbox","guestpath":"/home/vagrant/vm_apps","hostpath":"/home/mark/Desktop/posha/posha/vm_apps","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/mark/Desktop/posha/posha","disabled":false,"__vagrantfile":true}}}
