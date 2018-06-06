@@ -1,11 +1,25 @@
 
+<<<<<<< HEAD
 
   <div class="imgcontainer">
     <img src="img_avatar2.png" alt="Avatar" class="avatar">
     {% if request.user.is_authenticated %} 
     	Welcome '{{ request.user.username }}' |
+=======
+<html>
+  <div class="imgcontainer">
+    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    {% if request.user.is_authenticated %} 
+    	Hi '{{ request.user.username }}' |
+>>>>>>> origin/master
     	<a href="{% url 'logout' %}">Log out</a>
 	{% else %}
 		<a href="{% url django.contrib.auth.login %}">Login</a>
 	{% endif %}
+<<<<<<< HEAD
   </div>
+=======
+  </div>
+  
+  </html>
+>>>>>>> origin/master

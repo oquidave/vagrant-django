@@ -1,0 +1,64 @@
+<html>
+<div>
+	{% include 'includes/topnav.html' %}
+</div>
+{% block content %}
+<div id="budy">
+	<center>
+	<body>
+		<div id="tad">
+			<form  name="formt" action="{% url 'sacess'  %}">
+				{% csrf_token %}
+			<table id="tebo">
+				<tr>
+					<td>
+						<b>Phone:</b>
+					     <input id="receiver" name="phone" placeholder="Enter recipient here" width="40" minlength="13" maxlength="13" required>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>
+							<b>
+							  Message
+						    </b>
+						</p>
+						<textarea type="text" id="messg" name="sms_message"
+						{% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %} minlength="3" maxlength="99999999999910" required></textarea>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<button type="submit" formmethod="POST" action="sms/sms.html">
+						SEND
+					</button>
+					</td>
+				</tr>
+			</div>
+			</table>
+			</form>
+		</div>
+		<style type="text/css">
+		#tad{
+			
+		}	
+		#tebo{
+			margin: auto;
+			width:600px;
+			height: 400px;
+		}	
+		#messg{
+			height: 200;
+			width: 500;
+			margin:left;
+			text-align:left;
+		}	
+		</style>
+	</body>
+</center>
+</div>
+{% endblock %}
+<div>
+	{% include 'includes/footer.html' %}
+</div>
+</html>
