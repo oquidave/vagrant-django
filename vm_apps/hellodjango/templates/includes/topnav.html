@@ -76,21 +76,21 @@ li.dropdown {
     </a>
   </li>
     <li class="dropdown">
-      <a href="{% url 'sms' %}" class="dropbtn" href="javascript:void(0)">
+      <a href="#" class="dropbtn" href="javascript:void(0)">
         SMS
       </a>
         <div class="dropdown-content">
-          <a href="#">Send sms</a>
+          <a href="{% url 'sms' %}">Send sms</a>
           <a href="#">Bulk sms</a>
           <a href="#">History</a>
         </div>
     </li>
     <li class="dropdown">
-      <a href="{% url 'airtime' %}" class="dropbtn">
+      <a href="#" class="dropbtn">
         Airtime
       </a>
       <div class="dropdown-content">
-        <a href="#">Buy</a>
+        <a href="{% url 'airtime' %}">Buy</a>
         <a href="#">History</a>
       </div>
     </li>
