@@ -78,16 +78,3 @@ def at(request):
 	    return render(request,'airtime/xs.html')
 
 	    #return render('airtime/pay.html')
-	
-
-
-
-
-	    
-
-		    
-
-			
-
-
-	    

@@ -40,15 +40,21 @@ def signup(request):
 		email = request.POST.get('email')
 		phone = request.POST.get('phone')
 		password = request.POST.get('password')
-		user = User.objects.create_user(user = user,username = username,first_name = first_name,last_name = last_name,email = email,password = password)
+		user = User.objects.create_user(username = username,
+										first_name = first_name,
+										last_name = last_name,
+		 								email = email,
+		 								password = password)
+
+
 		user.profile.phone = phone
 		user.save()
 		if user.pk:
 			messages.success(request, 'registration was successful')
 			return redirect('login')
-		else:m
-		essages.success(request, 'registration was failed')
-		return redirect('signup')
+		else:
+			messages.success(request, 'registration was failed')
+			return redirect('signup')
 
 def profile(request):
 	if request.method == 'GET':

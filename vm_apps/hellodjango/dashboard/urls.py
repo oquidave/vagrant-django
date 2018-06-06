@@ -7,5 +7,4 @@ urlpatterns = [
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^airtime/$', views.airtime, name='airtime_page'),
     url(r'^voice/$', views.voice, name='voice'),
-    url(r'^payments/$', views.payments, name='payments_page'),
 ]

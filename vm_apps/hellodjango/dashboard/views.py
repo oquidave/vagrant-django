@@ -5,12 +5,25 @@ import africastalking
 # Create your views here.
 
 def index(request):
-   return render(request, "dashboard/index.html")
+	#return HttpResponse("Dashboard home page.")
+	return render(request, "dashboard/index.html")
+
+def sms(request):
+	return HttpResponse("Dashboard SMS home page.")
+
+def airtime(request):
+	return HttpResponse("Dashboard Airtime home page.")
+
+def voice(request):
+	return HttpResponse("Dashboard Voice home page.")
+
+def payments(request):
+	return HttpResponse("Dashboard Payments home page.")
 
 def profile(request):
    return render(request, "accounts/profile.html")
 
-def sms(request):
+"""def sms(request):
    return render(request,"sms/send.html")
 
 def airtime(request):
@@ -22,3 +35,4 @@ def voice(request):
 def payments(request):
    #return HttpResponse("Dashboard Payments home page.")
    return render(request,'payments/index.html')
+>>>>>>> origin/master"""
