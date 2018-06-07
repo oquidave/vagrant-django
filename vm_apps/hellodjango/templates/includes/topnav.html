@@ -69,7 +69,7 @@ li.dropdown {
 </head>
 <body>
 
-<ul class="topnav">
+<ul class="topnav" id="navy">
   <li>
     <a class="active" href="{% url 'dashboard' %}">
       Home
@@ -95,6 +95,9 @@ li.dropdown {
       </div>
     </li>
     <li class="right" >
+      {% if request.user.is_authenticated %}
+        <strong style="color:white;">hello '{{ request.user.username }}'</strong>
+     {% endif %}
       <a href="{% url 'profile' %}">
         Profile
       </a>
@@ -122,6 +125,14 @@ li.dropdown {
 
 <div style="padding:0 16px;">
 </div>
+<style type="text/css">
+  .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+</style>
+
 
 </body>
 </html>

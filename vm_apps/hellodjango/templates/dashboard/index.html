@@ -1,53 +1,250 @@
-<div>
-	{% include 'includes/topnav.html' %}
-</div>
+{% include 'includes/topnav.html' %}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<center>
+<body bgcolor="White">
+    <div id="topbar">
+    </div>
+    <div id="graph_div">
+        <b id="yell">
+          SMS
+        </b>
+        <div id="bar">
+        <table>
+            <tr>
+              <td>
+                Today:
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Recent: 
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Total:
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+          </table>
+    </div>
+    <b id="yell">
+      Airtime
+    </b>
+    <div id="bar">
+      <table>
+            <tr>
+              <td>
+                Today:
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Recent:
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Total:
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+          </table>
+    </div>
+    <b id="yell">
+      Voice
+    </b>
+    <div id="bar">
+       <table>
+            <tr>
+              <td>
+                Today:
+              </td>
+              <td>
+                <output id="toto">
+                    0 
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Recent: 
+              </td>
+              <td>
+                <output id="toto">
+                    0 
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Total:
+              </td>
+              <td>
+                <output id="toto">
+                  0 
+                </output>
+              </td>
+            </tr>
+          </table>
+    </div>
+    <b id="yell">
+        Payments
+    </b>
+    <div id="bar">
+       <table>
+            <tr>
+              <td>
+                Today:
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Recent:
+              </td>
+              <td>
+                <output id="toto">
+                 0
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Total:
+              </td>
+              <td>
+                <output id="toto">
+                 0
+                </output>
+              </td>
+            </tr>
+          </table>
+    </div> 
+    </div>
+    
+</body>
+</center>
+{% include 'includes/footer.html' %}
+<style>
+body, html {
+    margin:0;
+    padding:0;
+    height:100%;
+    color: white;
+}
+#toto{
+      color:red;
+     }
+#yell{
+    color:black;
+}
+#topbar {
+    width:100%;
+    height:40px;
+    background:white;
+    margin:0;
+    color:black;
+    text-align:left;
+}
+#bar {
+    width:35%;
+    height:100px;
+    background:#B0E0E6;
+    margin:0;
+    color:black;
+}
 
-{% block body_block%} 
-  {% if request.user.is_authenticated %} 
-    	Hi '{{ request.user.username }}'
-	{% endif %}
-	{% block body %}
-	
-   	<body border='1'>
-   		<h2 style="color:green;">
-   			<u>
-   			  Products 4 U
-   		    </u>
-  		</h2>
-  		<h1>
-  			<ol style="text-align:left;">
-  				<div>
-  					<li>
-  					  Airtime
-  					   <ul type="circle">
-  						  <li style="color:yellow;">MTN</li>
-  						  <li style="color:red;">Airtel</li>
-  						  <li style="color:orange;">Africell</li>
-  					   </ul>
-  					</li>
-  				</div>
-  				<div>
-  					<li>
-  						SMS
-  						<ul type="circle" >
-  						  <li>Simple SMS</li>
-  						  <li>Bulk SMS</li>
-  				    	</ul>
-  				    </li>
-  				</div>
-  				<div>
-  					<li>
-  					  Voice  					
-  				    </li>
-  				</div>
-  				<div>
-  					<li>
-  					  Payments
-  				    </li>
-  				</div>
-  			</ol>
-  		</h1>
-  		</body>
-     {% endblock %}
 
-{% endblock %}
+#panel_div { 
+    width:60%;
+    height:100%;
+    float:left;  
+}
+output{
+  color:white; 
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -42,7 +42,7 @@ def pay(phone, amount):
 
 
 def at(request):
-	if request.method == 'POST':
+	if request.method == 'POST' and sub is valid:
 
 	   # try:
 	    chargephone = request.POST.get('chargephone')

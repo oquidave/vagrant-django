@@ -1,25 +1,175 @@
+<center>
+   {% block body %}
+</center>
+    <body>
+      <center>
+        <h2 style="color:green;">
+          <u>
+            Products
+          </u>
+        </h2>
+      </center>
+      <center>
+       <h1>
+        <table width="800" border="1">
+          <tr>
+                <td height="200">
+                  <b style="color:green;">
+                    Airtime:
+                  </b>
+                  <ol type="a">
+                    <li style="color:yellow;">
+                      MTN
+                    </li>
+                    <li style="color:red;">
+                      Airtel
+                    </li>
+                    <li style="color:orange;">
+                      Africell
+                    </li>
+                  </ol>
+                  <ul>
+                    <li>
+                      <b>
+                        Single-load:
+                      </b>
+                    </li>
+                    <p>
+                      Load on a single number at ago
+                    </p>
+                    <li>
+                      <b>
+                        Multi-load
+                      </b>
+                    </li>
+                    <p>
+                      Load on a multiple numbers at ago
+                    </p>
+                  </ul>
+                </td>
+                <td rowspan="2">
+                  <b style="color:red;">
+                    Service Requirements!
+                  </b>
+                  <ol type="i">
+                    <li>
+                      <p>
+                        Active account
+                      </p>
+                    </li>
+                    <li>
+                      <p> 
+                       Mobile money number in international format i.e with country code at begining like +256 for Uganda
+                      </p> 
+                    </li>
+                    <li>
+                      <p>
+                       Receiver number also in international format i.e with country code at begining like +255 for Kenya
+                      </p>
+                    </li>
+                  </ol>
+                </td>
+              </tr>
+          </div>
+          <div>
+            <tr>
+              <td>
+                <b style="color:green;">
+                  SMS
+                </b>
+                <ul type="square" >
+                  <li>
+                    <b>
+                      Premium SMS:
+                    </b>
+                  </li>
+                  <p>
+                    Send message to single number at ago
+                  </p>
+                  <li>
+                    <b>
+                     Bulk SMS:
+                    </b>
+                  </li>
+                  <p>
+                    Send message to multiple numbers at ago
+                  </p>
+                </ul>
+              </td>
+            </tr>
+          </div>
+          <div>
+            <tr>
+              <td>
+                <b style="color:green;">
+                  Voice           
+                </b>
+                <ul>
+                  <li>
+                    <b>
+                     Single call:
+                    </b>
+                  </li>
+                  <p>
+                    Call single number at ago
+                  </p>
+                  <li>
+                    <b>
+                      Conference calls:
+                    </b>
+                  </li>
+                  <p>
+                    Call multiple numbers at ago
+                  </p>
+                  
+                </ul>
+              </td>
+            </tr>
+          </div>
+          <div>
+            <tr>
+              <td>
+                <b style="color:green;">
+                  Payments
+                </b>
+                <ul>
+                  <li>
+                    <b>
+                      c2b:
+                    </b>
+                  </li>
+                  <p>
+                    Client2Business Payments allow a client to send mobile money to a business
+                  </p>
+                  <li>
+                    <b>
+                      b2c:
+                    </b>
+                  </li>
+                  <p>
+                    Business2Client Payments allow a business to send mobile money to client(s) or employees
+                  </p>
+                  <li>
+                    <b>
+                     b2b:
+                    </b>
+                  </li>
+                  <p>
+                    Business2business Payments allow a business to send mobile money to other business(es)
+                  </p>
+                </ul>
+              </td>
+            </tr>
+          </div>
+      </table>
+      </h1>
+    </center>
+      </body>
+      <style type="text/css">
+      table{width:80%;}
+        td{width: 100;}
+        ul{list-style-type:square;}
+      </style>
+     {% endblock %}
 
-<<<<<<< HEAD
-
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    {% if request.user.is_authenticated %} 
-    	Welcome '{{ request.user.username }}' |
-=======
-<html>
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    {% if request.user.is_authenticated %} 
-    	Hi '{{ request.user.username }}' |
->>>>>>> origin/master
-    	<a href="{% url 'logout' %}">Log out</a>
-	{% else %}
-		<a href="{% url django.contrib.auth.login %}">Login</a>
-	{% endif %}
-<<<<<<< HEAD
-  </div>
-=======
-  </div>
-  
-  </html>
->>>>>>> origin/master
+{% endblock %}

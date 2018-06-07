@@ -9,7 +9,7 @@ def index(request):
 	return render(request, "dashboard/index.html")
 
 def sms(request):
-	return HttpResponse("Dashboard SMS home page.")
+	return render(request,'sms/send.html')
 
 def airtime(request):
 	return HttpResponse("Dashboard Airtime home page.")
