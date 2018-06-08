@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^pay/$',views.pay,name="pay"),
     url(r'^xs/$',views.xs,name="xs"),
     url(r'^era/$',views.era,name="era"),
+    url(r'^athistory/$',views.athistory,name="athistory"),
 ]

@@ -4,5 +4,11 @@ from django.http import HttpResponse
 def index(request):
 	return render(request, "voice/index.html")
 
+def conf(request):
+	return render(request, 'voice/conf.html')
+
+def vhistory(request):
+	return render(request, "voice/vhist.html")
+
 def make_call(request):
 	return HttpResponse("Make a voice call.")

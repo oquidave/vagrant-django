@@ -5,5 +5,8 @@ from django.http import HttpResponse
 def index(request):
 	return render(request, "payments/index.html")
 
+def phistory(request):
+	return render(request, 'payments/phist.html')
+
 def send(request):
 	return HttpResponse("Payments send money.")

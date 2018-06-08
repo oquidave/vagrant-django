@@ -5,4 +5,6 @@ urlpatterns = [
     url(r'^$', views.index, name='sms'),
     url(r'^send/$', views.send_sms, name='send_sms'),
     url(r'^sacess/$', views.sacess, name='sacess'),
+    url(r'^smshistory/$',views.smshistory,name='smshistory'),
+    url(r'^bulks/$',views.bulks,name='bulks'),
 ]

@@ -81,8 +81,8 @@ li.dropdown {
       </a>
         <div class="dropdown-content">
           <a href="{% url 'sms' %}">Send sms</a>
-          <a href="#">Bulk sms</a>
-          <a href="#">History</a>
+          <a href="{% url 'bulks' %}">Bulk sms</a>
+          <a href="{% url 'smshistory' %}">History</a>
         </div>
     </li>
     <li class="dropdown">
@@ -91,7 +91,7 @@ li.dropdown {
       </a>
       <div class="dropdown-content">
         <a href="{% url 'airtime' %}">Buy</a>
-        <a href="#">History</a>
+        <a href="{% url 'athistory' %}">History</a>
       </div>
     </li>
     <li class="right" >
@@ -108,7 +108,7 @@ li.dropdown {
       </a>
       <div class="dropdown-content">
         <a href="{% url 'payments' %}">Make Payments</a>
-        <a href="#">History</a>       
+        <a href="{% url 'phistory' %}">History</a>       
       </div>
     </li>  
     <li class="dropdown">
@@ -117,8 +117,8 @@ li.dropdown {
       </a>
       <div class="dropdown-content">
         <a href="{% url 'voice' %}">Make Call</a>
-        <a href="#">Conference Calls</a>
-        <a href="#">History</a>       
+        <a href="{% url 'conf' %}">Conference Calls</a>
+        <a href="{% url 'vhistory' %}">History</a>       
       </div>
     </li> 
 </ul>

@@ -1,14 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-"""<<<<<<< HEAD
-
-# Create your views here.
-def index(request):
-	return render(request, "sms/index.html")
-
-def send_sms(request):
-	return HttpResponse("Send sms page.")
-======="""
 from ATLib import AfricasTalkingGateway
 from ATLib.AfricasTalkingGateway import AfricasTalkingGatewayException
 import africastalking
@@ -23,6 +14,14 @@ def send_sms(request):
       return render(request,"sms/sms.html",{"sms_message":message,"phone":phone})
    else:
       return render(request,'sms/send.html')
+
+
+def bulks(request):
+   return render(request, 'sms/bulks.html')
+
+
+def smshistory(request):
+   return render(request, "sms/smshist.html")
 
 
 def sacess(request):

@@ -5,7 +5,6 @@ import africastalking
 from ATLib.AfricasTalkingGateway import AfricasTalkingGateway, AfricasTalkingGatewayException
 
 # Create your views here.
-
 def index(request):
 	return render(request, "airtime/index.html")
 
@@ -19,6 +18,9 @@ def era(request):
 
 def xs(request):
 	return render(request,"airtime/xs.html")
+
+def athistory(request):
+	return render(request,'airtime/athist.html')
 
 
 def pay(phone, amount):
@@ -42,7 +44,7 @@ def pay(phone, amount):
 
 
 def at(request):
-	if request.method == 'POST' and sub is valid:
+	if request.method == 'POST':
 
 	   # try:
 	    chargephone = request.POST.get('chargephone')
