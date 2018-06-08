@@ -1,9 +1,10 @@
-{% include 'includes/topnav.html' %}
+{% extends 'includes/newbes.html'%}
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+{% block body_block %}
 <center>
-<body bgcolor="White">
+  <body bgcolor="White">
     <div id="topbar">
     </div>
     <div id="graph_div">
@@ -159,13 +160,12 @@
     
 </body>
 </center>
-{% include 'includes/footer.html' %}
 <style>
 body, html {
     margin:0;
     padding:0;
     height:100%;
-    color: white;
+    
 }
 #toto{
       color:red;
@@ -205,10 +205,9 @@ body, html {
     float:left;  
 }
 
-output{
-  color:white; 
-}
+
 </style>
+{% endblock %}
 
 
 

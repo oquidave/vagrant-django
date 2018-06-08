@@ -1,20 +1,12 @@
-<html>
+{% extends 'includes/newbes.html' %}
+{% block body_block %}
 <div>
-{% include 'includes/topnav.html' %}
+	<center>
+		<h1 style="color:green;">
+		  Airtime buddy
+		</h1>
+	</center>
 </div>
-<div>
-	<header style="color:green;">
-		<center>
-			<h1>
-			  Airtime buddy
-			</h1>
-		</center>
-        </header>
-</div>
-
-{% block body %}
-<div>
-<body>
 <center>
 	<h1>
 	<form method="POST" action="{% url 'at' %}" name="sub">
@@ -52,11 +44,5 @@
 		</table>
 	</form>
 </h1>
-</div>
-</body>
 </center>
 {% endblock %}
-
-<div>
-{% include 'includes/footer.html' %}
-</div>

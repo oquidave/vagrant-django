@@ -1,6 +1,6 @@
-{% extends 'includes/base.html' %}
-
-{% block body_block%}  
+{% include 'accounts/accnav.html' %}
+{% block body_block%} 
+<center> 
   <form method="post" action="/accounts/login/">
     {% csrf_token %}
       <div class="container">
@@ -12,20 +12,29 @@
             </div>
               <div class="panel-body">
                 <form accept-charset="UTF-8" role="form">
-                        <fieldset>
-                    <div class="form-group">
-                      <input class="form-control" placeholder="Username" name="username" type="text">
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                  </div>
-                  <div class="checkbox">
-                      <label>
-                        <input name="remember" type="checkbox" value="Remember Me"> Remember Me
-                      </label>
-                    </div>
-                  <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
-                </fieldset>
+                        <table>
+                          <tr>
+                            <td>
+                              <input class="form-control" placeholder="Username" name="username" type="text">
+                            </td>
+                          <tr>
+                            <td>
+                             <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label>
+                                <input name="remember" type="checkbox" value="Remember Me">  Remember Me
+                              </label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                            </td>
+                          </tr>
+                        </table>
                   </form>
               </div>
           </div>
@@ -33,4 +42,11 @@
       </div>
     </div>
   </form>
+</center>
+<style type="text/css">
+  .container{
+    width:50%; 
+  }
+</style>
 {% endblock %}
+{% include 'includes/footer.html' %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from accounts.decorators import logout_required
 from django.contrib.auth import logout
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -46,8 +47,7 @@ def signup(request):
 		 								email = email,
 		 								password = password)
 
-
-		user.profile.phone = phone
+	
 		user.save()
 		if user.pk:
 			messages.success(request, 'registration was successful')
