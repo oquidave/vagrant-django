@@ -2,6 +2,8 @@
 	
     {% block body_block%}
 
+
+ <center>
 	<form class="form-horizontal" action='/accounts/profile/' method="POST">
  {% csrf_token %}
   <fieldset>
@@ -12,51 +14,53 @@
 
     <div class="control-group">
       <!-- Username -->
-      <label class="control-label"  for="username">Username</label>
+      
       <div class="controls">
-        <input type="text" id="username" name="username" value="{{user.username}}" class="input-xlarge" disabled>
+        <input type="text" id="username" placeholder="Username" name="username" value="{{user.username}}" class="input-xlarge" disabled>
       </div>
     </div>
  
 
     <div class="control-group">
       <!-- first_name -->
-      <label class="control-label"  for="first_name">First name</label>
+     
       <div class="controls">
-        <input type="text" id="first_name" name="first_name" value="{{user.first_name}}" class="input-xlarge">
+        <input type="text" id="first_name" placeholder="first_name" name="first_name" value="{{user.first_name}}" class="input-xlarge">
       </div>
     </div>
 
     <div class="control-group">
       <!-- last_name -->
-      <label class="control-label"  for="last_name">Last name</label>
+      
       <div class="controls">
-        <input type="text" id="last_name" name="last_name" value="{{user.last_name}}" class="input-xlarge">
+        <input type="text" id="last_name" placeholder="last_name" name="last_name" value="{{user.last_name}}" class="input-xlarge">
       </div>
     </div>
 
     <div class="control-group">
       <!-- E-mail -->
-      <label class="control-label" for="email">E-mail</label>
+      
       <div class="controls">
-        <input type="email" id="email" name="email" value="{{user.email}}" class="input-xlarge">
+        <input type="email" id="email" placeholder="E-mail" name="email" value="{{user.email}}" class="input-xlarge">
       </div>
     </div>
 
     <div class="control-group">
       <!-- phone -->
-      <label class="control-label" for="phone">Phone </label>
+      
       <div class="controls">
-        <input type="text" id="phone" name="phone" value="{{user.profile.phone}}" class="input-xlarge">
+        <input type="text" id="phone" placeholder="phone" name="phone" value="{{user.profile.phone}}" class="input-xlarge">
       </div>
     </div>
  
     <div class="control-group">
       <!-- Password-->
-      <label class="control-label" for="password">Password</label>
+      
       <div class="controls">
-        <input type="password" id="password" name="password" class="input-xlarge">
+        <input type="password" placeholder="Password" id="password" name="password" class="input-xlarge"required>
+        
       </div>
+      <input type="password" placeholder="Confirm password" id="password" name="password" class="input-xlarge" required="password">
     </div>
  
     <div class="control-group">
@@ -67,5 +71,6 @@
     </div>
   </fieldset>
 </form>
+</center>
 
     {% endblock %}
