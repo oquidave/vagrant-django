@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^sacess/$', views.sacess, name='sacess'),
     url(r'^smshistory/$',views.smshistory,name='smshistory'),
     url(r'^bulks/$',views.bulks,name='bulks'),
+    url(r'^(?P<id>\d+)delete/$',views.delete,name='delete'),
 ]

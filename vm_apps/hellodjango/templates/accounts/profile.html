@@ -4,11 +4,10 @@
 
 
  <center>
-	<form class="form-horizontal" action='/accounts/profile/' method="POST">
+	<form class="form-horizontal" id='fom' action='/accounts/profile/' method="POST">
  {% csrf_token %}
-  <fieldset>
     <div id="legend">
-      <legend class="">Register</legend>
+      <legend class="">Update</legend>
     </div>
 
 
@@ -63,14 +62,26 @@
       <input type="password" placeholder="Confirm password" id="password" name="password" class="input-xlarge" required="password">
     </div>
  
-    <div class="control-group">
+    
       <!-- Button -->
       <div class="controls">
         <button class="btn btn-success">Update</button>
       </div>
-    </div>
-  </fieldset>
+  
 </form>
 </center>
+<style type="text/css">
+input{
+  height:8%; 
+  width:30%;
+
+}
+  #fom{
+    width:100%;
+    height:100%;
+    margin-top:50;
+      }
+
+</style>
 
     {% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
-<div>
+<div id="at_div">
 	<center>
 		<h1 style="color:green;">
 		  Airtime buddy
@@ -9,9 +9,9 @@
 </div>
 <center>
 	<h1>
-	<form method="POST" action="{% url 'at' %}" name="sub">
+	<form method="POST" action="{% url 'at' %}"  name="sub">
 		{% csrf_token %}
-		<table>
+		<table id="tebo">
 			<tr>
 				<td>
 					Mobile Money No:
@@ -45,4 +45,13 @@
 	</form>
 </h1>
 </center>
+<style type="text/css">
+	#at_div{
+		margin-top:50;
+	}
+	#tebo{
+		width:50%;
+		height:40%;
+	}
+</style>
 {% endblock %}

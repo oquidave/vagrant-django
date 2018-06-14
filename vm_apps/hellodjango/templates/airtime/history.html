@@ -1,0 +1,53 @@
+<div>
+{% extends 'includes/newbes.html' %}
+</div>
+{% block body_block %}
+
+<div id="taab">
+	<div class="tab">
+		<table id="lin">
+		  <tr>
+		    <td>
+	           <a href="{% url 'athistory' %}">
+	             AT Account history
+	           </a>
+	        </td>
+	        <td>
+	   	       <a href="{% url 'buyhistory' %}">
+	   	         MobileMoney history
+	   	       </a>
+            </td>
+          </tr>
+        </table>
+    </div>
+</div>
+
+
+<style type="text/css">
+
+#lin{
+	margin:auto;
+	margin-top:30;
+	width:50%;
+}
+
+#taab{
+	margin-top:180;
+	height:50%;
+	margin-left:60;
+	margin-right:90;
+}
+
+table a{
+	padding:50;
+	
+}
+
+
+.tab a:hover {
+    background-color: green;
+    height:200;
+    color:white;
+}
+</style>
+{% endblock %}

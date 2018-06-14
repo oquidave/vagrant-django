@@ -1,58 +1,65 @@
 {% include "accounts/signnav.html" %}
 {% block body_block%}  
-<form class="form-horizontal" action='/accounts/signup/' method="POST" style="text-align:left;">
+<center>
+<form class="form-horizontal" action='/accounts/signup/' method="POST">
  {% csrf_token %}
- <center>
-  <fieldset>
-    <div class="control-group">
-      <!-- first_name -->
-      <div class="controls">
+ <table>
+  <tr>
+    <td>   <!-- first_name -->
         <input type="text" id="first_name" name="first_name" placeholder="First name" class="input-xlarge" required>
-      </div>
-    </div>
-    <div class="control-group">
-      <!-- last_name -->
-      <div class="controls">
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <!-- last_name -->
         <input type="text" id="last_name" name="last_name" placeholder="Last name" class="input-xlarge" required>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <!-- Username -->
-      <div class="controls">
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <!-- Username -->
         <input type="text" id="username" name="username" placeholder="Username" class="input-xlarge" required>
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- E-mail -->
-      <div class="controls">
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <!-- E-mail -->
         <input type="email" id="email" name="email" placeholder="E-mail" class="input-xlarge" required>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <!-- phone -->
-      <div class="controls">
+      </td>
+  </tr>
+  <tr>
+    <td>
+       <!-- phone -->
         <input type="text" id="phone" name="phone" placeholder="Phone" class="input-xlarge" required>
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- Password-->
-      <div class="controls">
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <!-- Password-->
         <input type="password" id="password" name="password" placeholder="Password" class="input-xlarge" required>
-      </div>
-    </div>
- 
-    <div class="control-group">
-      <!-- Button -->
-      <div class="controls">
-        <button class="btn btn-success">Register</button>
-      </div>
-    </div>
-  </fieldset>
-  </center>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <!-- Password-->
+        <input type="password" id="password1" name="password" placeholder="Confirm Password" class="input-xlarge" required=password>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button class="btn btn-success">Register</button>
+    </td>
+  </tr>
+</table>
 </form>
+</center>
+<style type="text/css">
+  table{
+    width:70%;
+    height:50%;
+    margin-top:50;
+    margin-left:30%;
+  }
+</style>
 {% endblock %}
 {% include 'includes/footer.html' %}

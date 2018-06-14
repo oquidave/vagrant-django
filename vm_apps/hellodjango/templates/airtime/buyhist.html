@@ -1,11 +1,11 @@
-{% extends 'includes/newbes.html'%}
+{% extends 'includes/newbes.html' %}
 <div>
 {% block body_block %}
 <strong>
 	<center>
-		{% if sms_stats %}
+		{% if stats %}
 			<table border="1" id="dbtable">
-			<tr>
+			<tr class="fixed">
 				<td>
 				<b>
 				  Date
@@ -13,12 +13,7 @@
 				</td>
 				<td>
 				<b>
-				  Content
-				</b>
-				</td>
-				<td>
-				<b>
-				  Destination
+				  Amount
 				</b>
 				</td>
 				<td>
@@ -28,17 +23,22 @@
 				</td>
 				<td>
 				<b>
+				  Destination
+				</b>
+				</td>
+				<td>
+				<b>
 				  Action
 				</b>
 				</td>
 			</tr>
-			{% for sms_stat in sms_stats %}
-			<tr>
-				<td>{{sms_stat.date}}</td>
-				<td>{{sms_stat.content}}</td>
-				<td>{{sms_stat.destination}}</td>
-				<td>{{sms_stat.status}}</td>
-				<td><a href="#">Edit</a>| <a href="/sms/{{sms_stat.id}}/delete">Delete</a></td>
+			{% for stat in stats %}
+			<tr >
+				<td>{{stat.date}}</td>
+				<td>{{stat.amount}}</td>
+				<td>{{stat.status}}</td>
+				<td>{{stat.destination}}</td>
+				<td><a href="#">Edit</a>| <a href="#">Delete</a></td>
 			</tr>
 			{% endfor %}
 		</table>
@@ -50,13 +50,13 @@
 		#dbtable{
 			width:70%;
 			margin-top:60;
-			position: relative;
-		}
-		.fixed td{
 			position:relative;
-			overflow: hidden;
-            height: 10;
 		}
+		.fixed td {
+            position: relative;
+            overflow: hidden;
+            height: 10;
+        }
 	</style>
 </strong>
 {% endblock %}

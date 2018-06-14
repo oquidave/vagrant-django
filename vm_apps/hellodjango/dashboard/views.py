@@ -23,16 +23,3 @@ def payments(request):
 def profile(request):
    return render(request, "accounts/profile.html")
 
-"""def sms(request):
-   return render(request,"sms/send.html")
-
-def airtime(request):
-   return render(request,"airtime/index.html")
-
-def voice(request):
-   return render(request,"voice/index.html")
-
-def payments(request):
-   #return HttpResponse("Dashboard Payments home page.")
-   return render(request,'payments/index.html')
->>>>>>> origin/master"""

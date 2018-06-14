@@ -1,0 +1,47 @@
+{%extends 'includes/newbes.html'%}
+{% block body_block %}
+<center>
+  <h1>
+  <form method="POST" action="{% url 'buy' %}"  name="sub">
+    {% csrf_token %}
+    <table id="tebo">
+      
+      <tr>
+        <td>
+          Buy For:
+          </td>
+          <td>
+            <input placeholder="Enter phone number here" name="phone"  required>
+          </td>
+      </tr>
+      <tr>
+        <td>
+          Amount
+        </td>
+        <td>
+          <input placeholder="Enter amount here" name="amount" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          
+        </td>
+        <td>
+          <input type="submit" style="color:green;" name="Send" value="Buy">
+        </td>
+      </tr>
+    </table>
+  </form>
+</h1>
+</center>
+<style type="text/css">
+  h1{
+    margin-top:100;
+  }
+  table{
+    width:60%;
+    height:40%;
+    margin-left:150;
+  }
+</style>
+{% endblock %}

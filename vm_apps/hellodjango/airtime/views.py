@@ -1,16 +1,13 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse
+from .models import Athist
+from .models import Buyhist
 import africastalking
-from ATLib.AfricasTalkingGateway import AfricasTalkingGateway, AfricasTalkingGatewayException
 
 # Create your views here.
 def index(request):
 	return render(request, "airtime/index.html")
-
-def send_airtime(request):
-    return HttpResponse("Send Airtime ")
-
 
 def era(request):
 	return render(request,'airtime/era.html')
@@ -19,8 +16,27 @@ def era(request):
 def xs(request):
 	return render(request,"airtime/xs.html")
 
+def history(request):
+	return render(request,"airtime/history.html")
+
+
 def athistory(request):
-	return render(request,'airtime/athist.html')
+	if request.method == "POST":
+		stats = Athist.objects.all()
+		return render( request,"airtime/athist.html",{"stats":stats})
+	elif request.method == "GET":
+		stats = Athist.objects.all()
+		return render( request,"airtime/athist.html",{"stats":stats})
+  
+def buyhistory(request):
+	if request.method == "POST":
+		stats = Buyhist.objects.all()
+		return render( request,"airtime/buyhist.html",{"stats":stats})
+	elif request.method == "GET":
+		stats = Buyhist.objects.all()
+		return render( request,"airtime/buyhist.html",{"stats":stats})
+  
+	
 
 
 def pay(phone, amount):
@@ -75,8 +91,41 @@ def at(request):
 	    if(res.get('status') == 'PendingConfirmation'):
 	    	print('moving to pay airtime function')
 	    	pay(phone, amount)
+	    	stats = Athist(amount=amount,status="sent", destination=phone,source=chargephone)
+	    	stats.save()
+	    	res=print(stats)
+	    	return redirect('athistory')
 	    else:
 	    	print('No money')
-	    return render(request,'airtime/xs.html')
+	    return redirect('athistory')
 
-	    #return render('airtime/pay.html')
+def buy(request):
+	if request.method == "POST":
+		amount = request.POST.get('amount')
+		phone = request.POST.get('phone')
+		pay(phone, amount)
+		stats = Buyhist(amount=amount,status="sent", destination=phone)
+		stats.save()
+		return redirect('buyhistory')
+	else:
+		return render(request,'airtime/buy.html')
+
+
+def buy1(request):
+	return render(request,'airtime/buy1.html')
+
+
+
+def delit(request,id):
+	if request.method == "GET":
+		print(id)
+		d = Athist.object.get(pk=id)
+		d.delete()
+		return redirect('athistory')
+	else:
+		return redirect('athistory')
+	
+
+
+
+	    
