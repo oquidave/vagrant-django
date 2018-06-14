@@ -4,6 +4,7 @@
 <strong>
 	<center>
 		{% if stats %}
+		<h2>MobileMoney History</h2>
 			<table border="1" id="dbtable">
 			<tr class="fixed">
 				<td>
@@ -18,12 +19,12 @@
 				</td>
 				<td>
 				<b>
-				  Status
+				  Source
 				</b>
 				</td>
 				<td>
 				<b>
-				  Source
+				  Status
 				</b>
 				</td>
 				<td>
@@ -38,11 +39,11 @@
 				</td>
 			</tr>
 			{% for stat in stats %}
-			<tr >
+			<tr class="fixed1" >
 				<td>{{stat.date}}</td>
 				<td>{{stat.amount}}</td>
-				<td>{{stat.status}}</td>
 				<td>{{stat.source}}</td>
+				<td>{{stat.status}}</td>
 				<td>{{stat.destination}}</td>
 				<td><a href="#">Edit</a>| <a href="/airtime/{{stat.id}}/delit">Delete</a></td>
 			</tr>
@@ -55,14 +56,24 @@
 	<style type="text/css">
 		#dbtable{
 			width:70%;
-			
 			margin-top:60;
+			position: relative;
+			border:solid;
+			border-spacing:2%;
+
 		}
 		.fixed td {
             position: relative;
             overflow: hidden;
             height: 10;
         }
+       .fixed {
+			background-color:green;
+			color:white;
+		}
+		.fixed1{
+			background-color:#B0E0E6;
+		}
 	</style>
 </strong>
 {% endblock %}

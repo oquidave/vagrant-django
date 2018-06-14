@@ -1,11 +1,14 @@
+<! DOCTYPE html>
 {% extends 'includes/newbes.html'%}
 <div>
 {% block body_block %}
+<body>
 <strong>
 	<center>
 		{% if sms_stats %}
+		<h2>SMS history</h2>
 			<table border="1" id="dbtable">
-			<tr>
+			<tr class="fixed">
 				<td>
 				<b>
 				  Date
@@ -33,7 +36,7 @@
 				</td>
 			</tr>
 			{% for sms_stat in sms_stats %}
-			<tr>
+			<tr class="fixed1">
 				<td>{{sms_stat.date}}</td>
 				<td>{{sms_stat.content}}</td>
 				<td>{{sms_stat.destination}}</td>
@@ -51,15 +54,21 @@
 			width:70%;
 			margin-top:60;
 			position: relative;
+			border:solid;
+			
 		}
-		.fixed td{
-			position:relative;
-			overflow: hidden;
-            height: 10;
+		.fixed {
+			background-color:green;
+			color:white;
 		}
+		.fixed1{
+			background-color:#B0E0E6;
+		}
+		
 	</style>
 </strong>
+</body>
 {% endblock %}
 </div>
-
+</html>
 
