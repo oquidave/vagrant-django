@@ -119,11 +119,27 @@ def buy1(request):
 def delit(request,id):
 	if request.method == "GET":
 		print(id)
-		d = Athist.object.get(pk=id)
+		d = Athist.objects.get(id=id)
 		d.delete()
 		return redirect('athistory')
 	else:
 		return redirect('athistory')
+
+
+
+
+
+def delete(request,id):
+	if request.method == "GET":
+		print(id)
+		d = Buyhist.objects.get(id=id)
+		d.delete()
+		return redirect('buyhistory')
+	else:
+		return redirect('buyhistory')
+
+
+
 	
 
 
