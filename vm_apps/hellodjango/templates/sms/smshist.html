@@ -4,8 +4,9 @@
 <strong>
 	<center>
 		{% if sms_stats %}
+		<h2>SMS history</h2>
 			<table border="1" id="dbtable">
-			<tr>
+			<tr class='fixed'>
 				<td>
 				<b>
 				  Date
@@ -33,12 +34,12 @@
 				</td>
 			</tr>
 			{% for sms_stat in sms_stats %}
-			<tr>
+			<tr class='fixed1'>
 				<td>{{sms_stat.date}}</td>
 				<td>{{sms_stat.content}}</td>
 				<td>{{sms_stat.destination}}</td>
 				<td>{{sms_stat.status}}</td>
-				<td><a href="#">Edit</a>| <a href="/sms/{{sms_stat.id}}/delete">Delete</a></td>
+				<td><a href="/sms/delete/{{sms_stat.id}}">Delete</a></td>
 			</tr>
 			{% endfor %}
 		</table>
@@ -48,7 +49,7 @@
 	</center>
 	<style type="text/css">
 		#dbtable{
-			width:70%;
+			width:95%;
 			margin-top:60;
 			position: relative;
 		}
@@ -56,6 +57,10 @@
 			position:relative;
 			overflow: hidden;
             height: 10;
+            background-color:green;
+		}
+		.fixed1{
+			background-color:#B0E0E6;
 		}
 	</style>
 </strong>

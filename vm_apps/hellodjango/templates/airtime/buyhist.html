@@ -4,6 +4,7 @@
 <strong>
 	<center>
 		{% if stats %}
+		<h2>AT account history</h2>
 			<table border="1" id="dbtable">
 			<tr class="fixed">
 				<td>
@@ -18,12 +19,12 @@
 				</td>
 				<td>
 				<b>
-				  Status
+				  Destination
 				</b>
 				</td>
 				<td>
 				<b>
-				  Destination
+				  Status
 				</b>
 				</td>
 				<td>
@@ -33,12 +34,12 @@
 				</td>
 			</tr>
 			{% for stat in stats %}
-			<tr >
+			<tr class="fixed1">
 				<td>{{stat.date}}</td>
 				<td>{{stat.amount}}</td>
-				<td>{{stat.status}}</td>
 				<td>{{stat.destination}}</td>
-				<td><a href="#">Edit</a>| <a href="#">Delete</a></td>
+				<td>{{stat.status}}</td>
+				<td><a href="/airtime/delete/{{stat.id}}">Delete</a></td>
 			</tr>
 			{% endfor %}
 		</table>
@@ -48,7 +49,7 @@
 	</center>
 	<style type="text/css">
 		#dbtable{
-			width:70%;
+			width:95%;
 			margin-top:60;
 			position:relative;
 		}
@@ -56,7 +57,12 @@
             position: relative;
             overflow: hidden;
             height: 10;
+            background-color:green;
         }
+
+        .fixed1{
+			background-color:#B0E0E6;
+		}
 	</style>
 </strong>
 {% endblock %}

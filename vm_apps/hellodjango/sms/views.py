@@ -6,6 +6,7 @@ from django.core import serializers
 
 
 # Create your views here.
+
 def index(request):
    return render(request, "sms/index.html")
 
@@ -53,7 +54,7 @@ def sacess(request):
 
 def delete(request,id):
    print(id)
-   d = Smshist.objects.get(pk=id)
+   d = Smshist.objects.get(id=id)
    d.delete()
    return redirect('smshistory')
 
