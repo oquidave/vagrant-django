@@ -1,8 +1,55 @@
 {% extends 'includes/newbes.html' %}
 <div>
 {% block body_block %}
-<strong>
-	 BUlk sms 
-</strong>
+<body>
+<center>
+<form  action="{% url 'bulks' %}"  enctype="multipart/form-data">
+{% csrf_token %}
+	<table>
+	<tr>
+	   <td>
+		<p>
+		    <b>
+		      Contact file to upload 
+		    </b>
+		</p>
+			<input type="file" name="browse" value="browse" accept=".csv" required>
+			<p id="path" name="path"></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		    <p>
+				<b>
+				  Message
+			    </b>
+			</p>
+			<textarea type="text" id="messg" name="sms_message"
+			{% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %} minlength="3" maxlength="256" required></textarea>
+		</td>
+	</tr>
+	<tr>
+	    <td>
+			<button type="submit"  formmethod="POST" action="sms/bulks.html">Send</button>
+		</td>
+	</tr>
+	</table>
+</form>
+</center>
+<style type="text/css">
+	table{
+		margin: auto;
+		width:600px;
+		height: 400px;
+	}
+	#messg{
+		height: 200;
+		width: 500;
+		margin:left;
+		text-align:left;
+		background-color:#B0E0E6;
+		}
+</style>	
+</body>
 {% endblock %}
 </div>

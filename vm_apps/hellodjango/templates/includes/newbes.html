@@ -1,6 +1,6 @@
 <! DOCTYPE html>
 <head>
-<div>
+<div id="hed">
   {% include 'includes/topnav.html' %}
 </div>
 {% block body_block%}
@@ -8,7 +8,21 @@
   
 </body>
 {% endblock %}
-<div>
+<div id="foot">
   {% include 'includes/footer.html' %}
 </div>
+<style type="text/css">
+	html{
+		min-height:100%;
+		position:relative;
+	}
+	body{
+		min-height:100%;
+		overflow-x:hidden;
+		overflow-y:scroll;
+		padding-bottom:10%;
+	}
+	
+</style>
 </html>
+

@@ -4,9 +4,10 @@
 {% block body_block %}
 <body>
 <strong>
-	<center>
-		{% if sms_stats %}
+    <center>
+   {% if sms_stats %}
 		<h2>SMS history</h2>
+		<div id="scroll">
 		<table border="1" id="dbtable">
             <tr class="fixed">
 				<td>
@@ -48,26 +49,30 @@
 		{% else %}
 			<p>Nothing to display</p>
 		{%endif %}
+	    </div>
 	</center>
 	<style type="text/css">
+
 		#dbtable{
 			width:95%;
-			margin-top:60;
-            position: relative;
-			border:solid;
-			
+			margin-top:auto;
+			position: relative;
+			border-collapse:collapse;
 		}
+
 		.fixed td{
 			position:relative;
-			overflow: hidden;
-            height: 10;
+			height: 10;
             background-color:green;
+            
 		}
 		
 		.fixed1{
 			background-color:#B0E0E6;
+		    overflow-y: scroll;			
 		}
 		
+				
 	</style>
 </strong>
 </body>

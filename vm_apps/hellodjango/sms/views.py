@@ -3,6 +3,8 @@ from django.http import HttpResponse
 import africastalking
 from .models import Smshist
 from django.core import serializers
+import csv
+import codecs
 
 
 # Create your views here.
@@ -18,7 +20,49 @@ def send_sms(request):
 
 
 def bulks(request):
-   return render(request, 'sms/bulks.html')
+   data = {}
+   if request.method == "POST":
+      #get message content
+      message=request.POST.get('sms_message')
+
+      #get file content
+      csv_file = request.FILES["browse"]
+
+      #read into file
+      file_data = csv_file.read().decode("utf-8")
+      #split into lines
+      lines = file_data.split(',')
+      print(lines)
+
+      #make set
+      s = set(lines)
+      print(s)
+
+      #iterate over set and lines
+      for no in s:
+         for no in lines:
+            print(no)
+            #instatiate Africa's talking api
+            api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
+            username= "sandbox"
+            africastalking.initialize(username=username,api_key=api_key)
+            sms =africastalking.SMS
+         
+            #send
+            response = sms.send(message,[no])
+            print(response)
+            #save to model
+            sms_stats = Smshist(content=message,status="sent", destination=no)
+            sms_stats.save()
+            #res=print(sms_stats)
+            #redirect to history
+            
+         return redirect('smshistory')
+   elif request.method=="GET":
+      return render(request, 'sms/bulks.html',data)
+   else:
+      return render(request,'sms/bulks.html')
+ 
 
 
 def smshistory(request):
