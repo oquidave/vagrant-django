@@ -1,12 +1,8 @@
-<html>
-<div>
-	{% extends 'includes/newbes.html' %}
-</div>
+{% extends 'includes/newbes.html' %}
 {% block body_block %}
-<div id="budy">
+<body>
 	<center>
-	<body>
-		<div id="tad">
+	<div id="tad">
 			<form  name="formt" action="{% url 'sacess'  %}">
 				{% csrf_token %}
 			<table id="tebo">
@@ -40,8 +36,8 @@
 		</div>
 		<style type="text/css">
 		#tad{
-			
-		}	
+			padding-top:5%;
+		}
 		#tebo{
 			margin: auto;
 			width:600px;
@@ -55,8 +51,7 @@
 			background-color:#B0E0E6;
 		}	
 		</style>
-	</body>
 </center>
-</div>
+</body>
 {% endblock %}
-</html>
+

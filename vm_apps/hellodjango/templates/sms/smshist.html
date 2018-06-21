@@ -1,13 +1,9 @@
-<! DOCTYPE html>
 {% extends 'includes/newbes.html'%}
-<div>
 {% block body_block %}
-<body>
-<strong>
-    <center>
-   {% if sms_stats %}
-		<h2>SMS history</h2>
-		<div id="scroll">
+<div id="bud" style="padding-top:5%;">
+<center>
+<h2>SMS history</h2>
+   {% if users %}
 		<table border="1" id="dbtable">
             <tr class="fixed">
 				<td>
@@ -36,32 +32,76 @@
 				</b>
 				</td>
 			</tr>
-			{% for sms_stat in sms_stats %}
+			{% for user in users %}
 			<tr class='fixed1'>
-				<td>{{sms_stat.date}}</td>
-				<td>{{sms_stat.content}}</td>
-				<td>{{sms_stat.destination}}</td>
-				<td>{{sms_stat.status}}</td>
+				<td>{{user.date}}</td>
+				<td>{{user.content}}</td>
+				<td>{{user.destination}}</td>
+				<td>{{user.status}}</td>
 				<td><a href="/sms/delete/{{sms_stat.id}}">Delete</a></td>
 			</tr>
 			{% endfor %}
 		</table>
-		{% else %}
+		<div id="pag">
+		{% if users.has_other_pages %}
+		<ul class="pagination">
+		{% if users.has_previous %}
+		    <li>
+                <a href="?page={{ users.previous_page_number }}">
+                   &laquo;
+                </a>
+            </li>
+        {% else %}
+            <li class="disabled">
+                <span>
+                  &laquo;
+                </span>
+            </li>
+        {% endif %}
+        {% for i in users.paginator.page_range %}
+        {% if users.number == i %}
+            <li class="active">
+                <span class="sr-only">
+                    <b>{{ i }}</b> 
+                </span>
+            </li>
+       {% else %}
+            <li>
+               <a href="?page={{ i }}">
+                 <b>{{ i }}</b>
+               </a>
+            </li>
+        {% endif %}
+        {% endfor %}
+        {% if users.has_next %}
+            <li>
+                <a href="?page={{ users.next_page_number }}">
+                   &raquo;
+                </a>
+            </li>
+       {% else %}
+            <li class="disabled">
+                <span>
+                  &raquo;
+                </span>
+            </li>
+       {% endif %}
+        </ul>
+        {% endif %}
+        </div>
+	    {% else %}
 			<p>Nothing to display</p>
 		{%endif %}
-	    </div>
-	</center>
+</center>
+</div>
 	<style type="text/css">
-
-		#dbtable{
+	    #dbtable{
 			width:95%;
-			margin-top:auto;
-			position: relative;
+			margin-top:2%;
 			border-collapse:collapse;
 		}
 
 		.fixed td{
-			position:relative;
 			height: 10;
             background-color:green;
             
@@ -69,13 +109,26 @@
 		
 		.fixed1{
 			background-color:#B0E0E6;
-		    overflow-y: scroll;			
+		    overflow:hidden;			
 		}
-		
+
+		#pag{
+			width:100%;
+			position:fixed;
+		}
+
+		.pagination a{
+			color:black;
+			margin-left:20%;
+		}
+
+		.pagination .active{
+			color:green;
+		}
+
+
 				
 	</style>
-</strong>
-</body>
 {% endblock %}
 </div>
 </html>

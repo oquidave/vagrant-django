@@ -3,14 +3,50 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from .models import Athist
 from .models import Buyhist
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 import africastalking
 
 # Create your views here.
 def index(request):
 	return render(request, "airtime/index.html")
 
-def era(request):
-	return render(request,'airtime/era.html')
+def atbulk(request):
+	data={}
+	if "POST" == request.method:
+		amount=request.POST.get('amount')
+		#get file content
+		csv_file = request.FILES["contacts"]
+		#read into file
+		file_data = csv_file.read().decode("utf-8")
+		#split into lines
+		lines = file_data.split(',')
+		print(lines)
+		#make set
+		s = set(lines)
+		print(s)
+
+		#iterate over set and lines
+		for no in s:
+			for no in lines:
+				print(no)
+				#instatiate Africa's talking api
+				api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
+				username= "sandbox"
+				africastalking.initialize(username=username,api_key=api_key)
+				airtime =africastalking.Airtime
+
+				#send
+				response = airtime.send(phone_number=no,amount="UGX "+amount)
+				
+				#save to model
+				stats = Buyhist(amount=amount,status="sent", destination=no)
+				stats.save()
+				#res=print(sms_stats)
+				print(response)
+				#redirect to history 
+			return redirect('buyhistory')
+	elif request.method=="GET":
+		return render(request, 'airtime/atbulk.html',data)
 
 
 def xs(request):
@@ -26,7 +62,16 @@ def athistory(request):
 		return render( request,"airtime/athist.html",{"stats":stats})
 	elif request.method == "GET":
 		stats = Athist.objects.all()
-		return render( request,"airtime/athist.html",{"stats":stats})
+		page = request.GET.get('page', 1)
+		paginator = Paginator(stats, 15)
+		try:
+			users = paginator.page(page)
+		except PageNotAnInteger:
+			users = paginator.page(1)
+		except EmptyPage:
+			users = paginator.page(paginator.num_pages)
+		
+		return render( request,"airtime/athist.html",{"users":users})
   
 def buyhistory(request):
 	if request.method == "POST":
@@ -34,7 +79,17 @@ def buyhistory(request):
 		return render( request,"airtime/buyhist.html",{"stats":stats})
 	elif request.method == "GET":
 		stats = Buyhist.objects.all()
-		return render( request,"airtime/buyhist.html",{"stats":stats})
+		stats = Athist.objects.all()
+		page = request.GET.get('page', 1)
+		paginator = Paginator(stats, 15)
+		try:
+			users = paginator.page(page)
+		except PageNotAnInteger:
+			users = paginator.page(1)
+		except EmptyPage:
+			users = paginator.page(paginator.num_pages)
+		
+		return render( request,"airtime/buyhist.html",{"users":users})
   
 	
 

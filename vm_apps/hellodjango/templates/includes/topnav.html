@@ -125,6 +125,9 @@ li a:hover, .dropdown:hover .dropbtn {
         <a href="{% url 'buy' %}" id="buy">
           Buy
         </a>
+        <a href="{% url 'atbulk' %}" id="bulk">
+          Bulk Buy
+        </a>
         <a href="{% url 'history' %}">History</a>
       </div>
     </li>
@@ -173,14 +176,5 @@ li a:hover, .dropdown:hover .dropbtn {
     {% endif %}
   <div style="padding:0 16px;">
   </div>
-<style type="text/css">
-  .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
-}
-</style>
-
-
 </body>
 </html>

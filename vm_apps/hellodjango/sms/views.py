@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 import africastalking
 from .models import Smshist
-from django.core import serializers
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 import csv
 import codecs
 
@@ -72,7 +72,16 @@ def smshistory(request):
 
    elif request.method == "GET":
       sms_stats = Smshist.objects.all()
-      return render(request,'sms/smshist.html',{'sms_stats':sms_stats})
+      page = request.GET.get('page', 1)
+      paginator = Paginator(sms_stats, 15)
+      try:
+         users = paginator.page(page)
+      except PageNotAnInteger:
+         users = paginator.page(1)
+      except EmptyPage:
+         users = paginator.page(paginator.num_pages)
+      
+      return render(request,'sms/smshist.html',{'users':users})
 
 
 def sacess(request):

@@ -1,5 +1,6 @@
 {%extends 'includes/newbes.html'%}
 {% block body_block %}
+<div style="padding-top:5%;">
 <center>
   <h1>
   <form method="POST" action="{% url 'buy' %}"  name="sub">
@@ -34,10 +35,8 @@
   </form>
 </h1>
 </center>
+</div>
 <style type="text/css">
-  h1{
-    margin-top:100;
-  }
   table{
     width:60%;
     height:40%;

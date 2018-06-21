@@ -1,9 +1,8 @@
 {% extends 'includes/newbes.html' %}
-<div>
 {% block body_block %}
-<strong>
+<div style="padding-top:5%;">
 	<center>
-		{% if stats %}
+		{% if users %}
 		<h2>AT account history</h2>
             <table border="1" id="dbtable">
 			<tr class="fixed">
@@ -33,31 +32,77 @@
 				</b>
 				</td>
 			</tr>
-			{% for stat in stats %}
+			{% for user in users %}
 			<tr class="fixed1">
-                <td>{{stat.date}}</td>
-				<td>{{stat.amount}}</td>
-				<td>{{stat.destination}}</td>
-				<td>{{stat.status}}</td>
+                <td>{{user.date}}</td>
+				<td>{{user.amount}}</td>
+				<td>{{user.destination}}</td>
+				<td>{{user.status}}</td>
 				<td><a href="/airtime/delete/{{stat.id}}">Delete</a></td>
 			</tr>
 			{% endfor %}
 		</table>
+		<div id="pag">
+		{% if users.has_other_pages %}
+		<ul class="pagination">
+		{% if users.has_previous %}
+		    <li>
+                <a href="?page={{ users.previous_page_number }}">
+                   &laquo;
+                </a>
+            </li>
+        {% else %}
+            <li class="disabled">
+                <span>
+                  &laquo;
+                </span>
+            </li>
+        {% endif %}
+        {% for i in users.paginator.page_range %}
+        {% if users.number == i %}
+            <li class="active">
+                <span class="sr-only">
+                    <b>{{ i }}</b> 
+                </span>
+            </li>
+       {% else %}
+            <li>
+               <a href="?page={{ i }}">
+                 <b>{{ i }}</b>
+               </a>
+            </li>
+        {% endif %}
+        {% endfor %}
+        {% if users.has_next %}
+            <li>
+                <a href="?page={{ users.next_page_number }}">
+                   &raquo;
+                </a>
+            </li>
+       {% else %}
+            <li class="disabled">
+                <span>
+                  &raquo;
+                </span>
+            </li>
+       {% endif %}
+        </ul>
+        {% endif %}
+        </div>
 		{% else %}
 			<p>Nothing to display</p>
 		{%endif %}
 	</center>
+	</div>
 	<style type="text/css">
 		#dbtable{
 			width:95%;
-			margin-top:auto;
-			position:relative;
+			margin-top:2%;
 			border-spacing:2%;
 			border-collapse:collapse;
 		}
 		
 		.fixed td {
-            position: relative;
             overflow: hidden;
             height: 10;
             background-color:green;
@@ -70,9 +115,22 @@
 		.fixed1{
 			background-color:#B0E0E6;
 		}
+
+		#pag{
+			width:100%;
+			position:fixed;
+		}
+
+		.pagination a{
+			color:black;
+			margin-left:20%;
+		}
+
+		.pagination .active{
+			color:green;
+		}
 	</style>
-</strong>
 {% endblock %}
-</div>
+
 
 
