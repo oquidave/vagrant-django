@@ -1,10 +1,10 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
-<div id="bud" style="padding-top:5%;">
+<div style="padding-top:5%;">
 	<center>
 		{% if users %}
-		<h2> MobileMoney history</h2>
-			<table border="1" id="dbtable">
+		<h2>AT Bulk history</h2>
+            <table border="1" id="dbtable">
 			<tr class="fixed">
 				<td>
 				<b>
@@ -18,17 +18,12 @@
 				</td>
 				<td>
 				<b>
-				  Source
+				  Destination
 				</b>
 				</td>
 				<td>
 				<b>
 				  Status
-				</b>
-				</td>
-				<td>
-				<b>
-				  Destination
 				</b>
 				</td>
 				<td>
@@ -39,16 +34,14 @@
 			</tr>
 			{% for user in users %}
 			<tr class="fixed1">
-				<td>{{user.date}}</td>
+                <td>{{user.date}}</td>
 				<td>{{user.amount}}</td>
-				<td>{{user.source}}</td>
-				<td>{{user.status}}</td>
 				<td>{{user.destination}}</td>
-				<td><a href="/airtime/delit/{{user.id}}">Delete</a></td>
+				<td>{{user.status}}</td>
+				<td><a href="/airtime/rm/{{user.id}}">Delete</a></td>
 			</tr>
 			{% endfor %}
 		</table>
-
 		<div id="pag">
 		{% if users.has_other_pages %}
 		<ul class="pagination">
@@ -100,20 +93,26 @@
 			<p>Nothing to display</p>
 		{%endif %}
 	</center>
+	</div>
 	<style type="text/css">
 		#dbtable{
 			width:95%;
-			padding-top:5%;
-			border-collapse:collapse;			
+			margin-top:2%;
+			border-spacing:2%;
+			border-collapse:collapse;
 		}
 		
 		.fixed td {
-           overflow: hidden;
+            overflow: hidden;
             height: 10;
             background-color:green;
         }
-
-        .fixed1{
+        		
+       .fixed {
+			background-color:green;
+			color:white;
+		}
+		.fixed1{
 			background-color:#B0E0E6;
 		}
 
@@ -130,10 +129,7 @@
 		.pagination .active{
 			color:green;
 		}
-
-
 	</style>
-</div>
 {% endblock %}
 
 

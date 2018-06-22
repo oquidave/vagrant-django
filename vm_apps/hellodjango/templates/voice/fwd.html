@@ -1,0 +1,129 @@
+{% extends 'includes/newbes.html'%}
+{% block body_block %}
+<div style="padding-top:5%;">
+<center>
+<h2>
+	Forward Calls
+</h2>
+
+<div id="fwno">
+    <form name="addno" method="POST" action="{% url 'fwd' %}">
+       {% csrf_token %}
+        <table style="border-collapse:collapse;">
+            <tr>
+            	<td style="color:green;">
+            		<b>
+            		  Add Forwardable Numbers:
+            		</b>
+            	</td>
+            </tr>
+            <tr>
+                <td>
+      	           <input id="addno" type="text" name="addno" required>
+      	        </td>
+       	        <td>
+       	           <input type="submit" value="+" name="sub" required="addno">
+       	        </td>
+       	    </tr>
+       	</table>
+    </form>
+    {% if stats %}
+		<table  id="dbtable" style="text-align:left;">
+		    <tr>
+           	    <td style="color:green;">
+           		    <b>
+           			   Your Numbers
+           		    </b>
+           	    </td>
+            </tr>
+            
+			{% for stat in stats %}
+			<tr class='fixed1'>
+				<td>{{stat.num}}</td>
+				<td><a href="/voice/delete/{{stat.id}}">remove</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+            <p>
+        	  No Added Numbers
+        	</p>
+        {% endif %}
+</div>
+
+<div>
+    <form method="POST" action="{% url 'fwd' %}">
+		{% csrf_token %}
+		<table id="tebo">
+		    <tr>
+		        <td>
+			        <b>
+			         Number:
+			        </b>
+			        <i style="color:green;">
+			         +2567********
+			        </i>
+		        </td>		        
+		    </tr>
+
+			<tr>
+				<td>
+					<p>
+						<b style="color:teal;">
+						  Enter welcome Message
+					    </b>
+					</p>
+					<span>
+						or:
+						<input type="file" name="voicemp3" value="upload">
+					</span>
+					<textarea type="text" id="messg" name="fw_message"
+					 required></textarea>
+				</td>	
+			</tr>
+
+			<tr>
+				<td>
+					<input type="radio" name="voice" value="male" checked>
+					  Female
+					<br>
+					<input type="radio" name="voice" value="female">
+					 Male
+					</br>
+					<input type="submit" value="update">
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+</center>
+<style type="text/css">
+	#fwno{
+		float:left;
+		margin-left:5%;
+		width:20%;
+		background-color:#B0E0E6;
+	}
+
+	
+	#tebo{
+		width:50%;
+		height:50%;
+	}
+	#messg{
+		height: 200;
+		width: 400;
+		margin:left;
+		text-align:left;
+		background-color:#B0E0E6;
+		}
+
+	h2{
+		color:teal;
+	}	
+</style>
+</div>
+{% endblock %}
+
+

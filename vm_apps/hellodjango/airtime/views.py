@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from .models import Athist
 from .models import Buyhist
+from .models import Bulkhist
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 import africastalking
 
@@ -29,6 +30,7 @@ def atbulk(request):
 		for no in s:
 			for no in lines:
 				print(no)
+				
 				#instatiate Africa's talking api
 				api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
 				username= "sandbox"
@@ -36,24 +38,43 @@ def atbulk(request):
 				airtime =africastalking.Airtime
 
 				#send
-				response = airtime.send(phone_number=no,amount="UGX "+amount)
+				res = airtime.send(phone_number=no,amount="UGX "+amount)
 				
 				#save to model
-				stats = Buyhist(amount=amount,status="sent", destination=no)
-				stats.save()
+				users = Bulkhist(amount=amount,status="sent", destination=no)
+				users.save()
+				
 				#res=print(sms_stats)
-				print(response)
+				print(res)
 				#redirect to history 
-			return redirect('buyhistory')
+			return redirect('bulkhist')
+
 	elif request.method=="GET":
-		return render(request, 'airtime/atbulk.html',data)
+		stats = Bulkhist.objects.all()
+		return render(request, 'airtime/atbulk.html',{"stats":stats})
 
 
-def xs(request):
-	return render(request,"airtime/xs.html")
 
 def history(request):
 	return render(request,"airtime/history.html")
+
+def bulkhist(request):
+	if request.method == "POST":
+		stats = Bulkhist.objects.all()
+		return render( request,"airtime/bulkhist.html",{"stats":stats})
+	elif request.method == "GET":
+		stats = Bulkhist.objects.all()
+		page = request.GET.get('page', 1)
+		paginator = Paginator(stats, 15)
+		try:
+			users = paginator.page(page)
+		except PageNotAnInteger:
+			users = paginator.page(1)
+		except EmptyPage:
+			users = paginator.page(paginator.num_pages)
+		
+		return render( request,"airtime/bulkhist.html",{"users":users})
+
 
 
 def athistory(request):
@@ -168,6 +189,17 @@ def buy(request):
 
 def buy1(request):
 	return render(request,'airtime/buy1.html')
+
+
+
+def rm(request,id):
+	if request.method == "GET":
+		print(id)
+		d = Bulkhist.objects.get(id=id)
+		d.delete()
+		return redirect('bulkhist')
+	else:
+		return redirect('bulkhist')
 
 
 

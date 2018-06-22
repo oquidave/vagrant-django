@@ -38,7 +38,7 @@
 				<td>{{user.content}}</td>
 				<td>{{user.destination}}</td>
 				<td>{{user.status}}</td>
-				<td><a href="/sms/delete/{{sms_stat.id}}">Delete</a></td>
+				<td><a href="/sms/delete/{{user.id}}">Delete</a></td>
 			</tr>
 			{% endfor %}
 		</table>
@@ -131,5 +131,3 @@
 	</style>
 {% endblock %}
 </div>
-</html>
-

@@ -1,42 +1,44 @@
-	{% extends "includes/newbes.html" %}
-	
-    {% block body_block%}
-
-
- <center>
-	<form class="form-horizontal" id='fom' action='/accounts/profile/' method="POST">
- {% csrf_token %}
-    <div id="legend">
-      <legend class="">Update</legend>
-    </div>
-
-
-    <div class="control-group">
-      <!-- Username -->
-      
-      <div class="controls">
-        <input type="text" id="username" placeholder="Username" name="username" value="{{user.username}}" class="input-xlarge" disabled>
+{% extends "includes/newbes.html" %}
+  {% block body_block%}
+  <div style="padding-top:5%;">
+    <center>
+	   <form class="form-horizontal" id='fom' action='/accounts/profile/' method="POST">
+      {% csrf_token %}
+      <div id="legend">
+        <h2>
+          <legend style="color:green;">
+            Update Profile
+          </legend>
+        </h2>
       </div>
-    </div>
+
+
+      <div class="control-group">
+        <!-- Username -->
+      
+        <div class="controls">
+          <input type="text" id="username" placeholder="Username" name="username" value="{{user.username}}" class="input-xlarge" disabled>
+        </div>
+      </div>
  
 
-    <div class="control-group">
-      <!-- first_name -->
+      <div class="control-group">
+        <!-- first_name -->
      
-      <div class="controls">
-        <input type="text" id="first_name" placeholder="first_name" name="first_name" value="{{user.first_name}}" class="input-xlarge">
+        <div class="controls">
+          <input type="text" id="first_name" placeholder="first_name" name="first_name" value="{{user.first_name}}" class="input-xlarge">
+        </div>
       </div>
-    </div>
 
-    <div class="control-group">
-      <!-- last_name -->
+      <div class="control-group">
+        <!-- last_name -->
       
-      <div class="controls">
-        <input type="text" id="last_name" placeholder="last_name" name="last_name" value="{{user.last_name}}" class="input-xlarge">
+        <div class="controls">
+          <input type="text" id="last_name" placeholder="last_name" name="last_name" value="{{user.last_name}}" class="input-xlarge">
+        </div>
       </div>
-    </div>
 
-    <div class="control-group">
+      <div class="control-group">
       <!-- E-mail -->
       
       <div class="controls">
@@ -65,23 +67,21 @@
     
       <!-- Button -->
       <div class="controls">
-        <button class="btn btn-success">Update</button>
+        <button class="btn btn-success" style="color:green;">Update</button>
       </div>
   
-</form>
-</center>
+    </form>
+  </center>
+</div>
 <style type="text/css">
+
 input{
   height:8%; 
   width:30%;
-
+  padding-top:10;
+  padding- bottom:10;
 }
-  #fom{
-    width:100%;
-    height:100%;
-    margin-top:50;
-      }
-
+     
 </style>
 
     {% endblock %}

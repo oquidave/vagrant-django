@@ -143,7 +143,14 @@ li a:hover, .dropdown:hover .dropbtn {
 
     <li class="right">
       {% if request.user.is_authenticated %}
-        <strong style="color:white;">hello '{{ request.user.username }}'</strong>
+        <span>
+          <i style="color:lime;">
+            hello
+          </i>
+          <b style="color:white;">
+            {{ request.user.username }}
+          </b>
+        </span>
       {% endif %}
       <a href="{% url 'profile' %}">
         Profile
@@ -168,7 +175,7 @@ li a:hover, .dropdown:hover .dropbtn {
       </a>
       <div class="dropdown-content">
         <a href="{% url 'voice' %}">Make Call</a>
-        <a href="{% url 'conf' %}">Conference Calls</a>
+        <a href="{% url 'fwd' %}">Forward Calls</a>
         <a href="{% url 'vhistory' %}">History</a>       
       </div>
     </li>
