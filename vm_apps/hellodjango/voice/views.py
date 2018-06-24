@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Fwno
 # Create your views here.
+@login_required
 def index(request):
 	return render(request, "voice/index.html")
 
+@login_required
 def fwd(request):
 	if "POST" == request.method:
 		#get no
@@ -21,13 +24,14 @@ def fwd(request):
 		stats=Fwno.objects.all()
 		return render(request,'voice/fwd.html',{'stats':stats})
 
+@login_required
 def vhistory(request):
 	return render(request, "voice/vhist.html")
 
 def make_call(request):
 	return HttpResponse("Make a voice call.")
 
-
+@login_required
 def delete(request,id):
 	if request.method == "GET":
 		print(id)

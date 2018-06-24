@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 import africastalking
 from .models import Smshist
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
@@ -9,16 +10,18 @@ import codecs
 
 # Create your views here.
 
+@login_required
 def index(request):
    return render(request, "sms/index.html")
 
+@login_required
 def send_sms(request):
    if request.method =="POST":
       return render(request,"sms/sms.html",{"sms_message":message,"phone":phone})
    else:
       return render(request,'sms/send.html')
 
-
+@login_required
 def bulks(request):
    data = {}
    if request.method == "POST":
@@ -64,7 +67,7 @@ def bulks(request):
       return render(request,'sms/bulks.html')
  
 
-
+@login_required
 def smshistory(request):
    if request.method == "POST":
       sms_stats = Smshist.objects.all()
@@ -83,7 +86,7 @@ def smshistory(request):
       
       return render(request,'sms/smshist.html',{'users':users})
 
-
+@login_required
 def sacess(request):
    
       message = request.POST.get("sms_message")
@@ -104,7 +107,7 @@ def sacess(request):
       return redirect('smshistory')
    
 
-
+@login_required
 def delete(request,id):
    print(id)
    d = Smshist.objects.get(id=id)

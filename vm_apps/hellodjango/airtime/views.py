@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Athist
 from .models import Buyhist
@@ -8,9 +9,11 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 import africastalking
 
 # Create your views here.
+@login_required
 def index(request):
 	return render(request, "airtime/index.html")
 
+@login_required
 def atbulk(request):
 	data={}
 	if "POST" == request.method:
@@ -54,10 +57,11 @@ def atbulk(request):
 		return render(request, 'airtime/atbulk.html',{"stats":stats})
 
 
-
+@login_required
 def history(request):
 	return render(request,"airtime/history.html")
 
+@login_required
 def bulkhist(request):
 	if request.method == "POST":
 		stats = Bulkhist.objects.all()
@@ -76,7 +80,7 @@ def bulkhist(request):
 		return render( request,"airtime/bulkhist.html",{"users":users})
 
 
-
+@login_required
 def athistory(request):
 	if request.method == "POST":
 		stats = Athist.objects.all()
@@ -93,7 +97,9 @@ def athistory(request):
 			users = paginator.page(paginator.num_pages)
 		
 		return render( request,"airtime/athist.html",{"users":users})
-  
+
+
+@login_required  
 def buyhistory(request):
 	if request.method == "POST":
 		stats = Buyhist.objects.all()
@@ -114,7 +120,7 @@ def buyhistory(request):
   
 	
 
-
+@login_required
 def pay(phone, amount):
 	#return render(request,'airtime/pay.html')
 	#if request.method == 'POST':
@@ -134,7 +140,7 @@ def pay(phone, amount):
 		return redirect('era')
 	
 
-
+@login_required
 def at(request):
 	if request.method == 'POST':
 
@@ -175,6 +181,7 @@ def at(request):
 	    	print('No money')
 	    return redirect('athistory')
 
+@login_required
 def buy(request):
 	if request.method == "POST":
 		amount = request.POST.get('amount')
@@ -187,11 +194,12 @@ def buy(request):
 		return render(request,'airtime/buy.html')
 
 
+@login_required
 def buy1(request):
 	return render(request,'airtime/buy1.html')
 
 
-
+@login_required
 def rm(request,id):
 	if request.method == "GET":
 		print(id)
@@ -202,7 +210,7 @@ def rm(request,id):
 		return redirect('bulkhist')
 
 
-
+@login_required
 def delit(request,id):
 	if request.method == "GET":
 		print(id)
@@ -215,7 +223,7 @@ def delit(request,id):
 
 
 
-
+@login_required
 def delete(request,id):
 	if request.method == "GET":
 		print(id)
