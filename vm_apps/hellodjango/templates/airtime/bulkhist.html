@@ -38,7 +38,11 @@
 				<td>{{user.amount}}</td>
 				<td>{{user.destination}}</td>
 				<td>{{user.status}}</td>
-				<td><a href="/airtime/rm/{{user.id}}">Delete</a></td>
+				<td>
+				    <a href="/airtime/rm/{{user.id}}">
+				       <i style="color:red;">Delete</i>
+				    </a>
+				</td>
 			</tr>
 			{% endfor %}
 		</table>

@@ -40,7 +40,11 @@
 			{% for stat in stats %}
 			<tr class='fixed1'>
 				<td>{{stat.num}}</td>
-				<td><a href="/voice/delete/{{stat.id}}">remove</a></td>
+				<td>
+				    <a href="/voice/delete/{{stat.id}}">
+				       <i style="color:red;">remove</i>
+				    </a>
+				</td>
 			</tr>
 			{% endfor %}
 		</table>
@@ -73,10 +77,6 @@
 						  Enter welcome Message
 					    </b>
 					</p>
-					<span>
-						or:
-						<input type="file" name="voicemp3" value="upload">
-					</span>
 					<textarea type="text" id="messg" name="fw_message"
 					 required></textarea>
 				</td>	

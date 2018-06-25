@@ -44,7 +44,11 @@
 				<td>{{user.source}}</td>
 				<td>{{user.status}}</td>
 				<td>{{user.destination}}</td>
-				<td><a href="/airtime/delit/{{user.id}}">Delete</a></td>
+				<td>
+				    <a href="/airtime/delit/{{user.id}}">
+				     <i style="color:red;">Delete</i>
+				    </a>
+				</td>
 			</tr>
 			{% endfor %}
 		</table>
