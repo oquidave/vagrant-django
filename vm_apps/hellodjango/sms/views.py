@@ -76,11 +76,11 @@ def bulks(request):
 @login_required
 def smshistory(request):
    if request.method == "POST":
-      sms_stats = Smshist.objects.all()
+      sms_stats = Smshist.objects.order_by("-date")
       return render(request, "sms/smshist.html", {'sms_stats':sms_stats})
 
    elif request.method == "GET":
-      sms_stats = Smshist.objects.all()
+      sms_stats = Smshist.objects.order_by("-date")
       page = request.GET.get('page', 1)
       paginator = Paginator(sms_stats, 15)
       try:

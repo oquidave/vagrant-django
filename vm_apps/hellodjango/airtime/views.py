@@ -70,10 +70,10 @@ def history(request):
 @login_required
 def bulkhist(request):
 	if request.method == "POST":
-		stats = Bulkhist.objects.all()
+		stats = Bulkhist.objects.order_by("-date")
 		return render( request,"airtime/bulkhist.html",{"stats":stats})
 	elif request.method == "GET":
-		stats = Bulkhist.objects.all()
+		stats = Bulkhist.objects.order_by("-date")
 		page = request.GET.get('page', 1)
 		paginator = Paginator(stats, 15)
 		try:
@@ -92,7 +92,7 @@ def athistory(request):
 		stats = Athist.objects.all()
 		return render( request,"airtime/athist.html",{"stats":stats})
 	elif request.method == "GET":
-		stats = Athist.objects.all()
+		stats = Athist.objects.order_by("-date")
 		page = request.GET.get('page', 1)
 		paginator = Paginator(stats, 15)
 		try:
@@ -111,8 +111,7 @@ def buyhistory(request):
 		stats = Buyhist.objects.all()
 		return render( request,"airtime/buyhist.html",{"stats":stats})
 	elif request.method == "GET":
-		stats = Buyhist.objects.all()
-		stats = Athist.objects.all()
+		stats = Buyhist.objects.order_by("-date")
 		page = request.GET.get('page', 1)
 		paginator = Paginator(stats, 15)
 		try:
