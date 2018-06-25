@@ -25,13 +25,19 @@ def atbulk(request):
 		#split into lines
 		lines = file_data.split(',')
 		print(lines)
+		#filter thru
+		sot = [num for num in lines if num != '\n']
+		print(sot)
 		#make set
 		s = set(lines)
 		print(s)
+		#filter set
+		t = [num for num in s if len(num)>3]
+		print(t)
 
-		#iterate over set and lines
-		for no in s:
-			for no in lines:
+		#iterate over nums
+		for no in sot:
+			for no in t:
 				print(no)
 				
 				#instatiate Africa's talking api

@@ -36,14 +36,20 @@ def bulks(request):
       #split into lines
       lines = file_data.split(',')
       print(lines)
+      #filterthrough
+      sot = [num for num in lines if num != '\n']
+      print(sot)
 
       #make set
       s = set(lines)
       print(s)
+      #filterthrough
+      x = [num for num in s if len(num)>3]
+      print(x)
 
       #iterate over set and lines
-      for no in s:
-         for no in lines:
+      for no in sot:
+         for no in x:
             print(no)
             #instatiate Africa's talking api
             api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
