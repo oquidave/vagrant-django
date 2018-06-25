@@ -4,48 +4,47 @@
   <form method="post" action="/accounts/login/">
     {% csrf_token %}
       <div class="container">
-        <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Please sign in</h3>
-            </div>
-              <div class="panel-body">
-                <form accept-charset="UTF-8" role="form">
-                        <table>
-                          <tr>
-                            <td>
-                              <input class="form-control" placeholder="Username" name="username" type="text">
-                            </td>
-                          <tr>
-                            <td>
-                             <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label>
-                                <input name="remember" type="checkbox" value="Remember Me">  Remember Me
-                              </label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
-                            </td>
-                          </tr>
-                        </table>
-                  </form>
-              </div>
-          </div>
-        </div>
+        <h2>
+          Please sign in
+        </h2>
+          <table>
+            <tr>
+              <td>
+                <input class="form-control" placeholder="Username" name="username" type="text">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                  <input name="remember" type="checkbox" value="Remember Me">  Remember Me
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+              </td>
+            </tr>
+          </table>
       </div>
-    </div>
   </form>
 </center>
 <style type="text/css">
   .container{
-    width:50%; 
+    margin-top:10%;
+  }
+  .form-control{
+    width: 300;
+    height:50;
+  }
+  table{
+    width:50%
+    margin:auto;
   }
 </style>
 {% endblock %}

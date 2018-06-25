@@ -56,7 +56,7 @@
 </div>
 
 <div>
-    <form method="POST" action="{% url 'fwd' %}">
+    <form name="que" method="GET" action="{% url 'dial' %}">
 		{% csrf_token %}
 		<table id="tebo">
 		    <tr>
