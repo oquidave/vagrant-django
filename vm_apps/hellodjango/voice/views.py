@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 #from django.contrib import messages
 from .models import Fwno
+from lxml import etree
+
 import africastalking
 # Create your views here.
 @login_required
@@ -15,22 +18,17 @@ def fwd(request):
 	if "POST" == request.method:
 		#get no
 		number=request.POST.get('addno')
-		print(number)
-
-
+		#print(number)
 		#sort
 		b = Fwno.objects.all()
-		print(b)
-		
+		#print(b)		
 		#filter number
 		x = b.filter(num=number)
-		print(x)
-
+		#print(x)
 		if x:
 			#if num already exists
-			print(number)
+			#print(number)
 			mssg = "Number already exists in list"
-
 			return HttpResponse(mssg, content_type='text/plain')			
 		else:
 			#if doesnt exist,save to model
@@ -67,8 +65,8 @@ def dial(request):
 def vhistory(request):
 	return render(request, "voice/vhist.html")
 
-def make_call(request):
-	return HttpResponse("Make a voice call.")
+#def make_call(request):
+#	return HttpResponse("Make a voice call.")
 
 @login_required
 def delete(request,id):
@@ -79,4 +77,15 @@ def delete(request,id):
 		return redirect('fwd')
 	else:
 		return redirect('fwd')
+
+@csrf_exempt
+def make_call(request):
+	# create XML 
+	root = etree.Element('Response')
+	child = etree.SubElement(root, 'Say', voice='man')
+	child.text = 'some text for test'
+	s = etree.tostring(root, pretty_print=True)
+	#print(s)
+	return HttpResponse(s, content_type="application/xml")
+
 
