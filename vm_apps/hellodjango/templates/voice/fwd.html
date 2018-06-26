@@ -27,6 +27,13 @@
        	    </tr>
        	</table>
     </form>
+    {% if messages %}
+                {% for message in messages %}
+                    {% if messages.info %}
+                        <p style="color:red;">{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
     {% if stats %}
 		<table  id="dbtable" style="text-align:left;">
 		    <tr>
@@ -36,8 +43,7 @@
            		    </b>
            	    </td>
             </tr>
-            
-			{% for stat in stats %}
+            {% for stat in stats %}
 			<tr class='fixed1'>
 				<td>{{stat.num}}</td>
 				<td>

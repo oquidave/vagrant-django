@@ -1,12 +1,25 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
-<div style="padding-top:5%;">
+<div style="padding-top:10%;">
 <center>
 <strong>
-	<h2>
+	<h2 style="color:red;">
 		Number already added
 	</h2>
+	<h3>
+	    <a href="{% url 'fwd' %}">
+	       Go Back
+	    </a>
+	</h3>
 </strong>
+<style type="text/css">
+	h3{
+		background:green;
+		margin-left:45%;
+		margin-right:45%;
+		
+	}
+</style>
 </center>
 </div>
 {%endblock%}

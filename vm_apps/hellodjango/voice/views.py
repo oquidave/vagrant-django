@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+#from django.contrib import messages
 from .models import Fwno
 import africastalking
 # Create your views here.
@@ -28,7 +29,9 @@ def fwd(request):
 		if x:
 			#if num already exists
 			print(number)
-			return redirect('vhistory')			
+			mssg = "Number already exists in list"
+
+			return HttpResponse(mssg, content_type='text/plain')			
 		else:
 			#if doesnt exist,save to model
 			stats=Fwno(num=number)
@@ -38,6 +41,11 @@ def fwd(request):
 	elif "GET" == request.method:
 		stats = Fwno.objects.all()
 		return render(request,'voice/fwd.html',{'stats':stats})
+
+
+def err(request):
+	return render(request, "voice/err.html")
+
 
 @login_required
 def dial(request):

@@ -88,6 +88,7 @@ def bulkhist(request):
 
 @login_required
 def athistory(request):
+	#mobile money buy history
 	if request.method == "POST":
 		stats = Athist.objects.all()
 		return render( request,"airtime/athist.html",{"stats":stats})
@@ -107,6 +108,7 @@ def athistory(request):
 
 @login_required  
 def buyhistory(request):
+	#at account buy history
 	if request.method == "POST":
 		stats = Buyhist.objects.all()
 		return render( request,"airtime/buyhist.html",{"stats":stats})
@@ -125,13 +127,9 @@ def buyhistory(request):
   
 	
 
-@login_required
-def pay(phone, amount):
-	#return render(request,'airtime/pay.html')
-	#if request.method == 'POST':
-		#phone = request.POST.get('phone')
-		#amount = request.POST.get('amount')
 
+def pay(phone, amount):
+	
 	api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
 	username = 'sandbox'
 
@@ -140,9 +138,9 @@ def pay(phone, amount):
 	res = airtime.send(phone_number=phone,amount="UGX "+amount)
 	print(res)
 	if res.get('status') == 'sent':
-		return redirect('xs')
+		return redirect('history')
 	else:
-		return redirect('era')
+		return redirect('buy1')
 	
 
 @login_required

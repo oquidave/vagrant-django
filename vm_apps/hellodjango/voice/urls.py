@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^vhistory/$', views.vhistory, name='vhistory'),
     url(r'^dial/$', views.dial, name='dial'),
     url(r'^fwd/$', views.fwd, name='fwd'),
+    url(r'^err/$', views.err, name='err'),
     url(r'^delete/(?P<id>\d+)/$',views.delete,name='delete'),
 ]
