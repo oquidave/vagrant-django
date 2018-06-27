@@ -35,9 +35,15 @@ def atbulk(request):
 		t = [num for num in s if len(num)>3]
 		print(t)
 
+<<<<<<< Updated upstream
 		#iterate over nums
 		for no in sot:
 			for no in t:
+=======
+		#iterate over set and lines
+		for no in lines:
+			for no in s:
+>>>>>>> Stashed changes
 				print(no)
 				
 				#instatiate Africa's talking api
@@ -50,13 +56,25 @@ def atbulk(request):
 				res = airtime.send(phone_number=no,amount="UGX "+amount)
 				
 				#save to model
+<<<<<<< Updated upstream
 				users = Bulkhist(amount=amount,status="sent", destination=no)
 				users.save()
+=======
+				stats = Bulkhist(amount=amount,status="sent", destination=no)
+				stats.save()
+>>>>>>> Stashed changes
 				
 				#res=print(sms_stats)
 				print(res)
 				#redirect to history 
+<<<<<<< Updated upstream
 			return redirect('bulkhist')
+=======
+				return redirect('bulkhist')
+	elif request.method=="GET":
+		stats = Bulkhist.objects.all()
+		return render(request, 'airtime/atbulk.html',{"stats":stats})
+>>>>>>> Stashed changes
 
 	elif request.method=="GET":
 		stats = Bulkhist.objects.all()
@@ -67,6 +85,7 @@ def atbulk(request):
 def history(request):
 	return render(request,"airtime/history.html")
 
+<<<<<<< Updated upstream
 @login_required
 def bulkhist(request):
 	if request.method == "POST":
@@ -74,6 +93,14 @@ def bulkhist(request):
 		return render( request,"airtime/bulkhist.html",{"stats":stats})
 	elif request.method == "GET":
 		stats = Bulkhist.objects.order_by("-date")
+=======
+def bulkhist(request):
+	if request.method == "POST":
+		stats = Bulkhist.objects.all()
+		return render( request,"airtime/bulkhist.html",{"stats":stats})
+	elif request.method == "GET":
+		stats = Bulkhist.objects.all()
+>>>>>>> Stashed changes
 		page = request.GET.get('page', 1)
 		paginator = Paginator(stats, 15)
 		try:
@@ -85,6 +112,10 @@ def bulkhist(request):
 		
 		return render( request,"airtime/bulkhist.html",{"users":users})
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 @login_required
 def athistory(request):
@@ -213,7 +244,21 @@ def rm(request,id):
 		return redirect('bulkhist')
 
 
+<<<<<<< Updated upstream
 @login_required
+=======
+def rm(request,id):
+	if request.method == "GET":
+		print(id)
+		d = Bulkhist.objects.get(id=id)
+		d.delete()
+		return redirect('bulkhist')
+	else:
+		return redirect('bulkhist')
+
+
+
+>>>>>>> Stashed changes
 def delit(request,id):
 	if request.method == "GET":
 		print(id)
