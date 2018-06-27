@@ -2,9 +2,9 @@
 {% block body_block %}
 <div style="padding-top:5%;">
 <center>
-<h2>
-	Forward Calls
-</h2>
+<h1>
+	Call Center
+</h1>
 
 <div id="fwno">
     <form name="addno" method="POST" action="{% url 'fwd' %}">
@@ -27,15 +27,17 @@
        	    </tr>
        	</table>
     </form>
-    {% if messages %}
-                {% for message in messages %}
-                    {% if messages.info %}
-                        <p style="color:red;">{{ message }}</p>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                 {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}	
     {% if stats %}
-		<table  id="dbtable" style="text-align:left;">
+        <table  id="dbtable" style="text-align:left;">
 		    <tr>
            	    <td style="color:green;">
            		    <b>
@@ -54,15 +56,15 @@
 			</tr>
 			{% endfor %}
 		</table>
-		{% else %}
+	{% else %}
             <p>
         	  No Added Numbers
         	</p>
-        {% endif %}
+    {% endif %}
 </div>
 
 <div>
-    <form name="que" method="GET" action="{% url 'dial' %}">
+    <form name="que" method="GET" action="{% url 'fwd' %}">
 		{% csrf_token %}
 		<table id="tebo">
 		    <tr>
@@ -124,8 +126,12 @@
 		text-align:left;
 		background-color:#B0E0E6;
 		}
+    .messages{
+    	color:red;
 
-	h2{
+		}
+
+	h1{
 		color:green;
 	}	
 </style>
