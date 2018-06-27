@@ -5,8 +5,12 @@ urlpatterns = [
     url(r'^$', views.index, name='voice'),
     url(r'^call/$', views.make_call, name='make_call'),
     url(r'^vhistory/$', views.vhistory, name='vhistory'),
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     url(r'^dial/$', views.dial, name='dial'),
+=======
+    url(r'^kol/$', views.kol, name='kol'),
+>>>>>>> mark
     url(r'^fwd/$', views.fwd, name='fwd'),
     url(r'^err/$', views.err, name='err'),
 =======

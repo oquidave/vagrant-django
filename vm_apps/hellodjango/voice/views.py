@@ -2,27 +2,61 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 <<<<<<< Updated upstream
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-#from django.contrib import messages
+from django.contrib import messages
+from lxml import etree
 from .models import Fwno
+
+
+
 import africastalking
 =======
 from django.http import HttpResponse
 from .models import Fwno
 >>>>>>> Stashed changes
 # Create your views here.
+@csrf_exempt
+def kol(request):
+	#get column "num"
+	nums = Fwno.objects.values_list('num',flat=True)
+	#make nums set
+	y = set(nums)
+	#join set into string
+	x=','.join(nums)
+	print(x)
+	#get number
+	number = request.POST.get('number')
+	print(number)
+	
+	#create XML
+	root = etree.Element('Response')
+	child = etree.SubElement(root, 'Dial', phoneNumbers=x,sequential="true")
+	s = etree.tostring(root, pretty_print=True)
+	#print(s)
+	return HttpResponse(s, content_type="application/xml")
+
+
+
+
 @login_required
 def index(request):
-	return render(request, "voice/index.html")
+	return render(request,'voice/index.html')
+	
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 @login_required
 =======
 >>>>>>> Stashed changes
+=======
+@csrf_exempt
+>>>>>>> mark
 def fwd(request):
 	if "POST" == request.method:
 		#get no
 		number=request.POST.get('addno')
+<<<<<<< HEAD
 		print(number)
 <<<<<<< Updated upstream
 =======
@@ -38,26 +72,27 @@ def fwd(request):
 >>>>>>> Stashed changes
 
 
+=======
+		message = request.POST.get('mssg')
+		
+>>>>>>> mark
 		#sort
 		b = Fwno.objects.all()
-		print(b)
-		
+		print(b)		
 		#filter number
 		x = b.filter(num=number)
-		print(x)
-
+		#print(x)
 		if x:
 			#if num already exists
-			print(number)
-			mssg = "Number already exists in list"
-
-			return HttpResponse(mssg, content_type='text/plain')			
+			#print(number)
+			messages.add_message(request, messages.INFO, 'number has already been added')
+			return redirect('fwd')			
 		else:
 			#if doesnt exist,save to model
 			stats=Fwno(num=number)
 			stats.save()
-			#print(stats)
-			return redirect('fwd')			
+			return redirect('fwd')
+									
 	elif "GET" == request.method:
 		stats = Fwno.objects.all()
 		return render(request,'voice/fwd.html',{'stats':stats})
@@ -67,28 +102,13 @@ def err(request):
 	return render(request, "voice/err.html")
 
 
-@login_required
-def dial(request):
-	if "GET" == request.method:
-		nums = Fwno.objects.filter(num=num)
-		api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
-		print(nums)
-		africastalking.initialize(username='sandbox', api_key=api_key)
-		voice = africastalking.Voice
-		res = voice.dial(phone_number=nums)
-		print(res)
-		return redirect('vhistory')
-	else:
-		return redirect('fwd')
-		
-
 
 @login_required
 def vhistory(request):
 	return render(request, "voice/vhist.html")
 
-def make_call(request):
-	return HttpResponse("Make a voice call.")
+#def make_call(request):
+#	return HttpResponse("Make a voice call.")
 
 <<<<<<< Updated upstream
 @login_required
@@ -103,4 +123,21 @@ def delete(request,id):
 		return redirect('fwd')
 	else:
 		return redirect('fwd')
+
+@csrf_exempt
+def make_call(request):
+	#make xml
+	root = etree.Element('Response')
+	#create action and voice
+	child = etree.SubElement(root, 'Say', voice='woman')
+	#set text
+	child.text = 'Hey, you ,have reached Mark,hold on for a moment, while  we linkie!'
+	s = etree.tostring(root, pretty_print=True)
+	#print(s)
+	return HttpResponse(s, content_type="application/xml")
+	
+
+
+
+
 
