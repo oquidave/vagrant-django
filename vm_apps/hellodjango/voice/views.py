@@ -1,20 +1,13 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-<<<<<<< Updated upstream
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.contrib import messages
 from lxml import etree
 from .models import Fwno
-
-
-
 import africastalking
-=======
-from django.http import HttpResponse
-from .models import Fwno
->>>>>>> Stashed changes
+
 # Create your views here.
 @csrf_exempt
 def kol(request):
@@ -44,38 +37,14 @@ def index(request):
 	return render(request,'voice/index.html')
 	
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-@login_required
-=======
->>>>>>> Stashed changes
-=======
+
 @csrf_exempt
->>>>>>> mark
 def fwd(request):
 	if "POST" == request.method:
 		#get no
 		number=request.POST.get('addno')
-<<<<<<< HEAD
-		print(number)
-<<<<<<< Updated upstream
-=======
-		
-		#save no
-		stats=Fwno(num=number)
-		stats.save()
-		print(stats)
-		return redirect('fwd')
-	elif "GET" == request.method:
-		stats=Fwno.objects.all()
-		return render(request,'voice/fwd.html',{'stats':stats})
->>>>>>> Stashed changes
-
-
-=======
+		#get message
 		message = request.POST.get('mssg')
-		
->>>>>>> mark
 		#sort
 		b = Fwno.objects.all()
 		print(b)		
@@ -110,11 +79,8 @@ def vhistory(request):
 #def make_call(request):
 #	return HttpResponse("Make a voice call.")
 
-<<<<<<< Updated upstream
-@login_required
-=======
 
->>>>>>> Stashed changes
+@login_required
 def delete(request,id):
 	if request.method == "GET":
 		print(id)
