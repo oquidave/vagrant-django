@@ -44,7 +44,7 @@ def signup(request):
 		user = User.objects.create_user(username = username,
 										first_name = first_name,
 										last_name = last_name,
-		 								email = email,
+		 								email = email,		 								
 		 								password = password)
 
 	
@@ -69,7 +69,7 @@ def profile(request):
 		user.first_name = first_name
 		user.last_name = last_name
 		user.email = email
-		user.profile.phone = phone
+		user.phone = phone
 	if password.strip() is not None:
 		user.password = password
 		user.save()

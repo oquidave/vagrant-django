@@ -11,20 +11,17 @@ import africastalking
 # Create your views here.
 @csrf_exempt
 def kol(request):
-	#get column "num"
+	#get column "num" from model
 	nums = Fwno.objects.values_list('num',flat=True)
-	#make nums set
-	y = set(nums)
-	#join set into string
-	x=','.join(nums)
-	print(x)
+	#join array set into string
+	your_numbers=','.join(nums)
 	#get number
 	number = request.POST.get('number')
 	print(number)
 	
 	#create XML
 	root = etree.Element('Response')
-	child = etree.SubElement(root, 'Dial', phoneNumbers=x,sequential="true")
+	child = etree.SubElement(root, 'Dial', phoneNumbers=your_numbers,sequential="true")
 	s = etree.tostring(root, pretty_print=True)
 	#print(s)
 	return HttpResponse(s, content_type="application/xml")
