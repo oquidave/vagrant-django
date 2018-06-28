@@ -2,12 +2,18 @@
 {% block body_block %}
 <div style="padding-top:5%;">
 
-    <h2> Bulk</h2>
-    <h3>
-      <a href="{% url 'buyhistory' %}">0z</a>
-      ||
-      <a href="{% url 'athistory' %}">MobileMoney</a>
-    </h3>
+    <h1>
+          Airtime History 
+        </h1>
+        <h3>
+           
+            <a href="{% url 'ozz_history' %}">0zz</a>
+           ||
+  	       <a href="{% url 'mm_history' %}">MobileMoney</a>
+  	       ||
+  	       <a href="{% url 'bulkhist' %}" id="active" >Bulk</a>
+
+        </h3>
 	<center>
 	{% if users %}
 		    <table border="1" id="dbtable">
@@ -122,6 +128,24 @@
 	</script>
 	</div>
 	<style type="text/css">
+
+	    h1{
+			margin-left:5%;
+			color:teal;
+			width:500;
+		}
+
+		#active{
+         	background:green;
+         	height:80;
+         	border:solid;
+         	color:white;
+         	width:300;
+         	padding:20;
+         	text-align:center;
+
+         }
+
 	    #clear{
 	    	padding:5;
 	    	width:100;
@@ -139,9 +163,8 @@
 	    }
 
 	    h3{
-
-	    	margin-left:10%;
-	    }
+			margin-left:10%;
+		}
 
 	    a{
 	    	color:teal;

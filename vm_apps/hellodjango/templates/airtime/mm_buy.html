@@ -2,12 +2,15 @@
 {% block body_block %}
 <div style="padding-top:5%;">
 
-	<h2>
-	  MobileMoney 
-	</h2>
-	<h3>
-		<a href="{% url 'buy1' %}">Use 0zz</a>
-	</h3>
+	<h1>
+     Airtime  
+    </h1>
+     <h3>
+       <a href="{% url 'at_buy' %}" >0zz</a>
+       ||
+       <a href="{% url 'airtime' %}" id="active" >MobileMoney</a>
+
+     </h3>
 	    
     <center>
 	<div id="momo">
@@ -49,6 +52,25 @@
     </center>
 </div>
 <style type="text/css">
+
+    h1{
+    margin-left:5%;
+    color:teal;
+    width:500;
+    }
+
+
+    #active{
+    background:green;
+    height:80;
+    border:solid;
+    color:white;
+    width:300;
+    padding:20;
+    text-align:center;
+  }
+
+
 	#tebo{
 		width:50%;
 		height:40%;

@@ -12,7 +12,7 @@ import africastalking
 # Create your views here.
 @login_required
 def index(request):
-	return render(request, "airtime/index.html")
+	return render(request, "airtime/mm_buy.html")
 
 @login_required
 def atbulk(request):
@@ -91,11 +91,11 @@ def bulkhist(request):
 
 
 @login_required
-def athistory(request):
+def mm_history(request):
 	#mobile money buy history
 	if request.method == "POST":
 		stats = Athist.objects.all()
-		return render( request,"airtime/athist.html",{"stats":stats})
+		return render( request,"airtime/mm_history.html",{"stats":stats})
 	elif request.method == "GET":
 		stats = Athist.objects.order_by("-date")
 		page = request.GET.get('page', 1)
@@ -107,15 +107,15 @@ def athistory(request):
 		except EmptyPage:
 			users = paginator.page(paginator.num_pages)
 		
-		return render( request,"airtime/athist.html",{"users":users})
+		return render( request,"airtime/mm_history.html",{"users":users})
 
 
 @login_required  
-def buyhistory(request):
+def ozz_history(request):
 	#at account buy history
 	if request.method == "POST":
 		stats = Buyhist.objects.all()
-		return render( request,"airtime/buyhist.html",{"stats":stats})
+		return render( request,"airtime/ozz_history.html",{"stats":stats})
 	elif request.method == "GET":
 		stats = Buyhist.objects.order_by("-date")
 		page = request.GET.get('page', 1)
@@ -125,9 +125,8 @@ def buyhistory(request):
 		except PageNotAnInteger:
 			users = paginator.page(1)
 		except EmptyPage:
-			users = paginator.page(paginator.num_pages)
-		
-		return render( request,"airtime/buyhist.html",{"users":users})
+			users = paginator.page(paginator.num_pages)		
+		return render( request,"airtime/ozz_history.html",{"users":users})
   
 	
 
@@ -180,10 +179,10 @@ def at(request):
 	    	stats = Athist(amount=amount,status="sent", destination=phone,source=chargephone)
 	    	stats.save()
 	    	res=print(stats)
-	    	return redirect('athistory')
+	    	return redirect('mm_history')
 	    else:
 	    	print('No money')
-	    return redirect('athistory')
+	    return redirect('mm_history')
 
 @login_required
 def buy(request):
@@ -193,14 +192,14 @@ def buy(request):
 		pay(phone, amount)
 		stats = Buyhist(amount=amount,status="sent", destination=phone)
 		stats.save()
-		return redirect('buyhistory')
+		return redirect('ozz_history')
 	else:
 		return render(request,'airtime/buy.html')
 
 
 @login_required
-def buy1(request):
-	return render(request,'airtime/buy1.html')
+def at_buy(request):
+	return render(request,'airtime/at_buy.html')
 
 
 @login_required
@@ -221,9 +220,9 @@ def delit(request,id):
 		id_match = Athist.objects.get(id=id)
 		id_match.delete()
 		messages.add_message(request, messages.INFO, 'Item Deleted')
-		return redirect('athistory')
+		return redirect('mm_history')
 	else:
-		return redirect('athistory')
+		return redirect('mm_history')
 
 
 
@@ -246,9 +245,9 @@ def delete(request,id):
 		id_match = Buyhist.objects.get(id=id)
 		id_match.delete()
 		messages.add_message(request, messages.INFO, 'Item Deleted')
-		return redirect('buyhistory')
+		return redirect('ozz_history')
 	else:
-		return redirect('buyhistory')
+		return redirect('ozz_history')
 
 
 

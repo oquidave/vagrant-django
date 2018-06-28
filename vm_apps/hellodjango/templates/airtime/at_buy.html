@@ -1,9 +1,14 @@
 {%extends 'includes/newbes.html'%}
 {% block body_block %}
 <div style="padding-top:5%;">
-<h2>0z</h2>
+<h1>
+  Airtime  
+</h1>
 <h3>
-  <a href="{% url 'airtime' %}">Use MobileMoney</a>
+  <a href="{% url 'at_buy' %}" id="active">0zz</a>
+  ||
+  <a href="{% url 'airtime' %}">MobileMoney</a>
+
 </h3>
 <center>
   <div id="at_buddy">
@@ -45,6 +50,24 @@
     width:250;
     height:35;
   }
+
+
+  #active{
+    background:green;
+    height:80;
+    border:solid;
+    color:white;
+    width:300;
+    padding:20;
+    text-align:center;
+  }
+
+
+  h1{
+    margin-left:5%;
+    color:teal;
+    width:500;
+    }
 
   
 

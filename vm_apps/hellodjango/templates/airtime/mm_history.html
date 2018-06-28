@@ -1,18 +1,22 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
-<div style="padding-top:5%;">
-        <h2>
-          Oz 
-        </h2>
+<div id="bud" style="padding-top:5%;">
+    <h1>
+          Airtime History 
+        </h1>
         <h3>
-  	       <a href="{% url 'athistory' %}">MobileMoney</a>
+           
+            <a href="{% url 'ozz_history' %}">0zz</a>
+           ||
+  	       <a href="{% url 'mm_history' %}" id="active" >MobileMoney</a>
   	       ||
   	       <a href="{% url 'bulkhist' %}">Bulk</a>
+
         </h3>
 	<center>
 		{% if users %}
-            <table border="1" id="dbtable">
-            {% if messages %}
+			<table border="1" id="dbtable">
+			{% if messages %}
                 <ul class="messages" style="color:red;">
                    {% for message in messages %}
                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
@@ -21,7 +25,7 @@
                    {% endfor %}
                 </ul>
             {% endif %}
-            <div style="padding-top:20;">
+            <div style="padding-bottom:10;">
         	    <a href="#" onclick="warn()" id="clear">Clear History</a>
             </div>
 			<tr class="fixed">
@@ -37,12 +41,17 @@
 				</td>
 				<td>
 				<b>
-				  Destination
+				  Source
 				</b>
 				</td>
 				<td>
 				<b>
 				  Status
+				</b>
+				</td>
+				<td>
+				<b>
+				  Destination
 				</b>
 				</td>
 				<td>
@@ -53,18 +62,20 @@
 			</tr>
 			{% for user in users %}
 			<tr class="fixed1">
-                <td>{{user.date}}</td>
+				<td>{{user.date}}</td>
 				<td>{{user.amount}}</td>
-				<td>{{user.destination}}</td>
+				<td>{{user.source}}</td>
 				<td>{{user.status}}</td>
+				<td>{{user.destination}}</td>
 				<td>
-				    <a href="/airtime/delete/{{user.id}}" onclick="warn()">
+				    <a href="/airtime/delit/{{user.id}}" onclick="warn()">
 				       <i style="color:red;">Delete</i>
 				    </a>
 				</td>
 			</tr>
 			{% endfor %}
 		</table>
+
 		<div id="pag">
 		{% if users.has_other_pages %}
 		<ul class="pagination">
@@ -121,8 +132,44 @@
 			alert("Item will be deleted");
 		}
 	</script>
-	</div>
 	<style type="text/css">
+        
+
+        h1{
+			margin-left:5%;
+			color:teal;
+			width:500;
+		}
+
+
+
+	    #active{
+         	background:green;
+         	height:80;
+         	border:solid;
+         	color:white;
+         	width:300;
+         	padding:20;
+         	text-align:center;
+
+        }
+        
+        h2{
+        	margin-left:5%;
+        	width:150;
+        	background:green;
+        	padding:20;
+        	color:white;
+        }
+
+        h3{
+        	margin-left:10%;
+        }
+
+        a{
+        	color:teal;
+        }
+
 	    #clear{
 	    	padding:5;
 	    	width:100;
@@ -130,39 +177,20 @@
 	    	background:red;
 	    	color:white;
 	    }
+
 		#dbtable{
 			width:95%;
-			margin-top:2%;
-			border-spacing:2%;
-			border-collapse:collapse;
+			padding-top:5%;
+			border-collapse:collapse;			
 		}
-
-		h2{
-			margin-left:5%;
-			color:white;
-			background:green;
-			width:100;
-		}
-
-		h3{
-			margin-left:10%;
-		}
-
-		a{
-        	color:teal;
-        }
 		
 		.fixed td {
-            overflow: hidden;
+           overflow: hidden;
             height: 10;
             background-color:green;
         }
-        		
-       .fixed {
-			background-color:green;
-			color:white;
-		}
-		.fixed1{
+
+        .fixed1{
 			background-color:#B0E0E6;
 		}
 
@@ -179,7 +207,10 @@
 		.pagination .active{
 			color:green;
 		}
+
+
 	</style>
+</div>
 {% endblock %}
 
 
