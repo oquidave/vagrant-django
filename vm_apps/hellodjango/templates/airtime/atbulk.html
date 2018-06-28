@@ -1,15 +1,11 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
 <div style="padding-top:5%;">
-<div id="at_div">
-	<center>
-		<h1 style="color:green;">
-		  Bulk airtime buddy
-		</h1>
-	</center>
-</div>
+	<h1 style="color:green;">
+	  Bulk AT buddy
+	</h1>
 <center>
-	<h1>
+	<div>
 	<form method="POST" action="{% url 'atbulk' %}"  name="sub" enctype="multipart/form-data">
 		{% csrf_token %}
 		<table id="tebo">
@@ -18,7 +14,7 @@
 					Upload Contacts:
 			    </td>
 			   	<td>
-			   		<input type="file" name="contacts"  required>
+			   		<input type="file"  name="contacts"  required>
 			   	</td>
 			</tr>
 			<tr>
@@ -26,23 +22,36 @@
 				  Amount
 				</td>
 				<td>
-					<input placeholder="Enter amount here" name="amount" required>
+					<input placeholder="Enter amount here" id="amount" name="amount" required>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" style="color:green;" name="Send" value="Buy Airtime">
+					<input type="submit" style="color:green;" name="Send" id="atbuy" value="Buy">
 				</td>
 			</tr>
 		</table>
 	</form>
-</h1>
+    </div>
 </center>
 </div>
 <style type="text/css">
+   #amount{
+   	 width:200;
+   	 height:40;
+   }
+
+   #atbuy{
+   	width:70;
+   	height:30;
+   }
+
 	#tebo{
 		width:50%;
 		height:40%;
+	}
+	h1{
+		margin-left:10%;
 	}
 </style>
 {% endblock %}

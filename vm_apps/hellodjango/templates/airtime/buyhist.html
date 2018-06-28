@@ -1,9 +1,16 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
 <div style="padding-top:5%;">
+        <h2>
+          Oz 
+        </h2>
+        <h3>
+  	       <a href="{% url 'athistory' %}">MobileMoney</a>
+  	       ||
+  	       <a href="{% url 'bulkhist' %}">Bulk</a>
+        </h3>
 	<center>
 		{% if users %}
-		<h2>Wallet history</h2>
             <table border="1" id="dbtable">
             {% if messages %}
                 <ul class="messages" style="color:red;">
@@ -129,6 +136,21 @@
 			border-spacing:2%;
 			border-collapse:collapse;
 		}
+
+		h2{
+			margin-left:5%;
+			color:white;
+			background:green;
+			width:100;
+		}
+
+		h3{
+			margin-left:10%;
+		}
+
+		a{
+        	color:green;
+        }
 		
 		.fixed td {
             overflow: hidden;

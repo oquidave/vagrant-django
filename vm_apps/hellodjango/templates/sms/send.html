@@ -1,6 +1,7 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
-<body>
+<div style="padding-top:5%;">
+   <h1>SMS</h1>
 	<center>
 	<div id="tad">
 			<form  name="formt" action="{% url 'sacess'  %}">
@@ -40,14 +41,28 @@
 			}
 		</script>
 		<style type="text/css">
-		#tad{
-			padding-top:10%;
+		#receiver{
+			width:250;
+			height:35;
 		}
+
+		button{
+			width:80;
+			height:40;
+			color:green;
+		}
+
+		h1{
+			color:green;
+			margin-left:10%;
+		}
+
 		#tebo{
 			margin: auto;
 			width:600px;
 			height: 400px;
 		}	
+
 		#messg{
 			height: 200;
 			width: 500;
@@ -57,6 +72,6 @@
 		}	
 		</style>
 </center>
-</body>
+</div>
 {% endblock %}
 

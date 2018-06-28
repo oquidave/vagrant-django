@@ -1,10 +1,16 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
 <div style="padding-top:5%;">
+
+    <h2> Bulk</h2>
+    <h3>
+      <a href="{% url 'buyhistory' %}">0z</a>
+      ||
+      <a href="{% url 'athistory' %}">MobileMoney</a>
+    </h3>
 	<center>
 	{% if users %}
-		<h2> Bulk history</h2>
-            <table border="1" id="dbtable">
+		    <table border="1" id="dbtable">
             {% if messages %}
                 <ul class="messages" style="color:red;">
                    {% for message in messages %}
@@ -123,6 +129,26 @@
 	    	background:red;
 	    	color:white;
 	    }
+
+	    h2{
+	    	margin-left:5%;
+	    	color:white;
+	    	padding:20;
+	    	width:100;
+	    	background:green;
+	    }
+
+	    h3{
+
+	    	margin-left:10%;
+	    }
+
+	    a{
+	    	color:green;
+	    }
+
+
+
 		#dbtable{
 			width:95%;
 			margin-top:2%;
