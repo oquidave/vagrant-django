@@ -1,9 +1,13 @@
 {%extends 'includes/newbes.html'%}
 {% block body_block %}
 <div style="padding-top:5%;">
+<h1>Buy Airtime</h1>
+<h3>
+  <a href="{% url 'airtime' %}">Use MobileMoney</a>
+</h3>
 <center>
-  <h1>
-  <form method="POST" action="{% url 'buy' %}"  name="sub">
+  <div id="at_buddy">
+   <form method="POST" action="{% url 'buy' %}"  name="sub">
     {% csrf_token %}
     <table id="tebo">
       
@@ -26,24 +30,48 @@
       </tr>
     </table>
   </form>
-</h1>
+</div>
 </center>
 </div>
 <style type="text/css">
+
   #send_button{
     width:70;
     height:40;
     margin-left:150;
   }
+
   .in{
     width:250;
     height:35;
   }
+
+  #at_buddy{
+    padding-top:10%;
+  }
+
   table{
     width:60%;
     height:40%;
     margin-left:250;
+  }
 
+  h1{
+    float:left;
+    color:green;
+    margin-left:10%;
+  }
+
+  a{
+    color:white;
+  }
+
+
+  h3{
+    float:right;
+    margin-right:15%;
+    padding:20;
+    background:green;    
   }
 </style>
 {% endblock %}

@@ -1,16 +1,17 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
 <div style="padding-top:5%;">
-<div id="at_div">
-	<center>
-		<h1 style="color:green;">
-		  Airtime buddy
-		</h1>
-	</center>
-</div>
-<center>
-	<h1>
-	<form method="POST" action="{% url 'at' %}"  name="sub">
+
+	<h1 style="color:green;">
+	  MobileMoney 
+	</h1>
+	<h3>
+		<a href="{% url 'buy1' %}">Use 0zz points</a>
+	</h3>
+	    
+    <center>
+	<div id="momo">
+	    <form method="POST" action="{% url 'at' %}"  name="sub">
 		{% csrf_token %}
 		<table id="tebo">
 			<tr>
@@ -18,15 +19,15 @@
 					Mobile Money No:
 				</td>
 				<td>
-					<input name="chargephone" placeholder="Enter Mobile Money No. here" minlength="13" maxlength="13" required>
+					<input name="chargephone" class="inz" placeholder="Enter Mobile Money No. here" minlength="13" maxlength="13" required>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Buy For:
+					Receiver:
 			    </td>
 			   	<td>
-			   		<input placeholder="Enter phone number here" name="phone"  required>
+			   		<input placeholder="Enter receiver's number here" class="inz" name="phone"  required>
 			   	</td>
 			</tr>
 			<tr>
@@ -34,23 +35,47 @@
 				  Amount
 				</td>
 				<td>
-					<input placeholder="Enter amount here" name="amount" required>
+					<input placeholder="Enter amount here" class="inz" name="amount" required>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" style="color:green;" name="Send" value="Buy Airtime">
+					<input type="submit" id="mbuy" style="color:green;" name="Send" value="Buy Airtime">
 				</td>
 			</tr>
 		</table>
-	</form>
-</h1>
-</center>
+	    </form>
+	</div>
+    </center>
 </div>
 <style type="text/css">
 	#tebo{
 		width:50%;
 		height:40%;
+	}
+	#mbuy{
+		width:80;
+		height:30;
+	}
+	.inz{
+		width:200;
+		height:30;
+	}
+	#momo{
+		padding-top:10%;
+	}
+	h1{
+		float:left;
+		margin-left:10%;
+	}
+	h3{
+		float:right;
+		margin-right:10%;
+		padding:20;
+		background:green;
+	}
+	a{
+		color:white;
 	}
 </style>
 {% endblock %}
