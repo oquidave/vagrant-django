@@ -1,7 +1,7 @@
 {% extends 'includes/newbes.html' %}
-<div>
 {% block body_block %}
-<body>
+<div style="padding-top:5%;">
+<h1>Bulk SMS</h1>
 <center>
 <form  action="{% url 'bulks' %}"  enctype="multipart/form-data">
 {% csrf_token %}
@@ -49,7 +49,12 @@
 		text-align:left;
 		background-color:#B0E0E6;
 		}
+		h1{
+			float:left;
+			margin-left:10%;
+			color:green;
+		}
 </style>	
-</body>
-{% endblock %}
 </div>
+{% endblock %}
+
