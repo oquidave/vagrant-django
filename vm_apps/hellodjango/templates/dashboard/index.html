@@ -1,48 +1,27 @@
 {% extends 'includes/newbes.html'%}
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
 {% block body_block %}
 <center>
   <body bgcolor="White">
     <div id="topbar">
-      <table>
-        <tr id="yell">
+      <table id="wallet">
+        <tr>
           <th>
-           0zz points
+            <b>Wallet</b>
           </th>
         </tr>
-            <tr>
-              <td>
-                Today:
-              </td>
-              <td>
-                <output id="toto">
-                  0
-                </output>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Recent: 
-              </td>
-              <td>
-                <output id="toto">
-                  0
-                </output>
-              </td>
-            </tr>
-            <tr class="toto">
-              <td>
-                Total:
-              </td>
-              <td>
-                <output class="toto">
-                  0
-                </output>
-              </td>
-            </tr>
-          </table>
+        <tr class="toto">
+          <td>
+            <output class="toto">
+              <i>x,000,000/=</i>
+            </output>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" id="topup" value="Top-up">
+          </td>
+        </tr>
+      </table>
     </div>
 
 
@@ -235,7 +214,19 @@
 .toto{
   color:green;
 
-     }
+}
+#topup{
+  color:red;
+  width:80;
+}
+
+#wallet{
+ margin-left:40;
+ height:100;
+ border:solid;
+ border-color:green;
+ background:#B0E0E6;
+}
 
 #yell{
   color:white;

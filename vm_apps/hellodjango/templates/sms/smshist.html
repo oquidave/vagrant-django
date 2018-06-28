@@ -5,6 +5,20 @@
 <h2>SMS history</h2>
    {% if users %}
 		<table border="1" id="dbtable">
+		    {% if messages %}
+                <ul class="messages" style="color:red;">
+                   {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                      <h3>{{ message }}</h3>
+                    </li>
+                   {% endfor %}
+                </ul>
+            {% endif %}
+            <div style="padding-top:20;">
+        	    <a href="#" onclick="warn()" id="clear">
+        	      Clear History
+        	    </a>
+            </div>
             <tr class="fixed">
 				<td>
 				<b>
@@ -38,15 +52,11 @@
 				<td>{{user.content}}</td>
 				<td>{{user.destination}}</td>
 				<td>{{user.status}}</td>
-<<<<<<< Updated upstream
 				<td>
-				   <a href="/sms/delete/{{user.id}}">
+				    <a href="/sms/delete/{{user.id}}" onclick="warn()" >
 				        <i style="color:red;">Delete</i>
-				   </a>
+				    </a>
 				</td>
-=======
-				<td><a href="/sms/delete/{{user.id}}">Delete</a></td>
->>>>>>> Stashed changes
 			</tr>
 			{% endfor %}
 		</table>
@@ -101,8 +111,20 @@
 			<p>Nothing to display</p>
 		{%endif %}
 </center>
+<script type="text/javascript">
+	function warn(){
+		alert("Item will be deleted");
+    }
+</script>
 </div>
 	<style type="text/css">
+	    #clear{
+	    	padding:5;
+	    	width:100;
+	    	height:40;
+	    	background:red;
+	    	color:white;
+	    }
 	    #dbtable{
 			width:95%;
 			margin-top:2%;

@@ -3,6 +3,7 @@ from django.contrib import auth, messages
 from accounts.decorators import logout_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from .models import Contact
 
 # Create your views here.
 
@@ -40,6 +41,8 @@ def signup(request):
 		username = request.POST.get('username')
 		email = request.POST.get('email')
 		phone = request.POST.get('phone')
+		user_contact = Contact(contact=phone)
+		user_contact.save()
 		password = request.POST.get('password')
 		user = User.objects.create_user(username = username,
 										first_name = first_name,

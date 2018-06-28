@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 import africastalking
+from django.contrib import messages
 from .models import Smshist
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 import csv
@@ -116,8 +117,9 @@ def sacess(request):
 @login_required
 def delete(request,id):
    print(id)
-   d = Smshist.objects.get(id=id)
-   d.delete()
+   id_match = Smshist.objects.get(id=id)
+   id_match.delete()
+   messages.add_message(request, messages.INFO, 'Item Deleted')
    return redirect('smshistory')
 
 

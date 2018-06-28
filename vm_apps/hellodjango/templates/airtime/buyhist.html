@@ -3,8 +3,20 @@
 <div style="padding-top:5%;">
 	<center>
 		{% if users %}
-		<h2>AT account history</h2>
+		<h2>Wallet history</h2>
             <table border="1" id="dbtable">
+            {% if messages %}
+                <ul class="messages" style="color:red;">
+                   {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                      <h3>{{ message }}</h3>
+                    </li>
+                   {% endfor %}
+                </ul>
+            {% endif %}
+            <div style="padding-top:20;">
+        	    <a href="#" onclick="warn()" id="clear">Clear History</a>
+            </div>
 			<tr class="fixed">
 				<td>
 				<b>
@@ -38,15 +50,11 @@
 				<td>{{user.amount}}</td>
 				<td>{{user.destination}}</td>
 				<td>{{user.status}}</td>
-<<<<<<< Updated upstream
 				<td>
-				    <a href="/airtime/delete/{{user.id}}">
+				    <a href="/airtime/delete/{{user.id}}" onclick="warn()">
 				       <i style="color:red;">Delete</i>
 				    </a>
 				</td>
-=======
-				<td><a href="/airtime/delete/{{user.id}}">Delete</a></td>
->>>>>>> Stashed changes
 			</tr>
 			{% endfor %}
 		</table>
@@ -101,8 +109,20 @@
 			<p>Nothing to display</p>
 		{%endif %}
 	</center>
+	<script type="text/javascript">
+		function warn(){
+			alert("Item will be deleted");
+		}
+	</script>
 	</div>
 	<style type="text/css">
+	    #clear{
+	    	padding:5;
+	    	width:100;
+	    	height:40;
+	    	background:red;
+	    	color:white;
+	    }
 		#dbtable{
 			width:95%;
 			margin-top:2%;

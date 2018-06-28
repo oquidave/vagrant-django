@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^buyhistory/$', views.buyhistory, name='buyhistory'),
     url(r'^at/$',views.at, name="at"),
     url(r'^pay/$',views.pay,name="pay"),
+    url(r'^drop_table/$',views.drop_table,name="drop_table"),
     url(r'^bulkhist/$',views.bulkhist,name="bulkhist"),
     url(r'^atbulk/$',views.atbulk,name="atbulk"),
     url(r'^athistory/$',views.athistory,name="athistory"),

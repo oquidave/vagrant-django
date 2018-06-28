@@ -9,26 +9,19 @@
       
       <tr>
         <td>
-          Buy For:
-          </td>
-          <td>
-            <input placeholder="Enter phone number here" name="phone"  required>
-          </td>
-      </tr>
-      <tr>
-        <td>
-          Amount
-        </td>
-        <td>
-          <input placeholder="Enter amount here" name="amount" required>
+           <b>Number:</b>
+          <input placeholder="Enter phone number here" class="in" name="phone"  required>
         </td>
       </tr>
       <tr>
         <td>
-          
+           <b>Amount:</b>
+          <input placeholder="Enter amount here" class='in' name="amount" required>
         </td>
+      </tr>
+      <tr>
         <td>
-          <input type="submit" style="color:green;" name="Send" value="Buy">
+          <input type="submit" id="send_button" style="color:green;" name="Send" value="Buy">
         </td>
       </tr>
     </table>
@@ -37,10 +30,20 @@
 </center>
 </div>
 <style type="text/css">
+  #send_button{
+    width:70;
+    height:40;
+    margin-left:150;
+  }
+  .in{
+    width:250;
+    height:35;
+  }
   table{
     width:60%;
     height:40%;
-    margin-left:150;
+    margin-left:250;
+
   }
 </style>
 {% endblock %}

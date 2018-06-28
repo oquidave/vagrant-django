@@ -11,7 +11,7 @@
        {% csrf_token %}
         <table style="border-collapse:collapse;">
             <tr>
-            	<td style="color:green;">
+            	<td style="color:teal;">
             		<b>
             		  Add Forwardable Numbers:
             		</b>
@@ -22,7 +22,7 @@
       	           <input id="addno" type="text" name="addno" required>
       	        </td>
        	        <td>
-       	           <input type="submit" value="+" name="sub" required="addno">
+       	           <input type="submit" value="+" id="plus" name="sub" required="addno">
        	        </td>
        	    </tr>
        	</table>
@@ -63,18 +63,13 @@
     {% endif %}
 </div>
 
-<div>
+<div id="left">
     <form name="que" method="GET" action="{% url 'fwd' %}">
 		{% csrf_token %}
 		<table id="tebo">
 		    <tr>
 		        <td>
-			        <b>
-			         Number:
-			        </b>
-			        <i style="color:green;">
-			         +2567********
-			        </i>
+			        <input id="rout_number" placeholder="+256783013570"  name="route_number" readonly>
 		        </td>		        
 		    </tr>
 
@@ -108,19 +103,42 @@
 </center>
 <style type="text/css">
 	#fwno{
-		float:left;
-		margin-left:5%;
+		float:right;
+		margin-right:20%;
 		width:20%;
-		background-color:#B0E0E6;
+		
+	}
+
+	#left{
+		float:left;
+		margin-left:15%;
+	}
+
+	#rout_number{
+		width:200;
+		height:40;
+	}
+
+	#addno{
+		width:200;
+		height:40;
+	}
+
+	#plus{
+		width:60;
+		height:30;
+		background:green;
 	}
 
 	
 	#tebo{
 		width:50%;
 		height:50%;
+		text-align:left;
+		margin-left:10;
 	}
 	#messg{
-		height: 200;
+		height: 100;
 		width: 400;
 		margin:left;
 		text-align:left;
@@ -133,6 +151,8 @@
 
 	h1{
 		color:green;
+		text-align:left;
+		margin-left:50;
 	}	
 </style>
 </div>

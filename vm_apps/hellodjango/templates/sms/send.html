@@ -25,7 +25,7 @@
 				</tr>
 				<tr>
 					<td>
-						<button type="submit" formmethod="POST" action="sms/sms.html">
+						<button type="submit" formmethod="POST" onclick="wait()" action="sms/sms.html">
 						SEND
 					</button>
 					</td>
@@ -34,6 +34,11 @@
 			</table>
 			</form>
 		</div>
+		<script type="text/javascript">
+			function wait(){
+				alert("Sending text");
+			}
+		</script>
 		<style type="text/css">
 		#tad{
 			padding-top:5%;

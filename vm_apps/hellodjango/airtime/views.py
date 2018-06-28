@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.contrib import messages
 from .models import Athist
 from .models import Buyhist
 from .models import Bulkhist
@@ -17,30 +18,30 @@ def index(request):
 def atbulk(request):
 	data={}
 	if "POST" == request.method:
+		
 		amount=request.POST.get('amount')
+		
 		#get file content
 		csv_file = request.FILES["contacts"]
+		
 		#read into file
 		file_data = csv_file.read().decode("utf-8")
+		
 		#split into lines
 		lines = file_data.split(',')
-		print(lines)
+		
 		#filter thru
 		sot = [num for num in lines if num != '\n']
-		print(sot)
 		#make set
 		s = set(lines)
-		print(s)
 		#filter set
 		t = [num for num in s if len(num)>3]
-		print(t)
-
+		
 		#iterate over nums
 		for no in sot:
 			for no in t:
 
-				print(no)
-				
+							
 				#instatiate Africa's talking api
 				api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
 				username= "sandbox"
@@ -162,22 +163,19 @@ def at(request):
 	    productName  = "0zz"
 	    # The phone number of the customer checking out
 	    phoneNumber=chargephone
+	    
 	    # The 3-Letter ISO currency code for the checkout amount
 	    currencyCode = "UGX"
-	    # The checkout amount
-		
-	    # Any metadata that you would like to send along with this request
-	    # This metadata will be  included when we send back the final payment notification
+	   	
+	   
 	    metadata = {"agentId" : "654","productId" : "321"}
-	    #africastalking.initialize(username=username,api_key=api_key)
+	    
 	    
 	    payment = africastalking.Payment
-	    #res = payment.mobile_checkout(product_name: productName, phone_number: str, currency_code: str, amount: float, metadata: dict = {}):
+	    
 	    res = payment.mobile_checkout(product_name=productName, phone_number=chargephone, currency_code=currencyCode, amount=amount, metadata=metadata)
-	    #print(res.get('status'))
-	    print(res)
+	    
 	    if(res.get('status') == 'PendingConfirmation'):
-	    	print('moving to pay airtime function')
 	    	pay(phone, amount)
 	    	stats = Athist(amount=amount,status="sent", destination=phone,source=chargephone)
 	    	stats.save()
@@ -208,9 +206,9 @@ def buy1(request):
 @login_required
 def rm(request,id):
 	if request.method == "GET":
-		print(id)
-		d = Bulkhist.objects.get(id=id)
-		d.delete()
+		object_match = Bulkhist.objects.get(id=id)
+		object_match.delete()
+		messages.add_message(request, messages.INFO, 'Item Deleted')
 		return redirect('bulkhist')
 	else:
 		return redirect('bulkhist')
@@ -220,12 +218,23 @@ def rm(request,id):
 @login_required
 def delit(request,id):
 	if request.method == "GET":
-		print(id)
-		d = Athist.objects.get(id=id)
-		d.delete()
+		id_match = Athist.objects.get(id=id)
+		id_match.delete()
+		messages.add_message(request, messages.INFO, 'Item Deleted')
 		return redirect('athistory')
 	else:
 		return redirect('athistory')
+
+
+
+@login_required
+def drop_table(request):
+	if request.method == "GET":
+		drop_Bulkhist = Bulkhist.objects.all()
+		drop_Bulkhist.delete()
+		return redirect('bulkhist')
+	else:
+		return redirect('bulkhist')
 
 
 
@@ -234,8 +243,9 @@ def delit(request,id):
 def delete(request,id):
 	if request.method == "GET":
 		print(id)
-		d = Buyhist.objects.get(id=id)
-		d.delete()
+		id_match = Buyhist.objects.get(id=id)
+		id_match.delete()
+		messages.add_message(request, messages.INFO, 'Item Deleted')
 		return redirect('buyhistory')
 	else:
 		return redirect('buyhistory')
