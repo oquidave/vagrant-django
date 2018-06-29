@@ -37,4 +37,8 @@ def bulk_pay(request):
 @login_required
 def phistory(request):
 	return render(request, 'payments/phist.html')
+
+@login_required
+def schedule_pay(request):
+	return render(request, 'payments/schedule_pay.html')
         

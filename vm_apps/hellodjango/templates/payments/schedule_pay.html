@@ -3,16 +3,28 @@
 <div style="padding-top:2%;">
     <h1>Payments</h1>
     <h3>
-        <a href="{% url 'payments' %}" id="active" >Deposit</a>
+        <a href="{% url 'payments' %}"  >Deposit</a>
         |
         <a href="{% url 'bulk_pay' %}" >Bulk</a>
         |
-        <a href="{% url 'schedule_pay' %}">Schedule</a>
+        <a href="{% url 'schedule_pay' %}" id="active" >Schedule</a>
     </h3>
     <center>
     	<form method="POST" >
     	   {% csrf_token %}
     		<table>
+
+                <tr>
+                    <td>
+                        <input type="date" style="color:blue;" name="send_date">
+                    </td>
+                    <td>
+                        TIME: 
+                        <input style="color:red;" type="time" name="send_time">
+                    </td>
+                </tr>
+
+
     			<tr>
     				<td>
     				    <b>Number:</b>
@@ -39,7 +51,7 @@
 
     			<tr>
     				<td>
-    					<input type="submit" id="send_button" value="DEPOSIT">
+    					<input type="submit" id="send_button" value="Schedule">
     				</td>
     			</tr>
     		</table>
@@ -78,7 +90,8 @@
 
         table{
         	width:500;
-        	height:300;
+        	height:400;
+            text-align:center;
         }
 
     	h1{

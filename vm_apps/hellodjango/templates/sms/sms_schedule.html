@@ -17,10 +17,24 @@
 			<form  name="formt" action="{% url 'sacess'  %}">
 				{% csrf_token %}
 			<table id="tebo">
+			    <tr>
+			    	<td>
+			    	    <tr>
+			    	        <td>
+			    	           DATE:<input type="date" style="color:blue;" name="send_date">
+			    	        </td>
+			    	    </tr>
+			    	    <tr>
+			    	        <td>
+			    	           TIME:<input style="color:red;" type="time" name="send_time">
+			    	        </td>
+			    	    </tr>
+			    	</td>
+			    </tr>
 				<tr>
 					<td>
 						<b>Phone:</b>
-					     <input id="receiver" name="phone" placeholder="Enter recipient here" width="40" minlength="13" maxlength="13" required>
+					     <input id="receiver" name="phone" placeholder="Enter recipient here||add csv option for bulk" width="40" minlength="13" maxlength="13" required>
 					</td>
 				</tr>
 				<tr>
@@ -37,7 +51,7 @@
 				<tr>
 					<td>
 						<button type="submit" formmethod="POST" onclick="wait()" action="sms/sms.html">
-						SEND
+						<i><b>Schedule</b></i>
 					</button>
 					</td>
 				</tr>

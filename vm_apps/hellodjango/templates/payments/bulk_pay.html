@@ -7,7 +7,7 @@
         |
         <a href="{% url 'bulk_pay' %}" id="active" >Bulk</a>
         |
-        <a href="#" class="page" >Schedule</a>
+        <a href="{% url 'schedule_pay' %}" class="page" >Schedule</a>
     </h3>
     <center>
     	<form method="POST" action="{% url 'bulk_pay' %}"  name="sub" enctype="multipart/form-data">

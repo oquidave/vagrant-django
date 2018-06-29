@@ -128,7 +128,7 @@ li a:hover, .dropdown:hover .dropbtn {
         <a href="{% url 'atbulk' %}" id="bulk">
           Bulk 
         </a>
-        <a href="#">Subscribe</a>
+        <a href="{% url 'at_subscribe'%}">Subscribe</a>
         <a href="{% url 'ozz_history' %}">History</a>
       </div>
     </li>
@@ -165,7 +165,7 @@ li a:hover, .dropdown:hover .dropbtn {
       </a>
       <div class="dropdown-content">
         <a href="{% url 'payments' %}">Make Payments</a>
-        <a href="#">Schedule</a>
+        <a href="{% url 'schedule_pay' %}">Schedule</a>
         <a href="{% url 'phistory' %}">History</a>       
       </div>
     </li>

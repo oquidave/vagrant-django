@@ -72,6 +72,11 @@ def history(request):
 
 
 @login_required
+def at_subscribe(request):
+	return render(request,"airtime/at_subscribe.html")
+
+
+@login_required
 def bulkhist(request):
 	if request.method == "POST":
 		stats = Bulkhist.objects.order_by("-date")
