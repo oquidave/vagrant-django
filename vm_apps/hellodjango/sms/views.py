@@ -112,6 +112,12 @@ def sacess(request):
       res=print(sms_stats)
 
       return redirect('smshistory')
+
+
+
+@login_required
+def sms_schedule(request):
+   return render(request,"sms/sms_schedule.html")
    
 
 @login_required

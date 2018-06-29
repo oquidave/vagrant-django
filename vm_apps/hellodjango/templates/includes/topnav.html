@@ -109,8 +109,9 @@ li a:hover, .dropdown:hover .dropbtn {
         SMS
       </a>
         <div class="dropdown-content">
-          <a href="{% url 'sms' %}">Send sms</a>
-          <a href="{% url 'bulks' %}">Bulk sms</a>
+          <a href="{% url 'sms' %}">Send</a>
+          <a href="{% url 'bulks' %}">Bulk</a>
+          <a href="{% url 'sms_schedule' %}">Schedule</a>
           <a href="{% url 'smshistory' %}">History</a>
         </div>
     </li>
@@ -125,8 +126,9 @@ li a:hover, .dropdown:hover .dropbtn {
           Buy
         </a>
         <a href="{% url 'atbulk' %}" id="bulk">
-          Bulk Buy
+          Bulk 
         </a>
+        <a href="#">Subscribe</a>
         <a href="{% url 'ozz_history' %}">History</a>
       </div>
     </li>
@@ -163,6 +165,7 @@ li a:hover, .dropdown:hover .dropbtn {
       </a>
       <div class="dropdown-content">
         <a href="{% url 'payments' %}">Make Payments</a>
+        <a href="#">Schedule</a>
         <a href="{% url 'phistory' %}">History</a>       
       </div>
     </li>

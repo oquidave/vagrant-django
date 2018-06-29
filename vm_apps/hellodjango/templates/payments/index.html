@@ -6,6 +6,8 @@
         <a href="{% url 'payments' %}" id="active" >Deposit</a>
         |
         <a href="{% url 'bulk_pay' %}" >Bulk</a>
+        |
+        <a href="#">Schedule</a>
     </h3>
     <center>
     	<form method="POST" >
@@ -25,6 +27,16 @@
     					<input class="enter" placeholder="Enter amount here" name="amount" required>
     				</td>
     			</tr>
+
+                <tr>
+                    <td>
+                        <b>Reason:</b>
+                    </td>
+                    <td>
+                        <textarea id="mm_reason" placeholder="Enter reason here" name="reason" required></textarea>
+                    </td>
+                </tr>
+
     			<tr>
     				<td>
     					<input type="submit" id="send_button" value="DEPOSIT">
@@ -35,7 +47,12 @@
     </center>
     <style type="text/css">
 
-        b{
+        #mm_reason{
+            width:300;
+            height:100;
+        }
+
+        td b{
         	color:green;
         }
 
@@ -60,8 +77,8 @@
         }
 
         table{
-        	width:400;
-        	height:200;
+        	width:500;
+        	height:300;
         }
 
     	h1{

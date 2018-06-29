@@ -29,9 +29,10 @@ def atbulk(request):
 		
 		#split into lines
 		lines = file_data.split(',')
-		
+
 		#filter thru
 		sot = [num for num in lines if num != '\n']
+		print(sot)
 		#make set
 		s = set(lines)
 		#filter set
