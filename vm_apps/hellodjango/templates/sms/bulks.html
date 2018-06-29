@@ -1,13 +1,13 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
-<div style="padding-top:5%;">
+<div style="padding-top:2%;">
     <h1>
      SMS  
     </h1>
      <h3>
-       <a href="{% url 'send_sms' %}" id="active" >Send</a>
+       <a href="{% url 'send_sms' %}" >Send</a>
        |
-       <a href="{% url 'bulks' %}">Bulk</a>
+       <a href="{% url 'bulks' %}" id="active" >Bulk</a>
 
      </h3>
 <center>
@@ -37,13 +37,39 @@
 	</tr>
 	<tr>
 	    <td>
-			<button type="submit"  formmethod="POST" action="sms/bulks.html">Send</button>
+			<button type="submit"  formmethod="POST" action="sms/bulks.html">SEND</button>
 		</td>
 	</tr>
 	</table>
 </form>
 </center>
 <style type="text/css">
+    
+    #active{
+        background:green;
+        height:80;
+        border:solid;
+        color:white;
+        width:300;
+        padding:20;
+        text-align:center;
+    }
+
+    h1{
+        margin-left:5%;
+        color:teal;
+        width:500;
+    }
+
+    h3{
+	  margin-left:10%;
+	}
+
+	a{
+	 color:teal;
+    }
+
+
     button{
     	width:80;
     	height:40;
@@ -58,8 +84,7 @@
 	table{
 		width:600px;
 		height: 400px;
-		padding-top:5%;
-		margin-left:10;
+		margin-left:20;
 	}
 
 	#messg{
@@ -70,11 +95,7 @@
 		background-color:#B0E0E6;
 		}
 
-	h1{
-		float:left;
-		margin-left:10%;
-		color:green;
-	}
+	
 </style>	
 </div>
 {% endblock %}
