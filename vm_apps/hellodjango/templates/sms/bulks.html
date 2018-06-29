@@ -1,7 +1,15 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
 <div style="padding-top:5%;">
-<h1>Bulk SMS</h1>
+    <h1>
+     SMS  
+    </h1>
+     <h3>
+       <a href="{% url 'send_sms' %}" id="active" >Send</a>
+       |
+       <a href="{% url 'bulks' %}">Bulk</a>
+
+     </h3>
 <center>
 <form  action="{% url 'bulks' %}"  enctype="multipart/form-data">
 {% csrf_token %}

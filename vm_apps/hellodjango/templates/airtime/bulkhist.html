@@ -8,9 +8,9 @@
         <h3>
            
             <a href="{% url 'ozz_history' %}">0zz</a>
-           ||
+           |
   	       <a href="{% url 'mm_history' %}">MobileMoney</a>
-  	       ||
+  	       |
   	       <a href="{% url 'bulkhist' %}" id="active" >Bulk</a>
 
         </h3>
@@ -27,7 +27,7 @@
                 </ul>
             {% endif %}
             <div style="padding-top:20;">
-        	    <a href="{% url 'drop_table' %}" onclick="warn()" id="clear">Clear History</a>
+        	    <a href="{% url 'drop_table' %}" onclick="warn()" id="clear">Delete all</a>
             </div>
 			<tr class="fixed">
 				<td>
@@ -147,9 +147,10 @@
          }
 
 	    #clear{
+	    	float:right;
+	    	margin-right:40;
 	    	padding:5;
 	    	width:100;
-	    	height:40;
 	    	background:red;
 	    	color:white;
 	    }
