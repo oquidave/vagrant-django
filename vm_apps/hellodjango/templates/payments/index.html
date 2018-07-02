@@ -10,17 +10,28 @@
         <a href="{% url 'schedule_pay' %}">Schedule</a>
     </h3>
     <center>
-    	<form method="POST" >
+    	<form method="POST" action="{% url 'payments' %}" >
     	   {% csrf_token %}
     		<table>
+
+                <tr>
+                    <td>
+                        <b>Name:</b>
+                    </td>
+                    <td>
+                        <input  class="enter" placeholder="Enter receiver name here" name="receiver_name" required>
+                    </td>
+                </tr>
+
     			<tr>
     				<td>
     				    <b>Number:</b>
     				</td>
     				<td>
-    					<input  class="enter" placeholder="Enter receiver here" name="receiver" required>
+    					<input  class="enter" placeholder="Enter receiver here" name="receiver_no" required>
     				</td>
     			</tr>
+
     			<tr>
     				<td><b>Amount:</b></td>
     				<td>
@@ -33,7 +44,17 @@
                         <b>Reason:</b>
                     </td>
                     <td>
-                        <textarea id="mm_reason" placeholder="Enter reason here" name="reason" required></textarea>
+                        <select style="width:250;height:40;" name="mm_reason">
+                            <option value="SalaryPayment" >
+                              Salary
+                            </option>
+                            <option value="BusinessPayment">
+                              Business
+                            </option>
+                            <option value="SalaryPaymentWithWithdrawalChargePaid"> 
+                              Gift
+                            </option>
+                        </select>
                     </td>
                 </tr>
 

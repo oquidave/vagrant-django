@@ -1,11 +1,175 @@
 {% extends 'includes/newbes.html' %}
 {% block body_block %}
-<div style="padding-top:5%;">
-<center>
-<strong>
-	Payment History
-</strong>
-</center>
+<div style="padding-top:2%;">
+        <h1>
+          Payments History 
+        </h1>
+        <h3>
+           
+            <a href="#" id="active">0zz</a>
+           |
+  	        <a href="#">Bulk</a>
+
+        </h3>
+	<center>
+		{% if users %}
+            <table border="1" id="dbtable">
+            {% if messages %}
+                <ul class="messages" style="color:red;">
+                   {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                      <h3>{{ message }}</h3>
+                    </li>
+                   {% endfor %}
+                </ul>
+            {% endif %}
+            <div style="padding-top:20;" id="clear_history">
+        	    <a href="#" onclick="warn()" id="clear">Delete all</a>
+            </div>
+			<tr class="fixed">
+				<td>
+				    <b>
+				     Date
+				    </b>
+				</td>
+
+				<td>
+				    <b>
+				      Name
+				    </b>
+				</td>
+
+				<td>
+				    <b>
+				      Amount
+				    </b>
+				</td>
+				<td>
+				    <b>
+				      Status
+				    </b>
+				</td>
+
+				<td>
+				    <b>
+				     Destination
+				    </b>
+				</td>
+
+				<td>
+				    <b>
+				     Charge
+				    </b>
+				</td>
+				
+				<td>
+				    <b>
+				      Action
+				    </b>
+				</td>
+			</tr>
+			{% for user in users %}
+			<tr class="fixed1">
+                <td>{{user.date}}</td>
+                <td>{{user.name}}</td>
+				<td>{{user.amount}}</td>
+				<td>{{user.status}}</td>
+				<td>{{user.destination}}</td>
+				<td>
+				   10
+				   <i style="color:orange;">0zz</i>
+				</td>
+				<td>
+				    <a href="#" onclick="warn()">
+				       <i style="color:red;">Delete</i>
+				    </a>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+		
+		{% else %}
+			<p>Nothing to display</p>
+		{%endif %}
+	</center>
+	<script type="text/javascript">
+		function warn(){
+			alert("Item will be deleted");
+		}
+	</script>
+	</div>
+	<style type="text/css">
+         
+
+         #active{
+         	background:green;
+         	height:80;
+         	border:solid;
+         	color:white;
+         	width:300;
+         	padding:20;
+         	text-align:center;
+
+         }
+
+
+	    #clear{
+	    	float:right;
+	    	margin-right:40;
+	    	padding:5;
+	    	width:100;
+	    	background:red;
+	    	color:white;
+	    }
+		#dbtable{
+			width:95%;
+			margin-top:2%;
+			border-spacing:2%;
+			border-collapse:collapse;
+		}
+
+		h1{
+			margin-left:5%;
+			color:teal;
+			width:500;
+		}
+
+		h3{
+			margin-left:10%;
+		}
+
+		a{
+        	color:teal;
+        }
+		
+		.fixed td {
+            overflow: hidden;
+            height: 10;
+            background-color:green;
+        }
+        		
+       .fixed {
+			background-color:green;
+			color:white;
+		}
+		.fixed1{
+			background-color:#B0E0E6;
+		}
+
+		#pag{
+			width:100%;
+			position:fixed;
+		}
+
+		.pagination a{
+			color:black;
+			margin-left:20%;
+		}
+
+		.pagination .active{
+			color:green;
+		}
+	</style>
 </div>
 {% endblock %}
 
