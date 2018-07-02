@@ -70,12 +70,15 @@ def bulk_pay(request):
 		
 		#split into lines
 		lines = file_data.split(',')
+		#lines = ",".join(file_data)		
+		#print(lines)
 		row = lines[:3]
-		row_data = [elem for elem in lines if elem != "\n"]
+		row_data = [elem for elem in lines if elem not in set(row)]
+		print(row_data)
 		
 		
-		for row_data in lines:
-			print(row_data)			
+		#for row_data in lines:
+			#print(",".join(row_data))			
 
 		
 		sand_key ="db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
