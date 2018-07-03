@@ -85,31 +85,22 @@ def bulk_pay(request):
 
 		for user_list in new_list:
 			user_dict = {}
-			user_dict['name'] = user_list[0]
+			user_dict['name'] = "".join(user_list[0])
 			user_dict['phoneNumber'] = "+256"+user_list[1]
-			user_dict['amount'] = user_list[2]
 			user_dict['currencyCode'] = "UGX"
+			user_dict['amount'] = user_list[2]			
 			user_dict['reason'] = "Salary Payment"
 			user_dict['metadata'] = {}
 			user_dict_list.append(user_dict)		
 
-		print(user_dict_list)
+		#print(user_dict_list)
 
 				
-		#consumers
-		recipient = [{
-		"name": name,
-        "phoneNumber": phoneNumber,
-        "currencyCode": currencyCode,
-        "amount": amount,
-        "reason": reason,
-        "metadata": {}
-    	}]
-
+		
 		sand_key ="db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
 		africastalking.initialize(username='sandbox', api_key=sand_key)
 		payment = africastalking.Payment
-		res = payment.mobile_b2c(product_name='0zz', consumers=consumers)
+		res = payment.mobile_b2c(product_name='0zz', consumers=user_dict_list)
 		print(res)
 		return redirect('phistory')
 	else:
