@@ -10,3 +10,13 @@ class Payhist(models.Model):
 	destination = models.CharField(max_length=25)
 	def __str__(self):
 		return self.amount
+
+
+class Csv_data(models.Model):
+	id = models.AutoField(primary_key=True)
+	date = models.DateTimeField(auto_now_add=True)
+	name = models.CharField(max_length=25)
+	destination = models.CharField(max_length=25)
+	amount = models.CharField(max_length=25)
+	def __str__(self):
+		return self.amount

@@ -31,16 +31,16 @@ def atbulk(request):
 		lines = file_data.split(',')
 
 		#filter thru
-		sot = [num for num in lines if num != '\n']
-		print(sot)
+		valid_lines = [num for num in lines if num != '\n']
+		
 		#make set
-		s = set(lines)
+		set_lines = set(lines)
 		#filter set
-		t = [num for num in s if len(num)>3]
+		valid_numbers = [num for num in set_lines if len(num)>3]
 		
 		#iterate over nums
-		for no in sot:
-			for no in t:
+		for no in valid_lines:
+			for no in valid_numbers:
 
 							
 				#instatiate Africa's talking api
@@ -54,11 +54,8 @@ def atbulk(request):
 				
 				#save to model
 				users = Bulkhist(amount=amount,status="sent", destination=no)
-				users.save()
-
+				users.save()				
 				
-				#res=print(sms_stats)
-				print(res)
 				#redirect to history 
 			return redirect('bulkhist')
 	elif request.method=="GET":

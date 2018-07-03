@@ -5,6 +5,7 @@ import codecs
 import csv
 from django.http import HttpResponse
 from .models import Payhist
+from .models import Csv_data
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -68,19 +69,27 @@ def bulk_pay(request):
 		#read into file
 		file_data = csv_file.read().decode("utf-8")
 		
-		#split into lines
+		#split into lines//make list
 		lines = file_data.split(',')
-		#lines = ",".join(file_data)		
-		#print(lines)
-		row = lines[:3]
-		row_data = [elem for elem in lines if elem not in set(row)]
-		print(row_data)
 		
+		#first 3
+		rows = lines[:3]
 		
-		#for row_data in lines:
-			#print(",".join(row_data))			
+		#skip rows
+		row_data = [elem for elem in lines if elem not in set(rows)]
+		var_x = [row for row in row_data if row != "\n"]
+		#print(var_x)
+		
+		#filter out '\n' and join values
+		#clean_data =",".join([elem for elem in row_data if elem !="\n"])
 
-		
+		#group into 3s
+		new_list = [var_x[i:i+3] for i in range(0, len(var_x), 3)]
+		names = [item[0] for item in new_list]
+		number = [item[1] for item in new_list]
+		amount = [item[2] for item in new_list]
+		print(names[0])
+		#print(type(rows))		
 		sand_key ="db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
 		africastalking.initialize(username='sandbox', api_key=sand_key)
 		payment = africastalking.Payment
