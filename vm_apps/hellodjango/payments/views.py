@@ -75,21 +75,37 @@ def bulk_pay(request):
 		#first 3
 		rows = lines[:3]
 		
-		#skip rows
+		#skip first 3 and "\n"
 		row_data = [elem for elem in lines if elem not in set(rows)]
 		var_x = [row for row in row_data if row != "\n"]
-		#print(var_x)
 		
-		#filter out '\n' and join values
-		#clean_data =",".join([elem for elem in row_data if elem !="\n"])
-
 		#group into 3s
 		new_list = [var_x[i:i+3] for i in range(0, len(var_x), 3)]
-		names = [item[0] for item in new_list]
-		number = [item[1] for item in new_list]
-		amount = [item[2] for item in new_list]
-		print(names[0])
-		#print(type(rows))		
+		user_dict_list = []
+
+		for user_list in new_list:
+			user_dict = {}
+			user_dict['name'] = user_list[0]
+			user_dict['phoneNumber'] = "+256"+user_list[1]
+			user_dict['amount'] = user_list[2]
+			user_dict['currencyCode'] = "UGX"
+			user_dict['reason'] = "Salary Payment"
+			user_dict['metadata'] = {}
+			user_dict_list.append(user_dict)		
+
+		print(user_dict_list)
+
+				
+		#consumers
+		recipient = [{
+		"name": name,
+        "phoneNumber": phoneNumber,
+        "currencyCode": currencyCode,
+        "amount": amount,
+        "reason": reason,
+        "metadata": {}
+    	}]
+
 		sand_key ="db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
 		africastalking.initialize(username='sandbox', api_key=sand_key)
 		payment = africastalking.Payment
