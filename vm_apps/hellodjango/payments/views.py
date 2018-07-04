@@ -4,8 +4,9 @@ import africastalking
 import codecs
 import csv
 from django.http import HttpResponse
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from .models import Payhist
-from .models import Csv_data
+from .models import Bulkpayhist
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -89,20 +90,38 @@ def bulk_pay(request):
 			user_dict['phoneNumber'] = "+256"+user_list[1]
 			user_dict['currencyCode'] = "UGX"
 			user_dict['amount'] = user_list[2]			
-			user_dict['reason'] = "Salary Payment"
-			user_dict['metadata'] = {}
-			user_dict_list.append(user_dict)		
-
-		#print(user_dict_list)
-
-				
+			user_dict['reason'] = "SalaryPaymentWithWithdrawalChargePaid"
+			user_dict['metadata'] = {}			
+			user_dict_list.append(user_dict)				
 		
 		sand_key ="db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
-		africastalking.initialize(username='sandbox', api_key=sand_key)
-		payment = africastalking.Payment
-		res = payment.mobile_b2c(product_name='0zz', consumers=user_dict_list)
-		print(res)
-		return redirect('phistory')
+		
+		if len(user_dict_list)<=10:
+			africastalking.initialize(username='sandbox', api_key=sand_key)
+			payment = africastalking.Payment
+			res = payment.mobile_b2c(product_name='0zz', consumers=user_dict_list)
+			#save history
+			user = []
+			for user in new_list:
+				hist=Bulkpayhist(name=user[0],amount="UGX"+user[2],status="successful",destination="+256"+user[1])
+				hist.save()			
+
+		else:
+			#group list into 10z
+			new_dict_list = [user_dict_list[i:i+10] for i in range(0,len(user_dict_list),10)]
+			recipient=[]
+			print(new_list)
+			for recipient in new_dict_list:
+				africastalking.initialize(username='sandbox', api_key=sand_key)
+				payment = africastalking.Payment
+				res = payment.mobile_b2c(product_name='0zz', consumers=recipient)
+				#save history
+				user = []
+				for user in new_list:
+					hist=Bulkpayhist(name=user[0],amount="UGX"+user[2],status="successful",destination="+256"+user[1])
+					hist.save()
+		#history
+		return redirect('bulkpayhist')
 	else:
 		return render(request, "payments/bulk_pay.html")
 
@@ -110,6 +129,25 @@ def bulk_pay(request):
 def phistory(request):
 	users = Payhist.objects.all()
 	return render(request, 'payments/phist.html',{"users":users})
+
+@login_required
+def bulkpayhist(request):
+	if request.method == "POST":
+		stats = Bulkpayhist.objects.order_by("-date")
+		return render( request,"payments/bulkpayhist.html",{"stats":stats})
+	else:
+		stats = Bulkpayhist.objects.order_by("-date")
+		page = request.GET.get('page', 1)
+		paginator = Paginator(stats, 15)
+		try:
+			users = paginator.page(page)
+		except PageNotAnInteger:
+			users = paginator.page(1)
+		except EmptyPage:
+			users = paginator.page(paginator.num_pages)
+		
+		return render( request,"payments/bulkpayhist.html",{"users":users})
+
 
 @login_required
 def schedule_pay(request):

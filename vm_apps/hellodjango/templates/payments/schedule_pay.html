@@ -8,6 +8,8 @@
         <a href="{% url 'bulk_pay' %}" >Bulk</a>
         |
         <a href="{% url 'schedule_pay' %}" id="active" >Schedule</a>
+        |
+        <a href="{% url 'phistory' %}">History</a>
     </h3>
     <center>
     	<form method="POST" >
@@ -16,12 +18,14 @@
 
                 <tr>
                     <td>
+                        DATE
                         <input type="date" style="color:blue;" name="send_date">
                     </td>
+                    <br>
                     <td>
                         TIME: 
-                        <input style="color:red;" type="time" name="send_time">
-                    </td>
+                        <input style="color:red;" type="time" name="send_time">                  
+                    </td>                    
                 </tr>
 
 

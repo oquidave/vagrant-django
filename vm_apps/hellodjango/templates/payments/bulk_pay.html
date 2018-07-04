@@ -8,58 +8,35 @@
         <a href="{% url 'bulk_pay' %}" id="active" >Bulk</a>
         |
         <a href="{% url 'schedule_pay' %}" class="page" >Schedule</a>
+        |
+        <a href="{% url 'phistory' %}" class="page" >History</a>
     </h3>
     <center>
     	<form method="POST" action="{% url 'bulk_pay' %}"  name="sub" enctype="multipart/form-data">
     	   {% csrf_token %}
     		<table>
     			<tr>
-    				<td>
-    				    <b>Upload Receivers:</b>
-    				</td>
-    				<td>
-    					<input  type="file"  name="receiver" required>
-    				</td>
-    			</tr>
-
-                <tr>
-                    <td>
-                        <b>Reason:</b>
-                    </td>
-                    <td>
-                        <select style="width:250;height:40;" name="mm_reason">
-                            
-                            <option>
-                              Select
-                            </option>
-
-                            <option value="SalaryPayment" >
-                              Salary
-                            </option>
-                            <option value="BusinessPayment">
-                              Business
-                            </option>
-                            <option value="SalaryPaymentWithWithdrawalChargePaid"> 
-                              Gift
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <b>Amount:</b>
-                    </td>
-                    <td>
-                        <input class="enter" placeholder="Enter amount here" name="amount" required>
-                    </td>
-                </tr>
-
-    			<tr>
-    				<td>
-    					<input type="submit" id="send_button" value="SEND">
-    				</td>
-    			</tr>
+                    <tr>
+                        <td>
+    				        <b>Upload Receivers:</b>
+    				    </td>
+    				    <td>
+    					    <input  type="file"  name="receiver" required>
+                            <br>
+                            <br>
+                            <button>
+                                <b style="color:red;">
+                                    Edit Receivers
+                                </b>
+                            </button>
+                        </td>
+    				</tr>
+                    <tr>
+                        <td>
+                            <input type="submit" id="send_button" value="SEND">
+                        </td>
+                    </tr>                    
+    			</tr>    			
     		</table>
     	</form>
     </center>
@@ -72,7 +49,7 @@
         #send_button{
         	width:100;
         	height:40;
-        	color:green;
+            color:green;
         }
 
         #mm_reason{

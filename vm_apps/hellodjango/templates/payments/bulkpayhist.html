@@ -6,9 +6,9 @@
         </h1>
         <h3>
            
-            <a href="#" id="active">0zz</a>
+            <a href="{% url 'phistory' %}" >0zz</a>
            |
-  	        <a href="{% url 'bulkpayhist' %}">Bulk</a>
+  	        <a href="#" id="active">Bulk</a>
 
         </h3>
 	<center>
@@ -88,7 +88,53 @@
 			</tr>
 			{% endfor %}
 		</table>
-		
+		<div id="pag">
+		{% if users.has_other_pages %}
+		<ul class="pagination">
+		   {% if users.has_previous %}
+		    <li>
+                <a href="?page={{ users.previous_page_number }}">
+                   &laquo;
+                </a>
+            </li>
+           {% else %}
+            <li class="disabled">
+                <span>
+                  &laquo;
+                </span>
+            </li>
+           {% endif %}
+        {% for i in users.paginator.page_range %}
+           {% if users.number == i %}
+            <li class="active">
+                <span class="sr-only">
+                    <b>{{ i }}</b> 
+                </span>
+            </li>
+           {% else %}
+            <li>
+               <a href="?page={{ i }}">
+                 <b>{{ i }}</b>
+               </a>
+            </li>
+           {% endif %}
+        {% endfor %}
+           {% if users.has_next %}
+            <li>
+                <a href="?page={{ users.next_page_number }}">
+                   &raquo;
+                </a>
+            </li>
+           {% else %}
+            <li class="disabled">
+                <span>
+                  &raquo;
+                </span>
+            </li>
+           {% endif %}
+        </ul>
+        {% endif %}
+        </div>		
 		{% else %}
 			<p>Nothing to display</p>
 		{%endif %}
