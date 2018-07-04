@@ -22,7 +22,8 @@ def csv_download(request):
 	response = HttpResponse(content_type='csv')
 	response['Content-Disposition'] = 'attachment; filename=sample.csv'
 	writer = csv.writer(response, dialect=csv.excel)
-	writer.writerow(['Name', 'Contact','Amount',])
+	writer.writerow(['Name', 'Contact','Amount'])
+	print(response)
 	return response
 
 
@@ -43,7 +44,8 @@ def atbulk(request):
 		lines = file_data.split(',')
 
 		#filter thru
-		valid_lines = [num for num in lines[:3] if num != '\n']
+		new_list = [lines[i:i+3] for i in range(0, len(lines), 3)]
+		valid_lines = [num for num in new_list[:3] if num != '\n']
 		
 		#make set
 		set_lines = set(lines)
