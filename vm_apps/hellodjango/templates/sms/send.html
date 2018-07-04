@@ -5,9 +5,9 @@
      SMS  
     </h1>
      <h3>
-       <a href="{% url 'send_sms' %}" id="active" >Send</a>
+       <a href="{% url 'send_sms' %}" id="active" >SendSMS</a>
        |
-       <a href="{% url 'bulks' %}">Bulk</a>
+       <a href="{% url 'bulks' %}">BulkSMS</a>
        |
        <a href="{% url 'sms_schedule' %}">Schedule</a>
        |
@@ -20,6 +20,21 @@
 			<form  name="formt" action="{% url 'sacess'  %}">
 				{% csrf_token %}
 			<table id="tebo">
+				<tr>
+					<td>
+					    <b>Sender ID:</b>
+						<select style="width:220;height:35;" name="sender_id">
+						    <option value="SalaryPayment" >
+                              Default(Africastalking)
+                            </option>
+                            <option value="BusinessPayment">
+                              My Custom ID
+                            </option>                            
+                        </select>
+                    
+					</td>
+				</tr>
+
 				<tr>
 					<td>
 						<b>Phone:</b>

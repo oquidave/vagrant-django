@@ -5,12 +5,19 @@
           Airtime History 
         </h1>
         <h3>
-           
-            <a href="{% url 'ozz_history' %}">0zz</a>
+           <a href="{% url 'at_buy' %}">Buy</a>
            |
-  	       <a href="{% url 'mm_history' %}" id="active" >MobileMoney</a>
+           <a href="{% url 'airtime' %}">MobileMoneyBuy</a>
+           |
+           <a href="{% url 'atbulk' %}">BulkBuy</a>
+           |
+           <a href="{% url 'at_subscribe' %}">Subscribe</a>
+           |
+            <a href="{% url 'ozz_history' %}">BuyHistory</a>
+           |
+  	       <a href="{% url 'mm_history' %}" id="active" >MobileMoneyHistory</a>
   	       |
-  	       <a href="{% url 'bulkhist' %}">Bulk</a>
+  	       <a href="{% url 'bulkhist' %}">BulkHistory</a>
 
         </h3>
 	<center>

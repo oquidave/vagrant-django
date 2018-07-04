@@ -8,6 +8,9 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from .models import Payhist
 from .models import Bulkpayhist
 from django.contrib.auth.decorators import login_required
+
+
+
 # Create your views here.
 
 @login_required
@@ -30,7 +33,7 @@ def index(request):
 
 		currencyCode = "UGX"
 
-		#consumers
+		#consumer
 		recipient = [{
 		"name": name,
         "phoneNumber": phoneNumber,
@@ -39,19 +42,18 @@ def index(request):
         "reason": reason,
         "metadata": {}
     	}]
-		        
-		print(recipient)
-
+		
+		#api call        
 		sand_key ="db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
 		africastalking.initialize(username='sandbox', api_key=sand_key)
 		payment = africastalking.Payment
 		res = payment.mobile_b2c(product_name='0zz', consumers=recipient)
-		print(res)
+		
 		#save history
 		pay_hist=Payhist(name=name,amount=currencyCode+amount,status="successful",destination=phoneNumber)
 		pay_hist.save()
 		stats = Payhist.objects.all()
-		print(stats)
+		#history
 		return redirect('phistory')
 	else:
 		return render(request, "payments/index.html")
@@ -110,7 +112,7 @@ def bulk_pay(request):
 			#group list into 10z
 			new_dict_list = [user_dict_list[i:i+10] for i in range(0,len(user_dict_list),10)]
 			recipient=[]
-			print(new_list)
+			#send to each group
 			for recipient in new_dict_list:
 				africastalking.initialize(username='sandbox', api_key=sand_key)
 				payment = africastalking.Payment

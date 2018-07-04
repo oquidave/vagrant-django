@@ -15,6 +15,18 @@ def index(request):
 	return render(request, "airtime/mm_buy.html")
 
 @login_required
+def csv_download(request): 
+	import csv
+
+	""" Renders a csv list  """
+	response = HttpResponse(content_type='csv')
+	response['Content-Disposition'] = 'attachment; filename=sample.csv'
+	writer = csv.writer(response, dialect=csv.excel)
+	writer.writerow(['Name', 'Contact','Amount',])
+	return response
+
+
+@login_required
 def atbulk(request):
 	data={}
 	if "POST" == request.method:
@@ -31,10 +43,11 @@ def atbulk(request):
 		lines = file_data.split(',')
 
 		#filter thru
-		valid_lines = [num for num in lines if num != '\n']
+		valid_lines = [num for num in lines[:3] if num != '\n']
 		
 		#make set
 		set_lines = set(lines)
+		print(valid_lines)
 		#filter set
 		valid_numbers = [num for num in set_lines if len(num)>3]
 		

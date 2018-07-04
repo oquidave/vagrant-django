@@ -5,10 +5,15 @@
           Payments History 
         </h1>
         <h3>
-           
-            <a href="{% url 'phistory' %}" >0zz</a>
+           <a href="{% url 'payments' %}" class="page" >Deposit</a>
            |
-  	        <a href="#" id="active">Bulk</a>
+           <a href="{% url 'bulk_pay' %}" class="page" >BulkPay</a>
+           |
+           <a href="{% url 'schedule_pay' %}" class="page" >Schedule</a>
+           |
+           <a href="{% url 'phistory' %}" >Deposits</a>
+           |
+  	        <a href="#" id="active">BulkHistory</a>
 
         </h3>
 	<center>

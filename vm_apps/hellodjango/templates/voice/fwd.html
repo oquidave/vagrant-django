@@ -1,10 +1,16 @@
 {% extends 'includes/newbes.html'%}
 {% block body_block %}
-<div style="padding-top:5%;">
+<div style="padding-top:2%;">
 <center>
 <h1>
-	Call Center
+	Business Call Center
 </h1>
+<h3>
+    <b id="active" >Center</b>
+    |
+    <a href="{% url 'vhistory' %}">Call Logs</a>
+</h3>
+
 
 <div id="fwno">
     <form name="addno" method="POST" action="{% url 'fwd' %}">
@@ -110,12 +116,33 @@
 
 </center>
 <style type="text/css">
+   
+    #active{
+          background:green;
+          height:80;
+          border:solid;
+          color:white;
+          width:300;
+          padding:20;
+          text-align:center;
+        }
+
 	#fwno{
 		float:right;
 		margin-right:20%;
 		width:20%;
 		
 	}
+
+	h3{
+		margin-left:10%;
+		float:left;
+	}
+
+    h3 a{
+     	color:red;
+    }
+
 
 	input{
 		color:green;
@@ -163,8 +190,8 @@
 
 	h1{
 		color:teal;
-		text-align:left;
-		margin-left:50;
+		margin-left:5%;
+		width:500;
 	}	
 </style>
 </div>

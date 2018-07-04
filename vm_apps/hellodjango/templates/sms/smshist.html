@@ -2,6 +2,16 @@
 {% block body_block %}
 <div id="bud" style="padding-top:2%;">
 <h1>SMS History</h1>
+<h3>
+    <a href="{% url 'send_sms' %}" >SendSMS</a>
+   |
+    <a href="{% url 'bulks' %}" >BulkSMS</a>
+   |
+    <a href="{% url 'sms_schedule' %}">Schedule</a>
+   |
+   <a href="#" id="active" >History</a>
+
+</h3>
 <center>
    {% if users %}
 		<table border="1" id="dbtable">
@@ -120,6 +130,25 @@
 </script>
 </div>
 	<style type="text/css">
+	   #active{
+         	background:green;
+         	height:80;
+         	border:solid;
+         	color:white;
+         	width:300;
+         	padding:20;
+         	text-align:center;
+
+        }
+
+        h3{
+			margin-left:10%;
+		}
+
+		a{
+        	color:teal;
+        }
+
 	   h1{
             margin-left:5%;
             color:teal;

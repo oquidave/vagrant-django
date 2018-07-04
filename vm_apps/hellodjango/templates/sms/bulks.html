@@ -5,9 +5,9 @@
      SMS  
     </h1>
      <h3>
-       <a href="{% url 'send_sms' %}" >Send</a>
+       <a href="{% url 'send_sms' %}" >SendSMS</a>
        |
-       <a href="{% url 'bulks' %}" id="active" >Bulk</a>
+       <a href="{% url 'bulks' %}" id="active" >BulkSMS</a>
        |
        <a href="{% url 'sms_schedule' %}">Schedule</a>
        |
@@ -18,6 +18,21 @@
 <form  action="{% url 'bulks' %}"  enctype="multipart/form-data">
 {% csrf_token %}
 	<table>
+
+	<tr>
+		<td>
+		    <b>Sender ID:</b>
+			<select style="width:220;height:35;" name="sender_id">
+		    <option value="SalaryPayment" >
+                Default(Africastalking)
+            </option>
+            <option value="BusinessPayment">
+                My Custom ID
+            </option>                            
+            </select>
+        </td>
+	</tr>
+		
 	<tr>
 	   <td>
 		<p>
@@ -25,7 +40,12 @@
 		      Upload Contacts 
 		    </b>
 		</p>
-			<input type="file" name="browse" value="browse" accept=".csv" required>
+			<input type="file" name="browse" value="browse" accept=".csv">
+		</td>
+		<td>
+			<button style="width:135;height:35;">
+				<b style="color:red;">Edit Sample</b>(<i style="color:green;">.csv</i>)
+			</button>
 		</td>
 	</tr>
 	<tr>
