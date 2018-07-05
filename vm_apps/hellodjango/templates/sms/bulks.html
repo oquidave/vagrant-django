@@ -43,9 +43,9 @@
 			<input type="file" name="browse" value="browse" accept=".csv">
 		</td>
 		<td>
-			<button style="width:135;height:35;">
-				<b style="color:red;">Edit Sample</b>(<i style="color:green;">.csv</i>)
-			</button>
+			<a style="width:135;height:35;;margin-top:100;" href="{% url 'sms_csv_download' %}" >
+		<b style="color:red;">Download</b>(<i style="color:green;">.csv</i>)
+	</a>
 		</td>
 	</tr>
 	<tr>

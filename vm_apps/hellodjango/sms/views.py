@@ -22,6 +22,22 @@ def send_sms(request):
    else:
       return render(request,'sms/send.html')
 
+#csv download
+@login_required
+def sms_csv_download(request): 
+   import csv
+
+   """ Renders a csv list  """
+   response = HttpResponse(content_type='csv')
+   response['Content-Disposition'] = 'attachment; filename=sample.csv'
+   writer = csv.writer(response, dialect=csv.excel)
+   writer.writerow(['Name','Contact'])
+   writer.writerow(['name_1','name1_contact'])
+   writer.writerow(['name_2','name2_contact'])
+   return response
+
+
+
 @login_required
 def bulks(request):
    data = {}

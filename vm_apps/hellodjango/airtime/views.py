@@ -49,25 +49,25 @@ def atbulk(request):
 		required_data = [elem for elem in rowz[1:]]
 			
 		for user in required_data:
-			user_items = re.split(',',user)
-			if len(user_items)>1:
-				#instatiate Africa's talking api
-				api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
-				username= "sandbox"
-				africastalking.initialize(username=username,api_key=api_key)
-				airtime =africastalking.Airtime
+			for user in rowz[1:]:
+				user_items = re.split(',',user)
+				if len(user_items)>1:
+					#instatiate Africa's talking api
+					api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
+					username= "sandbox"
+					africastalking.initialize(username=username,api_key=api_key)
+					airtime =africastalking.Airtime
+					#send
+					res = airtime.send(phone_number="+256"+user_items[0],amount="UGX "+user_items[1])
+					print(res)
+					#save to model
+					users = Bulkhist(amount="UGX "+user_items[1],status="sent", destination="+256"+user_items[0])
+					users.save()
 
-				#send
-				res = airtime.send(phone_number="+256"+user_items[0],amount="UGX "+user_items[1])
-				print(res)
-				#save to model
-				users = Bulkhist(amount="UGX "+user_items[1],status="sent", destination="+256"+user_items[0])
-				users.save()				
-				
-				#redirect to history
-				return redirect('bulkhist')								
-			else:
-				pass		
+					#redirect to history
+					return redirect('bulkhist')
+				else:
+					pass		
 	elif request.method=="GET":
 		stats = Bulkhist.objects.all()
 		return render(request, 'airtime/atbulk.html',{"stats":stats})
