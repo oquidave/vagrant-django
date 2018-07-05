@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 import africastalking
+from django.contrib import messages
 import codecs
+import re
 import csv
 from django.http import HttpResponse
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
@@ -60,7 +62,7 @@ def index(request):
 
 
 @login_required
-def csv_download(request): 
+def pcsv_download(request): 
 	import csv
 
 	""" Renders a csv list  """
@@ -87,62 +89,41 @@ def bulk_pay(request):
 		#read into file
 		file_data = csv_file.read().decode("utf-8")
 		
-		#split into lines//make list
-		mo = file_data.split('\n')
-		lines = file_data.split(',')
-
-
-
-		file_reader = csv.reader(file_data, delimiter=',')
-		#for  row in file_reader:
-			#first_row=row[0]
-			#print()
-
-
-		#first line
-		rows = lines[:3]
-		rs = mo[1:]
-
-		#skip first line
-		r = [elem for elem in lines if elem not in set(rs) ]
-		print(lines)
-
+		#split at line end
+		rowz = re.split('\n', file_data)
 		
-		#skip first 3 and "\n"		
-		row_data = [elem for elem in lines if elem not in set(rows)]
-		var_x = [row for row in mo if row not in set(rs) ]
-		
-		#group into 3s
-		new_list = [var_x[i:i+3] for i in range(0, len(var_x), 3)]
-		user_dict_list = []
 
-		print(rows)
-
-		for user_list in new_list:
-			user_dict = {}
-			user_dict['name'] = "".join(user_list[0])
-			user_dict['phoneNumber'] = "+256"+user_list[1]
-			user_dict['currencyCode'] = "UGX"
-			user_dict['amount'] = user_list[2]			
-			user_dict['reason'] = "SalaryPaymentWithWithdrawalChargePaid"
-			user_dict['metadata'] = {}			
-			user_dict_list.append(user_dict)				
-		
+		#what I want
+		required_data = [elem for elem in rowz[1:]]
+		recipients = []		
+		for user in required_data:
+			user_items = re.split(',',user)
+			if len(user_items)>1:
+				recipient = {}
+				recipient['name']= user_items[0]
+				recipient['phoneNumber'] = "+256"+user_items[1]
+				recipient['currencyCode'] = "UGX"
+				recipient['amount'] = user_items[2]
+				recipient['reason'] = "SalaryPaymentWithWithdrawalChargePaid"
+				recipient['metadata'] = {}
+				recipients.append(recipient)				
+			else:
+				pass		
+        
+        #send
 		sand_key ="db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
-		
-		if len(user_dict_list)<=10:
+		if len(recipients)<=10:
 			africastalking.initialize(username='sandbox', api_key=sand_key)
 			payment = africastalking.Payment
-			res = payment.mobile_b2c(product_name='0zz', consumers=user_dict_list)
+			res = payment.mobile_b2c(product_name='0zz', consumers=recipients)
+			print(res)
 			#save history
 			user = []
-			for user in new_list:
-				hist=Bulkpayhist(name=user[0],amount="UGX"+user[2],status="successful",destination="+256"+user[1])
-				hist.save()			
-
+			#for user in rowz[1:]:
+				#hist=Bulkpayhist(name=user[0],amount="UGX"+user[2],status="successful",destination="+256"+user[1])
+				#hist.save()
 		else:
-			#group list into 10z
-			new_dict_list = [user_dict_list[i:i+10] for i in range(0,len(user_dict_list),10)]
+			new_dict_list = [recipients[i:i+10] for i in range(0,len(recipients),10)]
 			recipient=[]
 			#send to each group
 			for recipient in new_dict_list:
@@ -151,9 +132,9 @@ def bulk_pay(request):
 				res = payment.mobile_b2c(product_name='0zz', consumers=recipient)
 				#save history
 				user = []
-				for user in new_list:
-					hist=Bulkpayhist(name=user[0],amount="UGX"+user[2],status="successful",destination="+256"+user[1])
-					hist.save()
+				#for user in new_list:
+					#hist=Bulkpayhist(name=user[0],amount="UGX"+user[2],status="successful",destination="+256"+user[1])
+					#hist.save()
 		#history
 		return redirect('bulkpayhist')
 	else:
@@ -187,3 +168,49 @@ def bulkpayhist(request):
 def schedule_pay(request):
 	return render(request, 'payments/schedule_pay.html')
         
+
+
+#deletes here
+#bulkpay table delete
+@login_required
+def del_hist(request):
+	if request.method == "GET":
+		drop_hist = Bulkpayhist.objects.all()
+		drop_hist.delete()
+		return redirect('bulkpayhist')
+	else:
+		return redirect('bulkpayhist')
+
+#bulkpay item delete
+@login_required
+def del_item(request,id):
+	if request.method == "GET":
+		id_match = Bulkpayhist.objects.get(id=id)
+		id_match.delete()
+		messages.add_message(request, messages.INFO, 'Item Deleted')
+		return redirect('bulkpayhist')
+	else:
+		return redirect('bulkpayhist')
+
+#deposits table delete
+@login_required
+def deposits_del(request):
+	if request.method == "GET":
+		drop_hist = Payhist.objects.all()
+		drop_hist.delete()
+		return redirect('phistory')
+	else:
+		return redirect('phistory')
+
+#deposits item delete
+@login_required
+def del_deposit(request,id):
+	if request.method == "GET":
+		id_match = Payhist.objects.get(id=id)
+		id_match.delete()
+		messages.add_message(request, messages.INFO, 'Item Deleted')
+		return redirect('phistory')
+	else:
+		return redirect('phistory')
+
+

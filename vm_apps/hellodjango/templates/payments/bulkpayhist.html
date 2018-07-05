@@ -29,7 +29,9 @@
                 </ul>
             {% endif %}
             <div style="padding-top:20;" id="clear_history">
-        	    <a href="#" onclick="warn()" id="clear">Delete all</a>
+        	    <a href="{% url 'del_hist' %}" onclick="warn()" id="clear">
+        	      Delete all
+        	      </a>
             </div>
             <br>
 			<tr class="fixed">
@@ -86,7 +88,7 @@
 				   <i style="color:orange;">0zz</i>
 				</td>
 				<td>
-				    <a href="#" onclick="warn()">
+				    <a href="/payments/del_item/{{user.id}}" onclick="warn()">
 				       <i style="color:red;">Delete</i>
 				    </a>
 				</td>

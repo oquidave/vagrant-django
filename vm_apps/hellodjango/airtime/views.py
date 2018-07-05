@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib import messages
+import re
 from .models import Athist
 from .models import Buyhist
 from .models import Bulkhist
@@ -22,10 +23,9 @@ def csv_download(request):
 	response = HttpResponse(content_type='csv')
 	response['Content-Disposition'] = 'attachment; filename=sample.csv'
 	writer = csv.writer(response, dialect=csv.excel)
-	writer.writerow(['Name', 'Contact','Amount'])
-	writer.writerow(['receiver_1', 'Contact_1','Amount_1'])
-	writer.writerow(['receiver_2', 'Contact_2','Amount_2'])
-	print(response)
+	writer.writerow(['Contact','Amount'])
+	writer.writerow(['Contact_1','Amount_1'])
+	writer.writerow(['Contact_2','Amount_2'])
 	return response
 
 
@@ -41,25 +41,16 @@ def atbulk(request):
 		
 		#read into file
 		file_data = csv_file.read().decode("utf-8")
-		
-		#split into lines
-		lines = file_data.split(',')
 
-		#filter thru
-		new_list = [lines[i:i+3] for i in range(0, len(lines), 3)]
-		valid_lines = [num for num in new_list[:3] if num != '\n']
-		
-		#make set
-		set_lines = set(lines)
-		print(valid_lines)
-		#filter set
-		valid_numbers = [num for num in set_lines if len(num)>3]
-		
-		#iterate over nums
-		for no in valid_lines:
-			for no in valid_numbers:
-
-							
+		#split at line end
+		rowz = re.split('\n', file_data)
+		#print(rowz)
+		#what I want
+		required_data = [elem for elem in rowz[1:]]
+			
+		for user in required_data:
+			user_items = re.split(',',user)
+			if len(user_items)>1:
 				#instatiate Africa's talking api
 				api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
 				username= "sandbox"
@@ -67,14 +58,16 @@ def atbulk(request):
 				airtime =africastalking.Airtime
 
 				#send
-				res = airtime.send(phone_number=no,amount="UGX "+amount)
-				
+				res = airtime.send(phone_number="+256"+user_items[0],amount="UGX "+user_items[1])
+				print(res)
 				#save to model
-				users = Bulkhist(amount=amount,status="sent", destination=no)
+				users = Bulkhist(amount="UGX "+user_items[1],status="sent", destination="+256"+user_items[0])
 				users.save()				
 				
-				#redirect to history 
-			return redirect('bulkhist')
+				#redirect to history
+				return redirect('bulkhist')								
+			else:
+				pass		
 	elif request.method=="GET":
 		stats = Bulkhist.objects.all()
 		return render(request, 'airtime/atbulk.html',{"stats":stats})
