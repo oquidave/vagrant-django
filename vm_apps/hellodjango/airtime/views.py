@@ -23,6 +23,8 @@ def csv_download(request):
 	response['Content-Disposition'] = 'attachment; filename=sample.csv'
 	writer = csv.writer(response, dialect=csv.excel)
 	writer.writerow(['Name', 'Contact','Amount'])
+	writer.writerow(['receiver_1', 'Contact_1','Amount_1'])
+	writer.writerow(['receiver_2', 'Contact_2','Amount_2'])
 	print(response)
 	return response
 

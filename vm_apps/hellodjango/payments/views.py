@@ -60,6 +60,21 @@ def index(request):
 
 
 @login_required
+def csv_download(request): 
+	import csv
+
+	""" Renders a csv list  """
+	response = HttpResponse(content_type='csv')
+	response['Content-Disposition'] = 'attachment; filename=sample.csv'
+	writer = csv.writer(response, dialect=csv.excel)
+	writer.writerow(['Name', 'Contact','Amount'])
+	writer.writerow(['receiver_1', 'Contact_1','Amount_1'])
+	writer.writerow(['receiver_2', 'Contact_2','Amount_2'])
+	print(response)
+	return response
+
+
+@login_required
 def bulk_pay(request):
 	data = {}
 	if request.method == "POST":
@@ -73,18 +88,35 @@ def bulk_pay(request):
 		file_data = csv_file.read().decode("utf-8")
 		
 		#split into lines//make list
+		mo = file_data.split('\n')
 		lines = file_data.split(',')
-		
-		#first 3
+
+
+
+		file_reader = csv.reader(file_data, delimiter=',')
+		#for  row in file_reader:
+			#first_row=row[0]
+			#print()
+
+
+		#first line
 		rows = lines[:3]
+		rs = mo[1:]
+
+		#skip first line
+		r = [elem for elem in lines if elem not in set(rs) ]
+		print(lines)
+
 		
-		#skip first 3 and "\n"
+		#skip first 3 and "\n"		
 		row_data = [elem for elem in lines if elem not in set(rows)]
-		var_x = [row for row in row_data if row != "\n"]
+		var_x = [row for row in mo if row not in set(rs) ]
 		
 		#group into 3s
 		new_list = [var_x[i:i+3] for i in range(0, len(var_x), 3)]
 		user_dict_list = []
+
+		print(rows)
 
 		for user_list in new_list:
 			user_dict = {}

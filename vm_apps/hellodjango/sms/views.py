@@ -34,23 +34,24 @@ def bulks(request):
 
       #read into file
       file_data = csv_file.read().decode("utf-8")
+      
       #split into lines
       lines = file_data.split(',')
-      print(lines)
+      
       #filterthrough
-      sot = [num for num in lines if num != '\n']
-      print(sot)
+      numbers = [num for num in lines if num != '\n']
+      
 
       #make set
-      s = set(lines)
-      print(s)
+      number_set = set(lines)
+      
       #filterthrough
-      x = [num for num in s if len(num)>3]
-      print(x)
+      valid_numbers = [num for num in s if len(num)>9]
+      
 
       #iterate over set and lines
-      for no in sot:
-         for no in x:
+      for no in numbers:
+         for no in valid_numbers:
             print(no)
             #instatiate Africa's talking api
             api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
@@ -60,12 +61,10 @@ def bulks(request):
          
             #send
             response = sms.send(message,[no])
-            print(response)
+            
             #save to model
             sms_stats = Smshist(content=message,status="sent", destination=no)
-            sms_stats.save()
-            #res=print(sms_stats)
-            #redirect to history
+            sms_stats.save()           
             
          return redirect('smshistory')
    elif request.method=="GET":
