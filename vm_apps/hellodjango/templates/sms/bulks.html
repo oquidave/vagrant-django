@@ -1,5 +1,11 @@
 {% extends 'includes/newbes.html' %}
+{% load staticfiles %}
 {% block body_block %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
+    <link href='http://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet' type='text/css'>
+</head>
 <div style="padding-top:2%;">
     <h1>
      SMS  
@@ -21,31 +27,40 @@
 
 	<tr>
 		<td>
-		    <b>Sender ID:</b>
+			<b>Sender ID</b>
+		</td>
+	</tr>
+	<tr>
+		<td>		    
 			<select style="width:220;height:35;" name="sender_id">
-		    <option value="SalaryPayment" >
-                Default(Africastalking)
-            </option>
-            <option value="BusinessPayment">
-                My Custom ID
-            </option>                            
+		        <option value="SalaryPayment" >
+                   Default(Africastalking)
+                </option>
+                <option value="BusinessPayment">
+                   My Custom ID
+                </option>                            
             </select>
         </td>
 	</tr>
-		
+	
 	<tr>
-	   <td>
-		<p>
-		    <b>
+		<td>
+			<b>
 		      Upload Contacts 
 		    </b>
-		</p>
+		</td>
+	</tr>	
+	<tr>
+	   <td>
 			<input type="file" name="browse" value="browse" accept=".csv">
 		</td>
 		<td>
-			<a style="width:135;height:35;;margin-top:100;" href="{% url 'sms_csv_download' %}" >
-		<b style="color:red;">Download</b>(<i style="color:green;">.csv</i>)
-	</a>
+			<a href="{% url 'sms_csv_download' %}" >
+		        <b style="color:red;">
+		           Download
+		        </b>
+		        (<i style="color:green;">.csv</i>)
+		    </a>
 		</td>
 	</tr>
 	<tr>
@@ -75,13 +90,12 @@
         border:solid;
         color:white;
         width:300;
-        padding:20;
+        padding:2;
         text-align:center;
     }
 
     h1{
         margin-left:5%;
-        color:teal;
         width:500;
     }
 

@@ -1,6 +1,12 @@
 {% extends 'includes/newbes.html' %}
+{% load staticfiles %}
 {% block body_block %}
-<div style="padding-top:2%;">
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+<div style="padding-top:2%;height:100%;">
     <h1>
      SMS  
     </h1>
@@ -20,9 +26,13 @@
 			<form  name="formt" method="POST" action="{% url 'send_sms'  %}">
 				{% csrf_token %}
 			<table id="tebo">
+			    <tr>
+			    	<td>
+			    		<b>Sender ID</b>
+			    	</td>
+			    </tr>
 				<tr>
-					<td>
-					    <b>Sender ID:</b>
+					<td>					    
 						<select style="width:220;height:35;" name="sender_id">
 						    <option value="SalaryPayment" >
                               Default(Africastalking)
@@ -30,38 +40,48 @@
                             <option value="BusinessPayment">
                               My Custom ID
                             </option>                            
-                        </select>
-                    
+                        </select>                    
 					</td>
 				</tr>
 
 				<tr>
-					<td>
-						<b>Name:</b>
-					     <input id="receiver" name="name" placeholder="Enter recipient name here" width="40"  required>
+			    	<td>
+			    		<b>Name</b>
+			    	</td>
+			    </tr>
+				<tr>
+					<td>						
+					    <input id="receiver" name="name" placeholder="Enter recipient name here" width="40"  required>
 					</td>
 				</tr>
 
 				<tr>
-					<td>
-						<b>Phone:</b>
+			    	<td>
+			    		<b>Phone</b>
+			    	</td>
+			    </tr>
+				<tr>
+					<td>						
 					     <input id="receiver" name="phone" placeholder="Enter recipient no. here" width="40" minlength="13" maxlength="13" required>
 					</td>
 				</tr>
+
 				<tr>
-					<td>
-						<p>
-							<b>
-							  Message
-						    </b>
-						</p>
+			    	<td>
+			    		<b>
+						  Message
+						</b>
+			    	</td>
+			    </tr>
+				<tr>
+					<td>						
 						<textarea type="text" id="messg" name="sms_message"
 						{% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %} minlength="3" maxlength="99999999999910" required></textarea>
 					</td>	
 				</tr>
 				<tr>
 					<td>
-						<input type="submit" value="SEND">								
+						<input type="submit" style="height:30;width:80;" value="SEND">								
 					</td>
 				</tr>
 			</div>
@@ -77,11 +97,11 @@
 
 		#active{
           background:green;
-          height:80;
+          height:35;
           border:solid;
           color:white;
           width:300;
-          padding:20;
+          padding:2;
           text-align:center;
         }
 
@@ -107,7 +127,6 @@
 
 		h1{
             margin-left:5%;
-            color:teal;
             width:500;
         }
 

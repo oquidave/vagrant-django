@@ -17,6 +17,10 @@ def index(request):
    return render(request, "sms/index.html")
 
 @login_required
+def sms_tiles(request):
+   return render(request, "sms/sms_tiles.html")
+
+@login_required
 def send_sms(request):
    if request.method =="POST":
       #get    

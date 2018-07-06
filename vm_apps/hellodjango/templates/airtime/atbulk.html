@@ -1,6 +1,12 @@
 {% extends 'includes/newbes.html' %}
+{% load staticfiles %}
 {% block body_block %}
 <div style="padding-top:2%;">
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
 <h1>
   Airtime  
 </h1>
@@ -46,7 +52,6 @@
    
    h1{
     margin-left:5%;
-    color:teal;
     width:500;
     }
 
@@ -57,7 +62,7 @@
     border:solid;
     color:white;
     width:300;
-    padding:20;
+    padding:2;
     text-align:center;
   }
 

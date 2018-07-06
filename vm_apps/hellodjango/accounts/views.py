@@ -61,14 +61,11 @@ def profile(request):
 		first_name = request.POST.get('first_name')
 		last_name = request.POST.get('last_name')
 		email = request.POST.get('email')
-		phone = request.POST.get('phone')
 		password = request.POST.get('password')
 		user = request.user
 		user.first_name = first_name
 		user.last_name = last_name
 		user.email = email
-		user.phone = phone
-	if password.strip() is not None:
 		user.password = password
 		user.save()
 		messages.success(request, 'profile has been saved')
