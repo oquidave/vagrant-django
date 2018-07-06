@@ -17,7 +17,7 @@
      </h3>
 	<center>
 	<div id="tad">
-			<form  name="formt" action="{% url 'sacess'  %}">
+			<form  name="formt" method="POST" action="{% url 'send_sms'  %}">
 				{% csrf_token %}
 			<table id="tebo">
 				<tr>
@@ -38,7 +38,7 @@
 				<tr>
 					<td>
 						<b>Name:</b>
-					     <input id="receiver" name="phone" placeholder="Enter recipient name here" width="40" minlength="13" maxlength="13" required>
+					     <input id="receiver" name="name" placeholder="Enter recipient name here" width="40"  required>
 					</td>
 				</tr>
 
@@ -61,9 +61,7 @@
 				</tr>
 				<tr>
 					<td>
-						<button type="submit" formmethod="POST" onclick="wait()" action="sms/sms.html">
-						SEND
-					</button>
+						<input type="submit" value="SEND">								
 					</td>
 				</tr>
 			</div>

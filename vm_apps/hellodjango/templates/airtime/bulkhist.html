@@ -39,34 +39,42 @@
             <br>
 			<tr class="fixed">
 				<td>
-				<b>
-				  Date
-				</b>
+				    <b>
+				       Date
+				    </b>
+				</td>
+
+				<td>
+				    <b>
+				       Name
+				    </b>
+				</td>
+				
+				<td>
+				    <b>
+				       Amount
+				    </b>
 				</td>
 				<td>
-				<b>
-				  Amount
-				</b>
+				    <b>
+				      Destination
+				    </b>
 				</td>
 				<td>
-				<b>
-				  Destination
-				</b>
+				    <b>
+				      Status
+				    </b>
 				</td>
 				<td>
-				<b>
-				  Status
-				</b>
-				</td>
-				<td>
-				<b>
-				  Action
-				</b>
+				    <b>
+				     Action
+				    </b>
 				</td>
 			</tr>
 			{% for user in users %}
 			<tr class="fixed1">
                 <td>{{user.date}}</td>
+                <td>{{user.name}}</td>
 				<td>{{user.amount}}</td>
 				<td>{{user.destination}}</td>
 				<td>{{user.status}}</td>

@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 import africastalking
+import re
 from django.contrib import messages
 from .models import Smshist
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
@@ -18,7 +19,21 @@ def index(request):
 @login_required
 def send_sms(request):
    if request.method =="POST":
-      return render(request,"sms/sms.html",{"sms_message":message,"phone":phone})
+      #get    
+      message = request.POST.get("sms_message")
+      name = request.POST.get("name")
+      phone= request.POST.get("phone")
+      #initiate gateway
+      api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
+      username= "sandbox"
+      africastalking.initialize(username=username,api_key=api_key)
+      sms =africastalking.SMS
+      #send
+      response = sms.send(message,[phone])
+      #save history
+      sms_stats = Smshist(name=name,content=message,status="sent", destination=phone)
+      sms_stats.save()
+      return redirect('smshistory')
    else:
       return render(request,'sms/send.html')
 
@@ -42,47 +57,35 @@ def sms_csv_download(request):
 def bulks(request):
    data = {}
    if request.method == "POST":
-      #get message content
+      #get 
       message=request.POST.get('sms_message')
-
-      #get file content
       csv_file = request.FILES["browse"]
-
       #read into file
       file_data = csv_file.read().decode("utf-8")
-      
-      #split into lines
-      lines = file_data.split(',')
-      
-      #filterthrough
-      numbers = [num for num in lines if num != '\n']
-      
-
-      #make set
-      number_set = set(lines)
-      
-      #filterthrough
-      valid_numbers = [num for num in s if len(num)>9]
-      
-
-      #iterate over set and lines
-      for no in numbers:
-         for no in valid_numbers:
-            print(no)
-            #instatiate Africa's talking api
+      #split at line end
+      rowz = re.split('\n', file_data)
+      #what I want      
+      recipients = []      
+      for user in rowz[1:]:
+         user_items = re.split(',',user)
+         if len(user_items)>1:
+            recipient = {}
+            recipient['name']= user_items[0]
+            recipient['phoneNumber'] = "+256"+user_items[1]
+            recipients.append(recipient)
+            #save history
+            sms_stats = Smshist(name=user_items[0],content=message,status="sent", destination="+256"+user_items[1])
+            sms_stats.save() 
+            #send
             api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
-            username= "sandbox"
+            username = 'sandbox'
             africastalking.initialize(username=username,api_key=api_key)
             sms =africastalking.SMS
-         
-            #send
-            response = sms.send(message,[no])
-            
-            #save to model
-            sms_stats = Smshist(content=message,status="sent", destination=no)
-            sms_stats.save()           
-            
-         return redirect('smshistory')
+            response = sms.send(message,["+256"+user_items[1]])           
+         else:
+            pass     
+      #history
+      return redirect('smshistory')      
    elif request.method=="GET":
       return render(request, 'sms/bulks.html',data)
    else:
@@ -94,7 +97,6 @@ def smshistory(request):
    if request.method == "POST":
       sms_stats = Smshist.objects.order_by("-date")
       return render(request, "sms/smshist.html", {'sms_stats':sms_stats})
-
    elif request.method == "GET":
       sms_stats = Smshist.objects.order_by("-date")
       page = request.GET.get('page', 1)
@@ -108,33 +110,13 @@ def smshistory(request):
       
       return render(request,'sms/smshist.html',{'users':users})
 
-@login_required
-def sacess(request):
-   
-      message = request.POST.get("sms_message")
-      phone= request.POST.get("phone")
-
-
-      api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
-      username= "sandbox"
-      africastalking.initialize(username=username,api_key=api_key)
-      sms =africastalking.SMS
-      response = sms.send(message,[phone])
-      print(response)
-
-      sms_stats = Smshist(content=message,status="sent", destination=phone)
-      sms_stats.save()
-      res=print(sms_stats)
-
-      return redirect('smshistory')
-
-
 
 @login_required
 def sms_schedule(request):
    return render(request,"sms/sms_schedule.html")
    
-
+#deletes
+#sms hist item delete
 @login_required
 def delete(request,id):
    print(id)
@@ -142,6 +124,16 @@ def delete(request,id):
    id_match.delete()
    messages.add_message(request, messages.INFO, 'Item Deleted')
    return redirect('smshistory')
+
+#sms hist table delete
+@login_required
+def smshist_delete(request):
+   if request.method == "GET":
+      hist_delete = Smshist.objects.all()
+      hist_delete.delete()
+      return redirect('smshistory')
+   else:
+      return redirect('smshistory')
 
 
 

@@ -67,7 +67,7 @@ def pcsv_download(request):
 
 	""" Renders a csv list  """
 	response = HttpResponse(content_type='csv')
-	response['Content-Disposition'] = 'attachment; filename=sample.csv'
+	response['Content-Disposition'] = 'attachment; filename=receivers.csv'
 	writer = csv.writer(response, dialect=csv.excel)
 	writer.writerow(['Name', 'Contact','Amount'])
 	writer.writerow(['receiver_1', 'Contact_1','Amount_1'])
@@ -94,9 +94,8 @@ def bulk_pay(request):
 		
 
 		#what I want
-		required_data = [elem for elem in rowz[1:]]
 		recipients = []		
-		for user in required_data:
+		for user in rowz[1:]:
 			user_items = re.split(',',user)
 			if len(user_items)>1:
 				recipient = {}
@@ -106,22 +105,19 @@ def bulk_pay(request):
 				recipient['amount'] = user_items[2]
 				recipient['reason'] = "SalaryPaymentWithWithdrawalChargePaid"
 				recipient['metadata'] = {}
-				recipients.append(recipient)				
+				recipients.append(recipient)
+				#save history
+				hist=Bulkpayhist(name=user_items[0],amount="UGX"+user_items[2],status="successful",destination="+256"+user_items[1])
+				hist.save()				
 			else:
-				pass		
-        
+				pass        
         #send
 		sand_key ="db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
 		if len(recipients)<=10:
 			africastalking.initialize(username='sandbox', api_key=sand_key)
 			payment = africastalking.Payment
 			res = payment.mobile_b2c(product_name='0zz', consumers=recipients)
-			print(res)
-			#save history
-			user = []
-			#for user in rowz[1:]:
-				#hist=Bulkpayhist(name=user[0],amount="UGX"+user[2],status="successful",destination="+256"+user[1])
-				#hist.save()
+			print(res)			
 		else:
 			new_dict_list = [recipients[i:i+10] for i in range(0,len(recipients),10)]
 			recipient=[]
@@ -129,12 +125,7 @@ def bulk_pay(request):
 			for recipient in new_dict_list:
 				africastalking.initialize(username='sandbox', api_key=sand_key)
 				payment = africastalking.Payment
-				res = payment.mobile_b2c(product_name='0zz', consumers=recipient)
-				#save history
-				user = []
-				#for user in new_list:
-					#hist=Bulkpayhist(name=user[0],amount="UGX"+user[2],status="successful",destination="+256"+user[1])
-					#hist.save()
+				res = payment.mobile_b2c(product_name='0zz', consumers=recipient)				
 		#history
 		return redirect('bulkpayhist')
 	else:

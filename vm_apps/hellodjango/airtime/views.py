@@ -18,16 +18,14 @@ def index(request):
 @login_required
 def csv_download(request): 
 	import csv
-
 	""" Renders a csv list  """
 	response = HttpResponse(content_type='csv')
-	response['Content-Disposition'] = 'attachment; filename=sample.csv'
+	response['Content-Disposition'] = 'attachment; filename=receivers.csv'
 	writer = csv.writer(response, dialect=csv.excel)
-	writer.writerow(['Contact','Amount'])
-	writer.writerow(['Contact_1','Amount_1'])
-	writer.writerow(['Contact_2','Amount_2'])
+	writer.writerow(['Name', 'Contact','Amount'])
+	writer.writerow(['receiver_1', 'Contact_1','Amount_1'])
+	writer.writerow(['receiver_2', 'Contact_2','Amount_2'])
 	return response
-
 
 @login_required
 def atbulk(request):
@@ -40,34 +38,34 @@ def atbulk(request):
 		csv_file = request.FILES["contacts"]
 		
 		#read into file
-		file_data = csv_file.read().decode("utf-8")
+		file_data = csv_file.read().decode("utf-8")		
 
 		#split at line end
-		rowz = re.split('\n', file_data)
-		#print(rowz)
-		#what I want
-		required_data = [elem for elem in rowz[1:]]
-			
-		for user in required_data:
-			for user in rowz[1:]:
-				user_items = re.split(',',user)
-				if len(user_items)>1:
-					#instatiate Africa's talking api
-					api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
-					username= "sandbox"
-					africastalking.initialize(username=username,api_key=api_key)
-					airtime =africastalking.Airtime
-					#send
-					res = airtime.send(phone_number="+256"+user_items[0],amount="UGX "+user_items[1])
-					print(res)
-					#save to model
-					users = Bulkhist(amount="UGX "+user_items[1],status="sent", destination="+256"+user_items[0])
-					users.save()
+		rowz = re.split('\n', file_data)		
 
-					#redirect to history
-					return redirect('bulkhist')
-				else:
-					pass		
+		#what I want		
+		recipients = []		
+		for user in rowz[1:]:
+			user_items = re.split(',',user)
+			if len(user_items)>1:
+				recipient = {}
+				recipient['name']= user_items[0]
+				recipient['phoneNumber'] = "+256"+user_items[1]
+				recipient['amount'] = user_items[2]				
+				recipients.append(recipient)
+				#save history
+				hist=Bulkhist(name=user_items[0],amount="UGX"+user_items[2],status="successful",destination="+256"+user_items[1])
+				hist.save()	
+				#send
+				api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
+				username = 'sandbox'
+				africastalking.initialize(username=username,api_key=api_key)
+				airtime = africastalking.Airtime
+				res = airtime.send(phone_number="+256"+user_items[1],amount="UGX "+user_items[2])				
+			else:
+				pass		
+		#history
+		return redirect('bulkhist')
 	elif request.method=="GET":
 		stats = Bulkhist.objects.all()
 		return render(request, 'airtime/atbulk.html',{"stats":stats})
@@ -118,8 +116,7 @@ def mm_history(request):
 		except PageNotAnInteger:
 			users = paginator.page(1)
 		except EmptyPage:
-			users = paginator.page(paginator.num_pages)
-		
+			users = paginator.page(paginator.num_pages)		
 		return render( request,"airtime/mm_history.html",{"users":users})
 
 
@@ -152,7 +149,6 @@ def pay(phone, amount):
 	africastalking.initialize(username=username,api_key=api_key)
 	airtime = africastalking.Airtime
 	res = airtime.send(phone_number=phone,amount="UGX "+amount)
-	print(res)
 	if res.get('status') == 'sent':
 		return redirect('history')
 	else:
@@ -162,31 +158,22 @@ def pay(phone, amount):
 @login_required
 def at(request):
 	if request.method == 'POST':
-
-	   # try:
+	    #get	  
 	    chargephone = request.POST.get('chargephone')
 	    amount = request.POST.get('amount')
 	    phone = request.POST.get('phone')
-
+	    #instatiate gateway
 	    api_key = "db76dc5eb626a86afb261dc1eb729a5bd6c4c1ea04b5cec23162ae36f24bf377"
 	    username = 'sandbox'
-
 	    africastalking.initialize(username=username,api_key=api_key)		
 	    productName  = "0zz"
 	    # The phone number of the customer checking out
-	    phoneNumber=chargephone
-	    
+	    phoneNumber=chargephone	    
 	    # The 3-Letter ISO currency code for the checkout amount
-	    currencyCode = "UGX"
-	   	
-	   
-	    metadata = {"agentId" : "654","productId" : "321"}
-	    
-	    
-	    payment = africastalking.Payment
-	    
-	    res = payment.mobile_checkout(product_name=productName, phone_number=chargephone, currency_code=currencyCode, amount=amount, metadata=metadata)
-	    
+	    currencyCode = "UGX"	   
+	    metadata = {"agentId" : "654","productId" : "321"}   
+	    payment = africastalking.Payment	    
+	    res = payment.mobile_checkout(product_name=productName, phone_number=chargephone, currency_code=currencyCode, amount=amount, metadata=metadata)	    
 	    if(res.get('status') == 'PendingConfirmation'):
 	    	pay(phone, amount)
 	    	stats = Athist(amount=amount,status="sent", destination=phone,source=chargephone)
@@ -195,6 +182,7 @@ def at(request):
 	    	return redirect('mm_history')
 	    else:
 	    	print('No money')
+	    	pass
 	    return redirect('mm_history')
 
 @login_required
@@ -215,6 +203,9 @@ def at_buy(request):
 	return render(request,'airtime/at_buy.html')
 
 
+
+#deletes
+#bulk hist item delete
 @login_required
 def rm(request,id):
 	if request.method == "GET":
@@ -224,21 +215,7 @@ def rm(request,id):
 		return redirect('bulkhist')
 	else:
 		return redirect('bulkhist')
-
-
-
-@login_required
-def delit(request,id):
-	if request.method == "GET":
-		id_match = Athist.objects.get(id=id)
-		id_match.delete()
-		messages.add_message(request, messages.INFO, 'Item Deleted')
-		return redirect('mm_history')
-	else:
-		return redirect('mm_history')
-
-
-
+#bulk hist table delete
 @login_required
 def drop_table(request):
 	if request.method == "GET":
@@ -249,18 +226,48 @@ def drop_table(request):
 		return redirect('bulkhist')
 
 
+#mm hist item delete
+@login_required
+def delit(request,id):
+	if request.method == "GET":
+		id_match = Athist.objects.get(id=id)
+		id_match.delete()
+		messages.add_message(request, messages.INFO, 'Item Deleted')
+		return redirect('mm_history')
+	else:
+		return redirect('mm_history')
+#mmhist table delete
+@login_required
+def mmhist_delete(request):
+   if request.method == "GET":
+      hist_delete = Athist.objects.all()
+      hist_delete.delete()
+      return redirect('mm_history')
+   else:
+      return redirect('mm_history')
 
 
+#0zz item delete
 @login_required
 def delete(request,id):
 	if request.method == "GET":
-		print(id)
 		id_match = Buyhist.objects.get(id=id)
 		id_match.delete()
 		messages.add_message(request, messages.INFO, 'Item Deleted')
 		return redirect('ozz_history')
 	else:
 		return redirect('ozz_history')
+#ozz table delete
+@login_required
+def ozzhist_delete(request):
+   if request.method == "GET":
+      hist_delete = Buyhist.objects.all()
+      hist_delete.delete()
+      return redirect('ozz_history')
+   else:
+      return redirect('ozz_history')
+
+
 
 
 
