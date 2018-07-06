@@ -35,22 +35,17 @@ def signup(request):
 		logout(request)
 		return render(request, 'accounts/signup.html')
 	else:
-		country = request.POST.get('country')
 		first_name = request.POST.get('first_name')
 		last_name = request.POST.get('last_name')
 		username = request.POST.get('username')
 		email = request.POST.get('email')
 		phone = request.POST.get('phone')
-		user_contact = Contact(contact=phone)
-		user_contact.save()
 		password = request.POST.get('password')
 		user = User.objects.create_user(username = username,
 										first_name = first_name,
 										last_name = last_name,
 		 								email = email,		 								
-		 								password = password)
-
-	
+		 								password = password)	
 		user.save()
 		if user.pk:
 			messages.success(request, 'registration was successful')
