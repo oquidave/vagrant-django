@@ -9,6 +9,12 @@ from .models import Fwno
 import africastalking
 
 # Create your views here.
+
+@login_required
+def voice_tiles(request):
+	return render(request,'voice/voice_tiles.html')
+
+
 @csrf_exempt
 def kol(request):
 	#get column "num" from model

@@ -5,6 +5,7 @@ urlpatterns = [
     url(r'^$', views.index, name='airtime'),
     url(r'^ozz_history/$', views.ozz_history, name='ozz_history'),
     url(r'^at/$',views.at, name="at"),
+    url(r'^at_tiles/$',views.at_tiles, name="at_tiles"),
     url(r'^pay/$',views.pay,name="pay"),
     url(r'^csv_download/$',views.csv_download,name="csv_download"),
     url(r'^bulkhist/$',views.bulkhist,name="bulkhist"),

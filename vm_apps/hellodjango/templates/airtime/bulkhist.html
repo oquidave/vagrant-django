@@ -7,25 +7,18 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 <div style="padding-top:2%;">
-
+    <br>
     <h1>
           Airtime History 
         </h1>
         <h3>
-           <a href="{% url 'at_buy' %}">Buy</a>
-           |
-           <a href="{% url 'airtime' %}">MobileMoneyBuy</a>
-           |
-           <a href="{% url 'atbulk' %}">BulkBuy</a>
-           |
-           <a href="{% url 'at_subscribe' %}">Subscribe</a>
-           |
-            <a href="{% url 'ozz_history' %}">BuyHistory</a>
-           |
-  	       <a href="{% url 'mm_history' %}">MobileMoneyHistory</a>
-  	       |
-  	       <a href="{% url 'bulkhist' %}" id="active" >BulkHistory</a>
-
+            <a class="btn btn-default" id="buttn" href="{% url 'at_buy' %}">Buy</a>
+            <a class="btn btn-default" id="buttnx" href="{% url 'airtime' %}">MobileMoneyBuy</a>
+            <a class="btn btn-default" id="buttn" href="{% url 'atbulk' %}">BulkBuy</a>
+            <a class="btn btn-default" id="buttn" href="{% url 'at_subscribe' %}">Subscribe</a>
+            <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-default" >BuyHistory</a>
+            <a href="{% url 'mm_history' %}" id="xbuttnx" class="btn btn-default" >MobileMoneyHistory</a>
+  	        <a href="{% url 'bulkhist' %}" id="active" class="btn btn-default" >BulkHistory</a>
         </h3>
 	<center>
 	{% if users %}
@@ -156,16 +149,37 @@
 			width:500;
 		}
 
-		#active{
-         	background:green;
-         	height:80;
-         	border:solid;
-         	color:white;
-         	width:300;
-         	padding:2;
-         	text-align:center;
+	#active{
+    background:green;
+    height:40;
+    text-align:center;
+    color:white;
+    font-size: 15;
+    width:100;
+  }
 
-         }
+  #buttn{
+    height:40;
+    width:100;
+    background:#ce93d8;
+    font-size: 15;
+  }
+
+  #buttnx{
+    height:40;
+    width:150;
+    background:#ce93d8;
+    font-size: 15;
+  }
+
+  #xbuttnx{
+    height:40;
+    width:155;
+    background:#ce93d8;
+    font-size: 15;
+  }
+
+
 
 	    #clear{
 	    	float:right;

@@ -1,98 +1,79 @@
 {% extends 'includes/newbes.html' %}
+{% load staticfiles %}
 {% block body_block %}
-<div style="padding-top:10%;padding-left:10%;" >
-	<div id="graph_div">
-
-      <table id="t">
-        <tr>
-        <td>
-        <div id="bar_div">
-        <table>
-            <th>
-              <b id="yell">
-                Send
-              </b>
-            </th>
-            <tr>
-                <td>
-                    <output id="toto">
-                     To one receiver
-                    </output>
-                </td>
-            </tr>            
-        </table>
-    </div>
-  </td>
-  <td>
+<div style="padding-top:10%;text-align:center;" >
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+  </head>
     <div id="bar_div">
-      <table>
-            <th>
-              <b id="yell">
-                BulkSend
-              </b>
-            </th>
-            <tr>
-                <td>
-                    <output id="toto">
-                     2 or more receivers
-                    </output>
-                </td>
-            </tr>            
-        </table>
-    </div>
-  </td>
-</tr>
+      <table style="background:white;margin:auto;text-align:center;width:70%;height:60%;">
+        <tr>
+          <td>
+            <output id="toto">
+              <a href="{% url 'at_buy' %}">
+                <b style="font-size: 50;" class="glyphicon glyphicon-phone">               
+                </b>
+              </a>                      
+            </output>
+            <b id="yell">
+              <a href="{% url 'at_buy' %}">
+                Single receiver
+              </a>
+            </b>              
+          </td>
 
-<tr>
-    <td>
-    <div id="bar_div1">
-       <table>
-            <th>
-              <b id="yell">
-                Schedule
-              </b>
-            </th>
-            <tr>
-                <td>
-                    <output id="toto">
-                     Set
-                    </output>
-                </td>
-            </tr>            
-        </table>
-    </div>
-  </td>
-  
-  <td>
-    <div id="bar_div1">
-       <table>
-            <th>
-              <b id="yell">
+          <td>
+            <output id="toto">
+              <a href="{% url 'atbulk' %}">
+                <b style="font-size: 50;" class="glyphicon glyphicon-menu-hamburger">      
+                </b>
+              </a>                     
+            </output>
+            <b id="yell">
+              <a href="{% url 'atbulk' %}">
+                Multiple receivers
+              </a>
+            </b>                              
+          </td>          
+        </tr>     
+      
+        <tr>
+          <td>
+            <output id="toto">
+              <a href="{% url 'at_subscribe' %}">                     
+                <b style="font-size: 50;" class="glyphicon glyphicon-time">
+                </b>
+              </a>
+            </output>
+            <b id="yell">
+              <a href="{% url 'at_subscribe' %}">
+                Subscribe
+              </a>
+            </b>
+          </td>
+          <td>
+            <output id="toto">
+              <a href="{% url 'ozz_history' %}">
+                <b style="font-size: 50;" class="glyphicon glyphicon-calendar"></b>
+              </a>
+            </output>
+            <b id="yell">
+              <a href="{% url 'ozz_history' %}">
                 History
-              </b>
-            </th>
-            <tr>
-                <td>
-                    <output id="toto">
-                     Transactions
-                    </output>
-                </td>
-            </tr>            
-        </table>
-    </div> 
-  </td>
-</tr>
+              </a>
+            </b>   
+          </td>
+        </tr>            
+      </table>
+    </div>     
+</div>
 
-  </table>
-
-    </div>
-    
-</body>
-</center>
 <style>
 
 #toto{
-  color:red;
+  color:lime;
 }
 
 .toto{
@@ -100,61 +81,19 @@
 
 }
 
-#wallet{
- margin-left:40;
- height:100;
- border:solid;
- width:120;
- border-color:green;
- text-align:center;
-}
 
 #yell{
-  color:white;
-  background:green;
-}
-
-#t{
-  width:70%; 
-  height: 60%;
-
+  color:black;  
 }
 
 
-#topbar {
-  width:100%;
-  height:40px;
-  background:white;
-  margin-top:5%;
-  color:black;
-  text-align:right;
-  float:right;
-}
 
 #bar_div {
-  width:80%;
-  height:70%;
-  background:#B0E0E6;
-  margin:0;
+  width:70%;
+  height:60%;
   color:black;
+  margin:auto;
 }
-
-#bar_div1 {
-  width:80%;
-  height:80%;
-  background:#B0E0E6;
-  margin:0;
-  color:black;
-}
-
-
-#panel_div { 
-  width:60%;
-  height:100%;
-  float:left;  
-}
-
-
 </style>
 </div>
 {% endblock %}

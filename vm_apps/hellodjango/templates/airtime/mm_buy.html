@@ -7,23 +7,27 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 <div style="padding-top:2%;">
-
+    <br>
 	<h1>
      Airtime  
     </h1>
-     <h3>
-       <a href="{% url 'at_buy' %}" >Buy</a>
-       |
-       <a href="{% url 'airtime' %}" id="active" >MobileMoneyBuy</a>
-       |
-       <a href="{% url 'atbulk' %}">BulkBuy</a>
-       |
-       <a href="{% url 'at_subscribe' %}">Subscribe</a>
-       |
-       <a href="{% url 'ozz_history' %}">History</a>
-
-     </h3>
-	    
+    <h3>
+        <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-default" >
+          Buy
+        </a>
+        <a href="{% url 'airtime' %}" id="active"  class="btn btn-default" >
+          MobileMoneyBuy
+        </a>
+        <a href="{% url 'atbulk' %}" id="buttn" class="btn btn-default" >
+          BulkBuy
+        </a>
+        <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-default" >
+           Subscribe
+        </a>
+        <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-default" >
+          History
+        </a>
+    </h3>
     <center>
 	<div id="momo">
 	    <form method="POST" action="{% url 'at' %}"  name="sub">
@@ -73,13 +77,21 @@
 
     #active{
     background:green;
-    height:80;
-    border:solid;
-    color:white;
-    width:300;
-    padding:2;
+    height:40;
     text-align:center;
+    color:white;
+    font-size: 15;
+    width:150;
   }
+
+  #buttn{
+    height:40;
+    width:100;
+    background:#ce93d8;
+    font-size: 15;
+  }
+
+  
 
 
 	#tebo{

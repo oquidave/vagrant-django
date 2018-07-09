@@ -7,19 +7,23 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 <div style="padding-top:2%;height:100%;">
+    <br>
     <h1>
      SMS  
     </h1>
      <h3>
-       <a href="{% url 'send_sms' %}" id="active" >SendSMS</a>
-       |
-       <a href="{% url 'bulks' %}">BulkSMS</a>
-       |
-       <a href="{% url 'sms_schedule' %}">Schedule</a>
-       |
-        <a href="{% url 'smshistory' %}">History</a>
-
-
+        <a href="{% url 'send_sms' %}" id="active" class="btn btn-default">
+          <b>SendSMS</b>
+        </a>
+        <a href="{% url 'bulks' %}" id="buttn" class="btn btn-default">
+           <b>BulkSMS</b>
+        </a>
+        <a href="{% url 'sms_schedule' %}" id="buttn" class="btn btn-default">
+           <b>Schedule</b>
+        </a>
+        <a href="{% url 'smshistory' %}" id="buttn" class="btn btn-default">
+           <b>History</b>
+        </a>
      </h3>
 	<center>
 	<div id="tad">
@@ -43,28 +47,19 @@
                         </select>                    
 					</td>
 				</tr>
-
-				<tr>
-			    	<td>
-			    		<b>Name</b>
-			    	</td>
-			    </tr>
+								
 				<tr>
 					<td>						
 					    <input id="receiver" name="name" placeholder="Enter recipient name here" width="40"  required>
 					</td>
 				</tr>
-
-				<tr>
-			    	<td>
-			    		<b>Phone</b>
-			    	</td>
-			    </tr>
+				
 				<tr>
 					<td>						
 					     <input id="receiver" name="phone" placeholder="Enter recipient no. here" width="40" minlength="13" maxlength="13" required>
 					</td>
 				</tr>
+				<br>
 
 				<tr>
 			    	<td>
@@ -97,12 +92,24 @@
 
 		#active{
           background:green;
-          height:35;
-          border:solid;
-          color:white;
-          width:300;
-          padding:2;
+          height:40;
           text-align:center;
+          color:white;
+          font-size: 15;
+          width:100;
+        }
+
+        #buttn{
+        	height:40;
+        	width:100;
+        	background:#1de9b6;
+        	font-size: 15;
+        }
+        #tad{
+        	background: white;
+        	margin-left:250;
+        	margin-right:400;
+        	text-align:center;
         }
 
 

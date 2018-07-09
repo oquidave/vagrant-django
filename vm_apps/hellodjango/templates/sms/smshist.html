@@ -7,17 +7,24 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 <div id="bud" style="padding-top:2%;">
-<h1>SMS History</h1>
-<h3>
-    <a href="{% url 'send_sms' %}" >SendSMS</a>
-   |
-    <a href="{% url 'bulks' %}" >BulkSMS</a>
-   |
-    <a href="{% url 'sms_schedule' %}">Schedule</a>
-   |
-   <a href="#" id="active" >History</a>
-
-</h3>
+    <br>
+    <h1>
+      SMS History
+    </h1>
+    <h3>
+        <a href="{% url 'send_sms' %}" id="buttn" class="btn btn-default">
+          <b>SendSMS</b>
+        </a>
+        <a href="{% url 'bulks' %}"  id="buttn" class="btn btn-default">
+           <b>BulkSMS</b>
+        </a>
+        <a href="{% url 'sms_schedule' %}" id="buttn" class="btn btn-default">
+           <b>Schedule</b>
+        </a>
+        <a href="{% url 'smshistory' %}" id="active" class="btn btn-default">
+           <b>History</b>
+        </a>
+    </h3>
 <center>
    {% if users %}
 		<table border="1" id="dbtable">
@@ -148,15 +155,20 @@
 </div>
 	<style type="text/css">
 	   #active{
-         	background:green;
-         	height:80;
-         	border:solid;
-         	color:white;
-         	width:300;
-         	padding:2;
-         	text-align:center;
-
+          background:green;
+          height:40;
+          text-align:center;
+          color:white;
+          font-size: 15;
+          width:100;
         }
+
+        #buttn{
+         	height:40;
+        	width:100;
+        	background:#1de9b6;
+       	    font-size: 15;
+       	}
 
         h3{
 			margin-left:10%;

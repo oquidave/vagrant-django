@@ -3,8 +3,8 @@
   <head>
     <link rel="stylesheet" href="{% static 'css/my.css' %}">
     <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">     
 
 <style>
 body {margin: 0;}
@@ -12,6 +12,7 @@ ul.topnav {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    height: 50;
     overflow: hidden;
     background-color: #333;
 }
@@ -20,74 +21,40 @@ ul.topnav li {float: left;}
 ul.topnav li.right {float: right;}
 
 ul.topnav a.active {
-  background-color: green;
-  height:20;
+  background-color:green;
+  height:50;  
 }
 
-
+.dropdown{
+  color:white;
+}
 
 @media screen and (max-width: 600px){
     ul.topnav li.right, 
 
-    ul.topnav li {float: none;}
-    #side{
-      list-style-type:none;
-    }
-    ul.sidenav {
-      width: auto;
-      height: auto;
-      position: relative;
-    }
-    ul.sidenav li a {
-      float: right;
-      padding: 15px;
-    }
+    ul.topnav li {float: none;}    
 }
 
-
-li a:hover, .dropdown:hover .dropbtn {
-  background-color: green;
+#icons{
+  font-size:20;
+  color:#ce93d8;  
 }
-
 
 li a, .dropbtn {
     display: inline-block;
-    color: white;
-    text-align: center;
+    color:#1de9b6;
+    text-align: left;
+    font-size:20;
     padding: 14px 16px;
     text-decoration: none;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
+
+
+ul b{
+  color:#1de9b6;
 }
 
-.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {background-color: green;}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 </style>
 </head>
 <body>
@@ -96,87 +63,64 @@ li a:hover, .dropdown:hover .dropbtn {
   {% if request.user.is_authenticated %}
   <li>
     <a class="active" href="{% url 'dashboard' %}">
-      Home
+      <b style="" class="glyphicon glyphicon-home">                    
+      </b> 
+      <b style="color:black;">home</b>     
     </a>
   </li>
 
 
     <li class="dropdown">
       <a href="{% url 'sms_tiles' %}" class="dropbtn" href="javascript:void(0)">
-        SMS
-      </a>
-        <div class="dropdown-content">
-          <a href="{% url 'sms' %}">Send</a>
-          <a href="{% url 'bulks' %}">Bulk</a>
-          <a href="{% url 'sms_schedule' %}">Schedule</a>
-          <a href="{% url 'smshistory' %}">History</a>
-        </div>
+        <b id="icons" class="glyphicon glyphicon-comment">                    
+        </b>
+        <b>SMS</b>                
+      </a>        
     </li>
 
 
     <li class="dropdown">
-      <a href="#" class="dropbtn">
-        Airtime
+      <a href="{% url 'at_tiles' %}" class="dropbtn">
+        <b id="icons" class="glyphicon glyphicon-phone">          
+        </b>
+        <b>Airtime</b>
       </a>
-      <div class="dropdown-content">
-        <a href="{% url 'at_buy' %}" id="buy">
-          Buy
-        </a>
-        <a href="{% url 'atbulk' %}" id="bulk">
-          Bulk 
-        </a>
-        <a href="{% url 'at_subscribe'%}">Subscribe</a>
-        <a href="{% url 'ozz_history' %}">History</a>
-      </div>
-    </li>
-
-
-
-    <li class="right">
-      <a href="{% url 'login' %}">
-        Signout
-      </a>
-    </li> 
+    </li>  
 
 
     <li class="right">
       {% if request.user.is_authenticated %}
         <span>
-          <i style="color:lime;">
-            hello
+          <i style="color:#1de9b6;font-size:25;">
+            Hi
           </i>
-          <b style="color:white;">
+          <b style="color:white;font-size:20;">
             {{ request.user.username }}
           </b>
         </span>
       {% endif %}
       <a href="{% url 'profile' %}">
-        Profile
-      </a>
+        <i  id="icons"  class="glyphicon glyphicon-user">          
+        </i>
+      </a>           
     </li>  
 
 
     <li class="dropdown">
-      <a href="#" class="dropbtn">
-        Payments
-      </a>
-      <div class="dropdown-content">
-        <a href="{% url 'payments' %}">Make Payments</a>
-        <a href="{% url 'schedule_pay' %}">Schedule</a>
-        <a href="{% url 'phistory' %}">History</a>       
-      </div>
+      <a href="{% url 'payment_tiles' %}" class="dropbtn">        
+        <i  id="icons"  class="glyphicon glyphicon-briefcase">          
+        </i>
+        <b>Payments</b>
+      </a>      
     </li>
 
 
     <li class="dropdown">
-      <a href="#" class="dropbtn">
-        Voice
+      <a href="{% url 'voice_tiles' %}" class="dropbtn">
+        <i  id="icons"  class="glyphicon glyphicon-volume-up">          
+        </i>
+        <b>Voice</b>
       </a>
-      <div class="dropdown-content">
-        <a href="{% url 'fwd' %}">Call Center</a>
-        <a href="{% url 'vhistory' %}">History</a>
-        <a href="#">Contacts</a>       
-      </div>
     </li>
 
     {% endif %}

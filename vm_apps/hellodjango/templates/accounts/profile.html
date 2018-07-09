@@ -8,6 +8,10 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   </head>
   <div style="padding-top:5%;">
+    <div style="float:right;margin-right:50;padding:10;background: red;">
+      <a href="{% url 'login' %}">Sign out</a>
+    </div>
+
     <center>
 	   <form class="form-horizontal" id='fom' action='/accounts/profile/' method="POST">
       {% csrf_token %}

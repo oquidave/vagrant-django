@@ -16,6 +16,10 @@ def index(request):
 	return render(request, "airtime/mm_buy.html")
 
 @login_required
+def at_tiles(request):
+	return render(request, "airtime/at_tiles.html")
+
+@login_required
 def csv_download(request): 
 	import csv
 	""" Renders a csv list  """

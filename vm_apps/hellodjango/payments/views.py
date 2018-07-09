@@ -11,9 +11,11 @@ from .models import Payhist
 from .models import Bulkpayhist
 from django.contrib.auth.decorators import login_required
 
-
-
 # Create your views here.
+
+@login_required
+def payment_tiles(request):
+	return render(request, 'payments/payment_tiles.html')
 
 @login_required
 def index(request):
