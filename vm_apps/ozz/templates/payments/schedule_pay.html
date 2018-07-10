@@ -21,42 +21,49 @@
     <center>
     	<form method="POST" >
     	   {% csrf_token %}
-    		<table>
-
+    		<table style="text-align:center;">
+                
                 <tr>
-                    <td>
-                        DATE
-                        <input type="date" style="color:blue;" name="send_date">
+                    <td>                        
+                        <input type="date" style="color:blue;width:250;height:40;" name="send_date">
                     </td>
-                    <br>
-                    <td>
-                        TIME: 
-                        <input style="color:red;" type="time" name="send_time">                  
+                </tr>
+
+               
+                <tr>
+                    <td>                        
+                        <input style="color:red;width:250;height:40;" type="time" name="send_time">                  
                     </td>                    
                 </tr>
 
-
+                
     			<tr>
-    				<td>
-    				    <b>Number:</b>
-    				</td>
-    				<td>
+    				<td>                        
     					<input  class="enter" placeholder="Enter receiver here" name="receiver" required>
     				</td>
     			</tr>
+                
+                
     			<tr>
-    				<td><b>Amount:</b></td>
-    				<td>
+    				<td>                        
     					<input class="enter" placeholder="Enter amount here" name="amount" required>
     				</td>
     			</tr>
-
+                
+                
                 <tr>
                     <td>
-                        <b>Reason:</b>
-                    </td>
-                    <td>
-                        <textarea id="mm_reason" placeholder="Enter reason here" name="reason" required></textarea>
+                        <select style="width:250;height:40;" name="mm_reason">
+                            <option value="SalaryPayment" >
+                              Salary
+                            </option>
+                            <option value="BusinessPayment">
+                              Business
+                            </option>
+                            <option value="SalaryPaymentWithWithdrawalChargePaid"> 
+                              Gift
+                            </option>
+                        </select>
                     </td>
                 </tr>
 
@@ -86,8 +93,7 @@
         }
 
         .enter{
-        	width:250;
-        	height:35;
+        	width:250;height:40;
         }
         #active{
            background:green;
@@ -101,8 +107,12 @@
 
         table{
         	width:500;
-        	height:400;
-            text-align:center;
+        	height:400;            
+        }
+        form{
+            background:white;
+            margin-left:300;
+            margin-right:300;
         }
 
     	h1{

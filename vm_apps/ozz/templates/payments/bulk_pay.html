@@ -19,32 +19,32 @@
         <a href="{% url 'phistory' %}" class="page" >History</a>
     </h3>
     <center>
-    	<form method="POST" action="{% url 'bulk_pay' %}"  name="sub" enctype="multipart/form-data">
+    	<form method="POST" action="{% url 'bulk_pay' %}" style="background:white;margin-left:300;margin-right:300;" name="sub" enctype="multipart/form-data">
     	   {% csrf_token %}
     		<table>
+                <tr>
+                    <td>                       
+                        <a href="{% url 'pcsv_download' %}">
+                            <b style="color:red;">
+                                Download
+                            </b>
+                            (<i style="color:green;">Receivers.csv</i>)
+                        </a>
+                     </td>
+                </tr>
+
     			<tr>
-                    <tr>
-                        <td>
-    				        <b>Upload Receivers:</b>
-    				    </td>
-    				    <td>
-    					    <input  type="file"  name="receiver" required>
-                            <br>
-                            <br>
-                            <a href="{% url 'pcsv_download' %}">
-                                <b style="color:red;">
-                                  Download
-                                </b>
-                                (<i style="color:green;">.csv</i>)
-                            </a>
-                        </td>
-    				</tr>
-                    <tr>
-                        <td>
-                            <input type="submit" id="send_button" value="SEND">
-                        </td>
-                    </tr>                    
-    			</tr>    			
+                    <td>
+    			        <b>Upload (<i style="color:green;">Receivers.csv</i>)</b>
+                        <input  type="file"  name="receiver" required>                        
+    			    </td>    			    
+    			</tr>
+
+                <tr>
+                    <td>
+                        <input type="submit" id="send_button" value="SEND">
+                    </td>
+                </tr>   			    			
     		</table>
     	</form>
     </center>

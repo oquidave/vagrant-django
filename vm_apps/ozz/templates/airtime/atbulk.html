@@ -2,58 +2,61 @@
 {% load staticfiles %}
 {% block body_block %}
 <div style="padding-top:2%;">
-<head>
+  <head>
     <link rel="stylesheet" href="{% static 'css/my.css' %}">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-</head>
-<br>
-<h1>
-  Airtime  
-</h1>
-<h3>
-  <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-default" >
-    Buy
-  </a>
-  <a href="{% url 'airtime' %}" id="buttnx" class="btn btn-default" >
-    MobileMoneyBuy
-  </a>
-  <a href="{% url 'atbulk' %}" id="active" class="btn btn-default" >
-    BulkBuy
-  </a>
-  <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-default" >
-    Subscribe
-  </a>
-  <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-default" >
-    History
-  </a>
+  </head>
+  <br>
+  <h1>
+    Airtime  
+  </h1>
+  
+  <h3>
+    <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-default" >
+      Buy
+    </a>
+    <a href="{% url 'airtime' %}" id="buttnx" class="btn btn-default" >
+      MobileMoneyBuy
+    </a>
+    <a href="{% url 'atbulk' %}" id="active" class="btn btn-default" >
+     BulkBuy
+    </a>
+    
+    <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-default" >
+     Subscribe
+    </a>
+    <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-default" >
+     History
+    </a>
+  </h3>    
+  <center>
+    <form method="POST" action="{% url 'atbulk' %}" style="background:white;margin-left:300;margin-right:300;" name="sub" enctype="multipart/form-data">
+		  {% csrf_token %}
+		    <table id="tebo">
 
-</h3>
-    <a style="width:135;height:35;float:left;margin-top:100;margin-left:200;" href="{% url 'csv_download' %}" >
-		<b style="color:red;">Download</b>(<i style="color:green;">.csv</i>)
-	</a>
-<center>
-	<div>
-	<form method="POST" action="{% url 'atbulk' %}"  name="sub" enctype="multipart/form-data">
-		{% csrf_token %}
-		<table id="tebo">
-			<tr>
-				<td>
-					Upload Contacts (<i style="color:green;">.csv</i>):
-					<input type="file"  name="contacts" >
-			    </td>
-			</tr>
+          <tr>
+            <td>
+              <a style="width:135;height:35;" href="{% url 'csv_download' %}" >
+                <b style="color:red;">Download</b>(<i style="color:green;">Contacts.csv</i>)
+              </a>
+            </td>
+          </tr>
 
-			
-			<tr>
-				<td>
-					<input type="submit" style="color:green;" name="Send" id="atbuy" value="Buy">
-				</td>
-			</tr>
-		</table>
-	</form>
-    </div>
-</center>
+			    <tr>
+				    <td>
+					    Upload  (<i style="color:green;">Contacts.csv</i>):
+					    <input type="file" style="height:40;width:300;" name="contacts">
+			      </td>
+			    </tr>
+
+          <tr>
+				    <td>
+					    <input type="submit" style="color:green;" name="Send" id="atbuy" value="Buy">
+				    </td>
+			    </tr>
+		    </table>
+    </form>      
+  </center>
 </div>
 <style type="text/css">
    
@@ -108,7 +111,7 @@
 
 	#tebo{
 		width:50%;
-		height:40%;
+		height:50%;
 	}
 	
 </style>
