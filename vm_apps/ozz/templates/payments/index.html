@@ -19,14 +19,12 @@
         <a href="{% url 'phistory' %}">History</a>
     </h3>
     <center>
-    	<form method="POST" style="background:white;margin-left:300;margin-right:300;" action="{% url 'payments' %}" >
+    	<form method="POST" style="background:white;margin-left:300;margin-right:200;" action="{% url 'payments' %}" >
     	   {% csrf_token %}
     		<table>
 
                 <tr>
-                    <td>
-                        <b>Name:</b>
-                    </td>
+                    
                     <td>
                         <input  class="enter" placeholder="Enter receiver name here" name="receiver_name" required>
                     </td>
@@ -34,24 +32,17 @@
 
     			<tr>
     				<td>
-    				    <b>Number:</b>
-    				</td>
-    				<td>
     					<input  class="enter" placeholder="Enter receiver number here" name="receiver_no" required>
     				</td>
     			</tr>
 
     			<tr>
-    				<td><b>Amount:</b></td>
     				<td>
     					<input class="enter" placeholder="Enter amount here" name="amount" required>
     				</td>
     			</tr>
 
                 <tr>
-                    <td>
-                        <b>Reason:</b>
-                    </td>
                     <td>
                         <select style="width:250;height:40;" name="mm_reason">
                             <option value="SalaryPayment" >
