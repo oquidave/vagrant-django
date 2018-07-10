@@ -26,64 +26,66 @@
         </a>
      </h3>
 <center>
-<form style="background: white;margin-left:400;margin-right:350;" action="{% url 'bulks' %}"  enctype="multipart/form-data">
+<form style="background: white;margin-left:250;margin-right:350;text-align:center;" action="{% url 'bulks' %}"  enctype="multipart/form-data">
 {% csrf_token %}
-	<table>
+	<table id="tebo">
 
-	<tr>
-		<td>
-			<b>Sender ID</b>
-		</td>
-	</tr>
-	<tr>
-		<td>		    
-			<select style="width:220;height:35;" name="sender_id">
-		        <option value="SalaryPayment" >
-                   Default(Africastalking)
-                </option>
-                <option value="BusinessPayment">
-                   My Custom ID
-                </option>                            
-            </select>
-        </td>
-	</tr>
+	    <tr>
+		    <td>
+		    	<b>Sender ID</b>
+		    </td>
+	    </tr>
+	    <tr>
+		    <td>		    
+			    <select style="width:220;height:35;" name="sender_id">
+		            <option value="SalaryPayment" >
+                      Default(Africastalking)
+                    </option>
+                    <option value="BusinessPayment">
+                      My Custom ID
+                    </option>                            
+                </select>
+            </td>
+	    </tr>
+
+	    <tr>
+	        <td>
+			    <a href="{% url 'sms_csv_download' %}" >
+		            <b style="color:red;">
+		              Download
+		            </b>
+		           (Contacts<i style="color:green;">.csv</i>)
+		        </a>
+		    </td>
+	    </tr>
+	    
 	
-	<tr>
-		<td>
-			<b>
-		      Upload Contacts 
-		    </b>
-		</td>
-	</tr>	
-	<tr>
-	   <td>
-			<input type="file" name="browse" value="browse" accept=".csv">
-		</td>
-		<td>
-			<a href="{% url 'sms_csv_download' %}" >
-		        <b style="color:red;">
-		           Download
+     	<tr>
+	     	<td>
+		    	<b>
+		          Upload Contacts 
 		        </b>
-		        (<i style="color:green;">.csv</i>)
-		    </a>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		    <p>
-				<b>
-				  Message
-			    </b>
-			</p>
-			<textarea type="text" id="messg" name="sms_message"
-			{% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %} minlength="3" maxlength="256" required></textarea>
-		</td>
-	</tr>
-	<tr>
-	    <td>
-			<button type="submit"  formmethod="POST" action="sms/bulks.html">SEND</button>
-		</td>
-	</tr>
+		        <input type="file" name="browse" value="browse" accept=".csv">
+		    </td>
+	    </tr>	
+	    
+	    <tr>
+		    <td>
+		        <p>
+				    <b>
+				      Message
+			        </b>
+			    </p>
+			    <textarea type="text" id="messg" name="sms_message"
+		        {% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %} minlength="3" maxlength="256" required>		        	
+		        </textarea>
+     		</td>
+    	</tr>
+    	<tr>
+	        <td>
+		    	<button type="submit"  formmethod="POST" action="sms/bulks.html">SEND</button>
+		    </td>
+	    </tr>
 	</table>
 </form>
 </center>
@@ -130,14 +132,14 @@
     	height:50;
     }
 
-	table{
-		width:600px;
-		height: 400px;
-		margin-left:20;
-	}
+	#tebo{
+			margin: auto;
+			width:600px;
+			height: 300px;
+		}
 
 	#messg{
-		height: 200;
+		height: 130;
 		width: 500;
 		margin:left;
 		text-align:left;

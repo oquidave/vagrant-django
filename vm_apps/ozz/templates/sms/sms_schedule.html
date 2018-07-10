@@ -27,34 +27,48 @@
      </h3>
 	<center>
 	<div id="tad">
-			<form  name="formt" action="{% url 'send_sms'  %}">
+			<form  name="formt" id="formt" action="{% url 'send_sms'  %}">
 				{% csrf_token %}
 			<table id="tebo">
 			    <tr>
 			    	<td>
-			    	    <tr>
-			    	        <td>
-			    	           DATE:<input type="date" style="color:blue;width:150;height:40;" name="send_date">
-			    	        </td>
-			    	    </tr>
-			    	    <tr>
-			    	        <td>
-			    	           TIME:<input style="color:red;width:150;height:40;" type="time" name="send_time">
-			    	        </td>
-			    	    </tr>
+			    	   DATE
 			    	</td>
 			    </tr>
 
-				<tr>
-					<td>
-						<b>Phone:</b>
-					     <input id="receiver" name="phone" placeholder="Enter recipient here||add csv option for bulk" width="40" minlength="13" maxlength="13" required>
-					</td>
-				</tr>
+			    <tr>
+			    	<td>
+			    	   
+			    	   <input type="date" style="color:blue;width:150;height:20;" name="send_date">
+			    	</td>
+			    </tr>
+			    
+			    <tr>
+			    	<td>
+			    	    TIME
+			    	</td>        
+			    </tr>
+			    	    
+			    <tr>
+			    	<td>
+			    	   <input style="color:red;width:150;height:20;" type="time" name="send_time">
+			    	</td>
+			    </tr>
+                
+                <tr>
+	                <td>
+			            <a href="{% url 'sms_csv_download' %}" >
+		                    <b style="color:red;">
+		                      Download
+		                    </b>
+		                    (Contacts<i style="color:green;">.csv</i>)
+		                </a>
+		            </td>
+	            </tr>
 
 				<tr>
 					<td>
-						Attach (<i style="color:green;">.Csv(list)</i>)
+						Attach (<i style="color:green;">Contacts.csv</i>)
 						<input type="file" name="add_csv">
 					</td>
 				</tr>
@@ -104,6 +118,14 @@
        	  font-size: 15;
         }
 
+        #formt{
+        	background:white;
+        	margin-left:300;
+        	margin-right:300;
+        	text-align:center;
+        	margin-left:250;
+        }
+
 		h3{
 		  margin-left:10%;
 	    }
@@ -123,14 +145,15 @@
             width:500;
         }
 
+		
 		#tebo{
 			margin: auto;
 			width:600px;
-			height: 400px;
+			height: 300px;
 		}	
 
 		#messg{
-			height: 200;
+			height: 130;
 			width: 500;
 			margin:left;
 			text-align:left;
