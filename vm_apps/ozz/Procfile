@@ -1,0 +1,2 @@
+web: gunicorn vagrant-django.wsgi
+web: gunicorn ozz:app
