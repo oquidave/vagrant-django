@@ -1,0 +1,28 @@
+
+.dropbtn{
+	font-family: 'Cardo';
+    font-size: 18;
+    color:white;
+}
+
+/* colors from https://mdbootstrap.com/css/colors/ */
+h3{
+  font-family: 'Cardo';
+  font-size: 15pt;
+  margin-right:200;
+  height:30;
+}
+
+body{
+	background:#ffebee;
+}
+
+h1{
+	font-family: 'Cardo';
+    font-size: 30pt;
+    color:#1b5e20;
+}
+
+#bar_div b{
+  color:#1de9b6;
+}
