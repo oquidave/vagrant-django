@@ -122,3 +122,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
+
+#activate django_heroku
+import django_heroku
+django_heroku.settings(locals())
