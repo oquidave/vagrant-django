@@ -14,20 +14,15 @@ ul.topnav {
     padding: 0;
     height: 50;
     overflow: hidden;
-    background-color: #333;
+    background-color:#0277bd ;
+
+    /* light-blue>>>#b3e5fc */
 }
 
 ul.topnav li {float: left;}
 ul.topnav li.right {float: right;}
 
-ul.topnav a.active {
-  background-color:green;
-  height:50;  
-}
 
-.dropdown{
-  color:white;
-}
 
 @media screen and (max-width: 600px){
     ul.topnav li.right, 
@@ -37,7 +32,7 @@ ul.topnav a.active {
 
 #icons{
   font-size:20;
-  color:#ce93d8;  
+  color:white ;  
 }
 
 li a, .dropbtn {
@@ -52,7 +47,7 @@ li a, .dropbtn {
 
 
 ul b{
-  color:#1de9b6;
+  color:white;
 }
 
 </style>
@@ -65,7 +60,7 @@ ul b{
     <a class="active" href="{% url 'dashboard' %}">
       <b style="" class="glyphicon glyphicon-home">                    
       </b> 
-      <b style="color:black;">home</b>     
+      <b>Home</b>     
     </a>
   </li>
 
@@ -91,9 +86,9 @@ ul b{
     <li class="right">
       {% if request.user.is_authenticated %}
         <span>
-          <i style="color:#1de9b6;font-size:25;">
-            Hi
-          </i>
+          <b style="color:white;font-size:20;/* cyan>>>#1de9b6*/">
+            hello
+          </b>
           <b style="color:white;font-size:20;">
             {{ request.user.username }}
           </b>

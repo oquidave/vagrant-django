@@ -13,19 +13,19 @@
 </h1>
 <h3>
   <a href="{% url 'at_buy' %}" id="active" class="btn btn-default" >
-    Buy
+    <b>0zzBuy</b>
   </a>
   <a href="{% url 'airtime' %}" id="buttnx" class="btn btn-default" >
-    MobileMoneyBuy
+    <b>MobileMoneyBuy</b>
   </a>
   <a href="{% url 'atbulk' %}" id="buttn" class="btn btn-default" >
-    BulkBuy
+    <b>BulkBuy</b>
   </a>
   <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-default" >
-    Subscribe
+    <b>Subscribe</b>
   </a>
   <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-default" >
-    History
+    <b>History</b>
   </a>
 
 </h3>
@@ -71,26 +71,27 @@
   }
 
 
-  #active{
-    background:green;
+   #active{
+    background:#0277bd;
     height:40;
     text-align:center;
     color:white;
     font-size: 15;
     width:100;
+    text-align: center;
   }
 
   #buttn{
     height:40;
     width:100;
-    background:#ce93d8;
+    background:#1de9b6;
     font-size: 15;
   }
 
   #buttnx{
     height:40;
     width:150;
-    background:#ce93d8;
+    background:#1de9b6;
     font-size: 15;
   }
 
@@ -104,8 +105,7 @@
 
   table{
     width:60%;
-    height:40%;
-    margin-left:200;
+    height:40%;    
   }
 
   h2{
@@ -117,6 +117,7 @@
 
   a{
     color:teal;
+    text-align:center;
   }
 
 

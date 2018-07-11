@@ -13,10 +13,6 @@ h3{
   height:30;
 }
 
-body{
-	background:#ffebee;
-}
-
 h1{
 	font-family: 'Cardo';
     font-size: 30pt;
@@ -24,5 +20,6 @@ h1{
 }
 
 #bar_div b{
-  color:#1de9b6;
+  color:white;
+  /* #1de9b6 */
 }

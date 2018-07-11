@@ -48,24 +48,17 @@
             </td>
 	    </tr>
 
-	    <tr>
-	        <td>
-			    <a href="{% url 'sms_csv_download' %}" >
-		            <b style="color:red;">
-		              Download
-		            </b>
-		           (Contacts<i style="color:green;">.csv</i>)
-		        </a>
-		    </td>
-	    </tr>
-	    
-	
      	<tr>
 	     	<td>
 		    	<b>
 		          Upload Contacts 
 		        </b>
 		        <input type="file" name="browse" value="browse" accept=".csv">
+		    </td>
+		    <td>
+			    <a href="{% url 'sms_csv_download' %}" >		            
+		           (Sample<i style="color:green;">.csv</i>)
+		        </a>
 		    </td>
 	    </tr>	
 	    
@@ -90,23 +83,23 @@
 </form>
 </center>
 <style type="text/css">
-    
     #active{
-          background:green;
+          background:#0277bd;
           height:40;
           text-align:center;
           color:white;
           font-size: 15;
           width:100;
+          text-align: center;
         }
-
     #buttn{
-       	height:40;
-       	width:100;
-       	background:#1de9b6;
-       	font-size: 15;
-    }
-
+          height:40;
+          width:100;
+          color:black;
+          background:#1de9b6;
+          font-size: 15;
+          text-align: center;
+        }
     h1{
         margin-left:5%;
         width:500;
@@ -114,7 +107,7 @@
 
     h3{
 	  margin-left:10%;
-	}
+  }
 
 	a{
 	 color:teal;

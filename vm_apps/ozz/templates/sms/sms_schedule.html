@@ -55,8 +55,13 @@
 			    	</td>
 			    </tr>
                 
-                <tr>
-	                <td>
+               
+				<tr>
+					<td>
+						Attach (<i style="color:green;">Contacts.csv</i>)
+						<input type="file" name="add_csv">
+					</td>
+					<td>
 			            <a href="{% url 'sms_csv_download' %}" >
 		                    <b style="color:red;">
 		                      Download
@@ -64,13 +69,6 @@
 		                    (Contacts<i style="color:green;">.csv</i>)
 		                </a>
 		            </td>
-	            </tr>
-
-				<tr>
-					<td>
-						Attach (<i style="color:green;">Contacts.csv</i>)
-						<input type="file" name="add_csv">
-					</td>
 				</tr>
 				
 				<tr>
@@ -103,12 +101,13 @@
 		<style type="text/css">
 
 		#active{
-          background:green;
+          background:#0277bd;
           height:40;
           text-align:center;
           color:white;
           font-size: 15;
           width:100;
+          text-align: center;
         }
 
        #buttn{
@@ -132,6 +131,7 @@
 
 	    a{
 		 color:teal;
+		 text-align: center;
        	}
 
 		button{
@@ -149,7 +149,7 @@
 		#tebo{
 			margin: auto;
 			width:600px;
-			height: 300px;
+			height: 400px;
 		}	
 
 		#messg{

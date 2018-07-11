@@ -13,19 +13,19 @@
     </h1>
     <h3>
         <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-default" >
-          Buy
+          <b>0zzBuy</b>
         </a>
         <a href="{% url 'airtime' %}" id="active"  class="btn btn-default" >
-          MobileMoneyBuy
+          <b>MobileMoneyBuy</b>
         </a>
         <a href="{% url 'atbulk' %}" id="buttn" class="btn btn-default" >
-          BulkBuy
+          <b>BulkBuy</b>
         </a>
         <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-default" >
-           Subscribe
+           <b>Subscribe</b>
         </a>
         <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-default" >
-          History
+          <b>History</b>
         </a>
     </h3>
     <center>
@@ -35,10 +35,10 @@
 		<table id="tebo">
 			<tr>
 				<td>
-					Mobile Money No:
+					MobileMoney No:
 				</td>
 				<td>
-					<input name="chargephone" class="inz" placeholder="Enter Mobile Money No. here" minlength="13" maxlength="13" required>
+					<input name="chargephone" class="inz" placeholder="Enter charge No. here" minlength="13" maxlength="13" required>
 				</td>
 			</tr>
 			<tr>
@@ -46,7 +46,7 @@
 					Receiver:
 			    </td>
 			   	<td>
-			   		<input placeholder="Enter receiver's number here" class="inz" name="phone"  required>
+			   		<input placeholder="Enter receiving no here" class="inz" name="phone"  required>
 			   	</td>
 			</tr>
 			<tr>
@@ -76,22 +76,28 @@
 
 
     #active{
-    background:green;
+    background:#0277bd;
     height:40;
     text-align:center;
     color:white;
     font-size: 15;
-    width:150;
+    width:170;
+    text-align: center;
   }
 
   #buttn{
     height:40;
     width:100;
-    background:#ce93d8;
+    background:#1de9b6;
     font-size: 15;
   }
 
-  
+  #buttnx{
+    height:40;
+    width:150;
+    background:#1de9b6;
+    font-size: 15;
+  }
 
 
 	#tebo{
