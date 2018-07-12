@@ -13,12 +13,12 @@
          Voice
         </h1>
       </marquee>
-      <table style="background:white;margin:auto;text-align:center;width:70%;height:60%;">
+      <table style="margin:auto;text-align:center;width:70%;height:70%;">
         <tr>
           <td>
             <output id="toto">
               <a href="{% url 'fwd' %}">
-                <b style="font-size: 50;" class="glyphicon glyphicon-phone-alt">               
+                <b id="glifs" class="glyphicon glyphicon-phone-alt">               
                 </b>
               </a>                      
             </output>
@@ -32,7 +32,7 @@
           <td>
             <output id="toto">
               <a href="#">
-                <b style="font-size: 50;" class="glyphicon glyphicon-user">      
+                <b id="glifs" class="glyphicon glyphicon-user">      
                 </b>
               </a>                     
             </output>
@@ -48,7 +48,7 @@
           <td>
             <output id="toto">
               <a href="{% url 'sms_schedule' %}">                     
-                <b style="font-size: 50;" class="glyphicon glyphicon-bullhorn">
+                <b id="glifs" class="glyphicon glyphicon-bullhorn">
                 </b>
               </a>
             </output>
@@ -61,7 +61,7 @@
           <td>
             <output id="toto">
               <a href="{% url 'vhistory' %}">
-                <b style="font-size: 50;" class="glyphicon glyphicon-calendar"></b>
+                <b id="glifs" class="glyphicon glyphicon-calendar"></b>
               </a>
             </output>
             <b id="yell">
@@ -72,6 +72,8 @@
           </td>
         </tr>            
       </table>
+      <br>
+      <br>
     </div>     
 </div>
 
@@ -83,6 +85,11 @@
 
 .toto{
   color:green;
+
+}
+
+#glifs{
+  font-size: 70;
 
 }
 
@@ -98,6 +105,7 @@
   height:60%;
   color:black;
   margin:auto;
+  text-align:center;
 }
 
 

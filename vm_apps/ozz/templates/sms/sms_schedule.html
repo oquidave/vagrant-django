@@ -73,12 +73,7 @@
 				
 				<tr>
 					<td>
-						<p>
-							<b>
-							  Message
-						    </b>
-						</p>
-						<textarea type="text" id="messg" name="sms_message"
+						<textarea type="text" placeholder="Enter message here" id="messg" name="sms_message"
 						{% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %} minlength="3" maxlength="99999999999910" required></textarea>
 					</td>	
 				</tr>
@@ -153,8 +148,7 @@
 			height: 130;
 			width: 500;
 			margin:left;
-			text-align:left;
-			background-color:#B0E0E6;
+			text-align:left;			
 		}	
 		</style>
 </center>

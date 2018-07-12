@@ -8,8 +8,8 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   </head>
   <div style="padding-top:5%;">
-    <div style="float:right;margin-right:50;padding:10;background: red;">
-      <a href="{% url 'login' %}">Sign out</a>
+    <div style="float:right;margin-right:50;">
+      <a href="{% url 'login' %}" style="background: red;" class="btn btn-warning btn-lg">Sign out</a>
     </div>
 
     <center>
@@ -28,7 +28,7 @@
         <!-- Username -->
       
         <div class="controls">
-          <input type="text" id="username" placeholder="Username" name="username" value="{{user.username}}" class="input-xlarge" disabled>
+          <input type="text" id="username" placeholder="Username" name="username" value="{{user.username}}" class="input-xlarge">
         </div>
       </div>
  
@@ -37,7 +37,7 @@
         <!-- first_name -->
      
         <div class="controls">
-          <input type="text" id="first_name" placeholder="first_name" name="first_name" value="{{user.first_name}}" class="input-xlarge">
+          <input type="text" id="first_name" placeholder="first_name" name="first_name" value="{{user.first_name}}" class="input-xlarge" disabled>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
         <!-- last_name -->
       
         <div class="controls">
-          <input type="text" id="last_name" placeholder="last_name" name="last_name" value="{{user.last_name}}" class="input-xlarge">
+          <input type="text" id="last_name" placeholder="last_name" name="last_name" value="{{user.last_name}}" class="input-xlarge" disabled>
         </div>
       </div>
 
@@ -53,7 +53,7 @@
       <!-- E-mail -->
       
       <div class="controls">
-        <input type="email" id="email" placeholder="E-mail" name="email" value="{{user.email}}" class="input-xlarge">
+        <input type="email" id="email" placeholder="E-mail" name="email" value="{{user.email}}" class="input-xlarge" disabled>
       </div>
     </div>
      
