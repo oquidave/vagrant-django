@@ -12,25 +12,25 @@
      Airtime  
     </h1>
     <h3>
-        <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-default" >
+        <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-lg" >
           <b>0zzBuy</b>
         </a>
-        <a href="{% url 'airtime' %}" id="active"  class="btn btn-default" >
+        <a href="{% url 'airtime' %}" id="active"  class="btn btn-lg" >
           <b>MobileMoneyBuy</b>
         </a>
-        <a href="{% url 'atbulk' %}" id="buttn" class="btn btn-default" >
+        <a href="{% url 'atbulk' %}" id="buttn" class="btn btn-lg" >
           <b>BulkBuy</b>
         </a>
-        <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-default" >
+        <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-lg" >
            <b>Subscribe</b>
         </a>
-        <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-default" >
+        <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-lg" >
           <b>History</b>
         </a>
     </h3>
     <center>
 	<div id="momo">
-	    <form method="POST" action="{% url 'at' %}" style="background:white;margin-left:300;margin-right:300;" name="sub">
+	    <form method="POST" action="{% url 'at' %}" style="margin-left:300;margin-right:300;" name="sub">
 		{% csrf_token %}
 		<table id="tebo">
 			<tr>
@@ -88,14 +88,14 @@
   #buttn{
     height:40;
     width:100;
-    background:#1de9b6;
+    background:#bbdefb;
     font-size: 15;
   }
 
   #buttnx{
     height:40;
     width:150;
-    background:#1de9b6;
+    background:#bbdefb;
     font-size: 15;
   }
 
@@ -125,7 +125,7 @@
 		margin-left:10%;
 	}
 	a{
-		color:teal;
+		color:black;
 	}
 </style>
 {% endblock %}

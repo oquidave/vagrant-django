@@ -12,11 +12,11 @@ ul.topnav {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    height: 50;
+    height: 60;
     overflow: hidden;
-    background-color:#0277bd ;
-
-    /* light-blue>>>#b3e5fc */
+    border:solid;
+    border-color:#eeeeee;
+    background-color:#0277bd /* dark blue*/ ;  
 }
 
 ul.topnav li {float: left;}
@@ -29,11 +29,12 @@ ul.topnav li.right {float: right;}
 
     ul.topnav li {float: none;}    
 }
-
+ 
 #icons{
   font-size:20;
   color:white ;  
 }
+ 
 
 li a, .dropbtn {
     display: inline-block;
@@ -51,16 +52,16 @@ ul b{
 }
 
 </style>
+
 </head>
 <body>
-
 <ul class="topnav" id="navy">
   {% if request.user.is_authenticated %}
   <li>
-    <a class="active" href="{% url 'dashboard' %}">
+    <a class="active" id="home"  href="{% url 'dashboard' %}">
       <b style="" class="glyphicon glyphicon-home">                    
       </b> 
-      <b>Home</b>     
+      <b>0zz</b>     
     </a>
   </li>
 

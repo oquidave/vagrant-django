@@ -9,14 +9,22 @@
 <div style="padding-top:2%;">
     <br>
     <h1>Payments</h1>
-    <h3>
-        <a href="{% url 'payments' %}"  >Deposit</a>
-        |
-        <a href="{% url 'bulk_pay' %}" >BulkPay</a>
-        |
-        <a href="{% url 'schedule_pay' %}" id="active" >Schedule</a>
-        |
-        <a href="{% url 'phistory' %}">History</a>
+    <h3>        
+        <a href="{% url 'payments' %}" id="buttn" class="btn btn-lg">
+          <b>Deposit</b>
+        </a>
+
+        <a href="{% url 'bulk_pay' %}" id="buttn"  class="btn btn-lg">
+           <b>BulkPay</b>
+        </a>
+        
+        <a href="{% url 'schedule_pay' %}" id="active" class="btn btn-lg">
+           <b>Schedule</b>
+        </a>
+        
+        <a href="{% url 'phistory' %}" id="buttn" class="btn btn-lg">
+          <b>History</b>
+        </a>
     </h3>
     <center>
     	<form method="POST" >
@@ -96,13 +104,19 @@
         	width:250;height:40;
         }
         #active{
-           background:green;
-           height:80;
-           border:solid;
-           color:white;
-           width:300;
-           padding:2;
-           text-align:center;
+            background:#0277bd;
+            height:40;
+            text-align:center;
+            color:white;
+           font-size: 15;
+           width:100;
+        }
+
+        #buttn{
+            height:40;
+            width:100;
+            background:#bbdefb;
+            font-size: 15;
         }
 
         table{
@@ -110,7 +124,7 @@
         	height:400;            
         }
         form{
-            background:white;
+           
             margin-left:300;
             margin-right:300;
         }
@@ -125,7 +139,7 @@
 	    }
 
 	    a{
-		   color:teal;
+		   color:black;
 	    }
     </style>
 </div>

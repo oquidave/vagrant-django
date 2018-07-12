@@ -10,24 +10,24 @@
     <br>
     <h1>Payments</h1>
     <h3>        
-        <a href="{% url 'payments' %}" id="buttn" class="btn btn-default">
-          Deposit
+        <a href="{% url 'payments' %}" id="buttn" class="btn btn-lg">
+          <b>Deposit</b>
         </a>
 
-        <a href="{% url 'bulk_pay' %}" id="active" class="btn btn-default">
-           BulkPay
+        <a href="{% url 'bulk_pay' %}" id="active" class="btn btn-lg">
+           <b>BulkPay</b>
         </a>
         
-        <a href="{% url 'schedule_pay' %}" id="buttn" class="btn btn-default">
-           Schedule
+        <a href="{% url 'schedule_pay' %}" id="buttn" class="btn btn-lg">
+           <b>Schedule</b>
         </a>
         
-        <a href="{% url 'phistory' %}" id="buttn" class="btn btn-default">
-          History
+        <a href="{% url 'phistory' %}" id="buttn" class="btn btn-lg">
+          <b>History</b>
         </a>
     </h3>
     <center>
-    	<form method="POST" action="{% url 'bulk_pay' %}" style="background:white;margin-left:300;margin-right:300;" name="sub" enctype="multipart/form-data">
+    	<form method="POST" action="{% url 'bulk_pay' %}" style="margin-left:300;margin-right:300;" name="sub" enctype="multipart/form-data">
     	   {% csrf_token %}
     		<table>
                 <tr>
@@ -58,10 +58,7 @@
     </center>
     <style type="text/css">
 
-        td {
-        	color:green;
-        }
-
+        
         #send_button{
         	width:100;
         	height:40;
@@ -79,7 +76,7 @@
         }
 
         #active{
-            background:green;
+            background:#0277bd;
             height:40;
             text-align:center;
             color:white;
@@ -90,7 +87,7 @@
         #buttn{
             height:40;
             width:100;
-            background:#ce93d8;
+            background:#bbdefb;
             font-size: 15;
         }
 
@@ -107,9 +104,12 @@
         h3{
 		   margin-left:10%;
 	    }
+        a{
+            color:black;
+        }
 
 	    .page{
-		   color:teal;
+		   color:black;
 	    }
     </style>
 </div>

@@ -12,15 +12,25 @@
           Payments History 
         </h1>
         <h3>
-           <a href="{% url 'payments' %}" class="page" >Deposit</a>
-           |
-           <a href="{% url 'bulk_pay' %}" class="page" >BulkPay</a>
-           |
-           <a href="{% url 'schedule_pay' %}" class="page" >Schedule</a>
-           |
-           <a href="#" id="active">DepositHistory</a>
-           |
-  	        <a href="{% url 'bulkpayhist' %}">BulkHistory</a>
+            <a href="{% url 'payments' %}" id="buttn" class="btn btn-lg" >
+              <b>Deposit</b>
+            </a>
+           
+            <a href="{% url 'bulk_pay' %}" id="buttn" class="btn btn-lg" >
+              <b>BulkPay</b>
+            </a>
+           
+            <a href="{% url 'schedule_pay' %}" id="buttn" class="btn btn-lg" >
+              <b>Schedule</b>
+            </a>
+           
+            <a href="#" id="active" class="btn btn-lg">
+              <b>DepositHistory</b>
+            </a>
+           
+  	        <a href="{% url 'bulkpayhist' %}" id="buttn" class="btn btn-lg" >
+  	          <b>BulkHistory</b>
+  	        </a>
 
         </h3>
 	<center>
@@ -116,16 +126,21 @@
 	<style type="text/css">
          
 
-         #active{
-         	background:green;
-         	height:80;
-         	border:solid;
-         	color:white;
-         	width:300;
-         	padding:2;
-         	text-align:center;
+        #active{
+            background:#0277bd;
+            height:40;
+            text-align:center;
+            color:white;
+           font-size: 15;
+           width:150;
+        }
 
-         }
+        #buttn{
+            height:40;
+            width:100;
+            background:#bbdefb;
+            font-size: 15;
+        }
 
 
 	    #clear{
@@ -153,7 +168,7 @@
 		}
 
 		a{
-        	color:teal;
+        	color:black;
         }
 		
 		.fixed td {

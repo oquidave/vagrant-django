@@ -12,26 +12,26 @@
   Airtime  
 </h1>
 <h3>
-  <a href="{% url 'at_buy' %}" id="active" class="btn btn-default" >
+  <a href="{% url 'at_buy' %}" id="active" class="btn btn-lg" >
     <b>0zzBuy</b>
   </a>
-  <a href="{% url 'airtime' %}" id="buttnx" class="btn btn-default" >
+  <a href="{% url 'airtime' %}" id="buttnx" class="btn btn-lg" >
     <b>MobileMoneyBuy</b>
   </a>
-  <a href="{% url 'atbulk' %}" id="buttn" class="btn btn-default" >
+  <a href="{% url 'atbulk' %}" id="buttn" class="btn btn-lg" >
     <b>BulkBuy</b>
   </a>
-  <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-default" >
+  <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-lg" >
     <b>Subscribe</b>
   </a>
-  <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-default" >
+  <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-lg" >
     <b>History</b>
   </a>
 
 </h3>
 <center>
   <div id="at_buddy">
-   <form method="POST" action="{% url 'buy' %}" id="formt" style="background:white;margin-left:300;margin-right:300;" name="sub">
+   <form method="POST" action="{% url 'buy' %}" id="formt" style="margin-left:300;margin-right:300;" name="sub">
     {% csrf_token %}
     <table id="tebo">
       
@@ -84,14 +84,14 @@
   #buttn{
     height:40;
     width:100;
-    background:#1de9b6;
+    background:#bbdefb;
     font-size: 15;
   }
 
   #buttnx{
     height:40;
     width:150;
-    background:#1de9b6;
+    background:#bbdefb;
     font-size: 15;
   }
 
@@ -116,7 +116,7 @@
   }
 
   a{
-    color:teal;
+    color:black;
     text-align:center;
   }
 

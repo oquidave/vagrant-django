@@ -12,16 +12,16 @@
      SMS  
     </h1>
      <h3>
-        <a href="{% url 'send_sms' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'send_sms' %}" id="buttn" class="btn btn-lg">
           <b>SendSMS</b>
         </a>
-        <a href="{% url 'bulks' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'bulks' %}" id="buttn" class="btn btn-lg">
            <b>BulkSMS</b>
         </a>
-        <a href="{% url 'sms_schedule' %}" id="active" class="btn btn-default">
+        <a href="{% url 'sms_schedule' %}" id="active" class="btn btn-lg">
            <b>Schedule</b>
         </a>
-        <a href="{% url 'smshistory' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'smshistory' %}" id="buttn" class="btn btn-lg">
            <b>History</b>
         </a>
      </h3>
@@ -113,12 +113,13 @@
        #buttn{
        	  height:40;
        	  width:100;
-          background:#1de9b6;
+       	  color:black;
        	  font-size: 15;
+       	  background: #bbdefb;
         }
 
         #formt{
-        	background:white;
+        	
         	margin-left:300;
         	margin-right:300;
         	text-align:center;
@@ -129,11 +130,7 @@
 		  margin-left:10%;
 	    }
 
-	    a{
-		 color:teal;
-		 text-align: center;
-       	}
-
+	    
 		button{
 			width:80;
 			height:40;

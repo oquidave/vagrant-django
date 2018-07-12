@@ -12,71 +12,64 @@
      SMS  
     </h1>
      <h3>
-        <a href="{% url 'send_sms' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'send_sms' %}" id="buttn" class="btn btn-lg">
           <b>SendSMS</b>
         </a>
-        <a href="{% url 'bulks' %}" id="active" class="btn btn-default">
+        <a href="{% url 'bulks' %}" id="active"  class="btn btn-lg">
            <b>BulkSMS</b>
         </a>
-        <a href="{% url 'sms_schedule' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'sms_schedule' %}" id="buttn" class="btn btn-lg">
            <b>Schedule</b>
         </a>
-        <a href="{% url 'smshistory' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'smshistory' %}" id="buttn" class="btn btn-lg">
            <b>History</b>
         </a>
      </h3>
 <center>
-<form style="background: white;margin-left:250;margin-right:350;text-align:center;" action="{% url 'bulks' %}"  enctype="multipart/form-data">
+<form style="margin-left:250;margin-right:350;text-align:center;" action="{% url 'bulks' %}"  enctype="multipart/form-data">
 {% csrf_token %}
 	<table id="tebo">
 
 	    <tr>
 		    <td>
 		    	<b>Sender ID</b>
+          <select style="width:220;height:35;" name="sender_id">
+            <option value="SalaryPayment" >
+              Default(Africastalking)
+            </option>
+            <option value="BusinessPayment">
+              My Custom ID
+            </option>                            
+          </select>
 		    </td>
-	    </tr>
-	    <tr>
-		    <td>		    
-			    <select style="width:220;height:35;" name="sender_id">
-		            <option value="SalaryPayment" >
-                      Default(Africastalking)
-                    </option>
-                    <option value="BusinessPayment">
-                      My Custom ID
-                    </option>                            
-                </select>
-            </td>
 	    </tr>
 
-     	<tr>
+	    <tr>
 	     	<td>
 		    	<b>
-		          Upload Contacts 
-		        </b>
-		        <input type="file" name="browse" value="browse" accept=".csv">
+		        <i style="color:black;" class="glyphicon glyphicon-paperclip"></i> Contacts 
+		      </b>
+		      <input type="file" name="browse" value="browse" accept=".csv">
 		    </td>
 		    <td>
-			    <a href="{% url 'sms_csv_download' %}" >		            
-		           (Sample<i style="color:green;">.csv</i>)
-		        </a>
+			    <a href="{% url 'sms_csv_download' %}" >	        
+            <i style="color:green;border:solid;">Sample.csv</i>
+		      </a>
 		    </td>
 	    </tr>	
 	    
 	    <tr>
-		    <td>
-		        <p>
-				    <b>
-				      Message
-			        </b>
-			    </p>
-			    <textarea type="text" id="messg" name="sms_message"
-		        {% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %} minlength="3" maxlength="256" required>		        	
-		        </textarea>
+		    <td>		      
+			    <textarea type="text" id="messg" placeholder="Enter message here" name="sms_message"
+		        {% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %} minlength="3" maxlength="256" required></textarea>
      		</td>
     	</tr>
+
     	<tr>
-	        <td>
-		    	<button type="submit"  formmethod="POST" action="sms/bulks.html">SEND</button>
+	      <td>
+		     <button type="submit"  formmethod="POST" action="sms/bulks.html">
+           SEND
+          </button>
 		    </td>
 	    </tr>
 	</table>
@@ -96,7 +89,7 @@
           height:40;
           width:100;
           color:black;
-          background:#1de9b6;
+          background:#bbdefb;
           font-size: 15;
           text-align: center;
         }
@@ -128,15 +121,14 @@
 	#tebo{
 			margin: auto;
 			width:600px;
-			height: 300px;
+			height: 400px;
 		}
 
 	#messg{
 		height: 130;
 		width: 500;
 		margin:left;
-		text-align:left;
-		background-color:#B0E0E6;
+		text-align:left;		
 		}
 
 	

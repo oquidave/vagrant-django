@@ -10,24 +10,24 @@
     <br>
     <h1>Payments</h1>
     <h3>
-        <a href="{% url 'payments' %}" id="active" class="btn btn-default">
+        <a href="{% url 'payments' %}" id="active" class="btn btn-lg">
           <b>Deposit</b>
         </a>
 
-        <a href="{% url 'bulk_pay' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'bulk_pay' %}" id="buttn" class="btn btn-lg">
            <b>BulkPay</b>
         </a>
         
-        <a href="{% url 'schedule_pay' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'schedule_pay' %}" id="buttn" class="btn btn-lg">
            <b>Schedule</b>
         </a>
         
-        <a href="{% url 'phistory' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'phistory' %}" id="buttn" class="btn btn-lg">
           <b>History</b>
         </a>
     </h3>
     <center>
-    	<form method="POST" style="background:white;margin-left:300;margin-right:200;" action="{% url 'payments' %}" >
+    	<form method="POST" style="margin-left:300;margin-right:200;" action="{% url 'payments' %}" >
     	   {% csrf_token %}
     		<table>
 
@@ -95,8 +95,9 @@
         	width:250;
         	height:35;
         }
+        
         #active{
-            background:green;
+            background:#0277bd;
             height:40;
             text-align:center;
             color:white;
@@ -107,7 +108,7 @@
         #buttn{
             height:40;
             width:100;
-            background:#ce93d8;
+            background:#bbdefb;
             font-size: 15;
         }
 
@@ -127,7 +128,7 @@
 	    }
 
 	    a{
-		   color:teal;
+		   color:black;
            text-align:center;
 	    }
     </style>

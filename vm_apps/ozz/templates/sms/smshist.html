@@ -12,19 +12,19 @@
       SMS History
     </h1>
     <h3>
-        <a href="{% url 'send_sms' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'send_sms' %}" id="buttn"  class="btn btn-lg">
           <b>SendSMS</b>
         </a>
-        <a href="{% url 'bulks' %}"  id="buttn" class="btn btn-default">
+        <a href="{% url 'bulks' %}" id="buttn" class="btn btn-lg">
            <b>BulkSMS</b>
         </a>
-        <a href="{% url 'sms_schedule' %}" id="buttn" class="btn btn-default">
+        <a href="{% url 'sms_schedule' %}" id="buttn" class="btn btn-lg">
            <b>Schedule</b>
         </a>
-        <a href="{% url 'smshistory' %}" id="active" class="btn btn-default">
+        <a href="{% url 'smshistory' %}" id="active" class="btn btn-lg">
            <b>History</b>
         </a>
-    </h3>
+     </h3>
 <center>
    {% if users %}
 		<table border="1" id="dbtable">
@@ -167,19 +167,16 @@
         #buttn{
          	height:40;
         	width:100;
-        	background:#1de9b6;
-       	    font-size: 15;
+          color:black;
+        	background:#bbdefb;
+       	   font-size: 15;
        	}
 
         h3{
 			margin-left:10%;
 		}
 
-		a{
-        	color:teal;
-          text-align: center;
-        }
-
+	
 	   h1{
             margin-left:5%;
             width:500;
