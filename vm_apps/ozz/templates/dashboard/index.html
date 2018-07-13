@@ -1,0 +1,335 @@
+{% extends 'includes/newbes.html'%}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+<center>
+  <body bgcolor="White">
+    <div id="topbar">
+      <table id="wallet">
+        <tr>
+          <th>
+            <b>0zz</b>
+          </th>
+        </tr>
+        <tr class="toto">
+          <td>
+            <output class="toto">
+              <i>x</i>
+              <br>
+              credits
+            </output>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" id="topup" value="Top-up">
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div id="graph_div">
+
+      <table id="t">
+        <tr>
+        <td>
+        <div id="bar_div">
+        <table>
+            <th>
+              <b id="yell">
+                SMS
+              </b>
+            </th>
+            <tr>
+              <td>
+                Today:
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Recent: 
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+            <tr class="toto">
+              <td>
+                Total:
+              </td>
+              <td>
+                <output class="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+          </table>
+    </div>
+  </td>
+  <td>
+    <div id="bar_div">
+      <table>
+            <th>
+             <b id="yell">
+              Airtime
+             </b>
+            </th>
+            <tr>
+              <td>
+                Today:
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Recent:
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+            <tr class="toto">
+              <td>
+                Total:
+              </td>
+              <td>
+                <output class="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+          </table>
+    </div>
+  </td>
+</tr>
+
+<tr>
+    <td>
+    <div id="bar_div1">
+       <table>
+          <th>
+            <b id="yell">
+              Voice
+            </b>
+          </th>
+            <tr>
+              <td>
+                Today:
+              </td>
+              <td>
+                <output id="toto">
+                    0 
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Recent: 
+              </td>
+              <td>
+                <output id="toto">
+                    0 
+                </output>
+              </td>
+            </tr>
+            <tr class="toto">
+              <td>
+                Total:
+              </td>
+              <td>
+                <output class="toto">
+                  0 
+                </output>
+              </td>
+            </tr>
+          </table>
+    </div>
+  </td>
+  
+  <td>
+    <div id="bar_div1">
+       <table>
+          <th>
+            <b id="yell">
+              Payments
+             </b>
+          </th>
+            <tr>
+              <td>
+                Today:
+              </td>
+              <td>
+                <output id="toto">
+                  0
+                </output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Recent:
+              </td>
+              <td>
+                <output id="toto">
+                 0
+                </output>
+              </td>
+            </tr>
+            <tr class="toto">
+              <td>
+                Total:
+              </td>
+              <td>
+                <output class="toto">
+                 0
+                </output>
+              </td>
+            </tr>
+          </table>
+    </div> 
+  </td>
+</tr>
+
+  </table>
+
+    </div>
+    
+</body>
+</center>
+<style>
+
+#toto{
+  color:red;
+}
+
+.toto{
+  color:green;
+
+}
+#topup{
+  color:red;
+  width:80;
+}
+
+#wallet{
+ margin-left:40;
+ height:100;
+ border:solid;
+ width:120;
+ border-color:green;
+ text-align:center;
+}
+
+#yell{
+  color:white;
+  background:green;
+}
+
+#t{
+  width:70%; 
+  height: 60%;
+
+}
+
+
+#topbar {
+  width:100%;
+  height:40px;
+  margin-top:5%;
+  color:black;
+  text-align:right;
+  float:right;
+}
+
+#bar_div {
+  width:80%;
+  height:70%;
+  background:#B0E0E6;
+  margin:0;
+  color:black;
+}
+
+#bar_div1 {
+  width:80%;
+  height:80%;
+  background:#B0E0E6;
+  margin:0;
+  color:black;
+}
+
+
+#panel_div { 
+  width:60%;
+  height:100%;
+  float:left;  
+}
+
+
+</style>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

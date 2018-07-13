@@ -1,0 +1,120 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<div style="padding-top:2%;">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  </head>
+  <br>
+  <h1>
+    Airtime  
+  </h1>
+  
+  <h3>
+    <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-lg" >
+      <b>0zzBuy</b>
+    </a>
+    <a href="{% url 'airtime' %}" id="buttnx" class="btn btn-lg" >
+      <b>MobileMoneyBuy</b>
+    </a>
+    <a href="{% url 'atbulk' %}" id="active" class="btn btn-lg" >
+     <b>BulkBuy</b>
+    </a>
+    
+    <a href="{% url 'at_subscribe' %}" id="buttn" class="btn btn-lg" >
+      <b>Subscribe</b>
+    </a>
+    <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-lg" >
+      <b>History</b>
+    </a>
+  </h3>    
+  <center>
+    <form method="POST" action="{% url 'atbulk' %}" style="margin-left:300;margin-right:300;" name="sub" enctype="multipart/form-data">
+		  {% csrf_token %}
+		    <table id="tebo">
+
+          <tr>
+            <td>
+              <a style="width:135;height:35;" href="{% url 'csv_download' %}" >
+                <i style="color:green;">Sample.csv</i>
+              </a>
+            </td>
+          </tr>
+
+			    <tr>
+				    <td>
+					    Upload  (<i style="color:green;">Contacts.csv</i>):
+					    <input type="file" style="height:40;width:300;" name="contacts">
+			      </td>
+			    </tr>
+
+          <tr>
+				    <td>
+					    <input type="submit" style="color:white;" class="btn btn-success" name="Send" id="atbuy" value="Buy">
+				    </td>
+			    </tr>
+		    </table>
+    </form>      
+  </center>
+</div>
+<style type="text/css">
+   
+   h1{
+    margin-left:5%;
+    width:500;
+    }
+
+
+  #active{
+    background:#0277bd;
+    height:40;
+    text-align:center;
+    color:white;
+    font-size: 15;
+    width:170;
+    text-align: center;
+  }
+
+  #buttn{
+    height:40;
+    width:100;
+    background:#bbdefb;
+    font-size: 15;
+  }
+
+  #buttnx{
+    height:40;
+    width:150;
+    background:#bbdefb;
+    font-size: 15;
+  }
+
+
+
+    h3{
+		margin-left:10%;
+	}
+
+	a{
+		color:black;
+    text-align: center;
+	}
+
+   #amount{
+   	 width:200;
+   	 height:40;
+   }
+
+   #atbuy{
+   	width:70;
+   	height:30;
+   }
+
+	#tebo{
+		width:50%;
+		height:50%;
+	}
+	
+</style>
+{% endblock %}

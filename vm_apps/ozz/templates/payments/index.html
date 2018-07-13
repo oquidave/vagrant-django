@@ -1,0 +1,136 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block%}
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head> 
+<div style="padding-top:2%;">
+    <br>
+    <h1>Payments</h1>
+    <h3>
+        <a href="{% url 'payments' %}" id="active" class="btn btn-lg">
+          <b>Deposit</b>
+        </a>
+
+        <a href="{% url 'bulk_pay' %}" id="buttn" class="btn btn-lg">
+           <b>BulkDeposit</b>
+        </a>
+        
+        <a href="{% url 'schedule_pay' %}" id="buttn" class="btn btn-lg">
+           <b>Schedule</b>
+        </a>
+        
+        <a href="{% url 'phistory' %}" id="buttn" class="btn btn-lg">
+          <b>History</b>
+        </a>
+    </h3>
+    <center>
+    	<form method="POST" style="margin-left:300;margin-right:200;" action="{% url 'payments' %}" >
+    	   {% csrf_token %}
+    		<table>
+
+                <tr>
+                    
+                    <td>
+                        <input  class="enter" placeholder="Enter receiver name here" name="receiver_name" required>
+                    </td>
+                </tr>
+
+    			<tr>
+    				<td>
+    					<input  class="enter" placeholder="Enter receiver number here" name="receiver_no" required>
+    				</td>
+    			</tr>
+
+    			<tr>
+    				<td>
+    					<input class="enter" placeholder="Enter amount here" name="amount" required>
+    				</td>
+    			</tr>
+
+                <tr>
+                    <td>
+                        <select style="width:250;height:40;" name="mm_reason">
+                            <option value="SalaryPayment" >
+                              Salary
+                            </option>
+                            <option value="BusinessPayment">
+                              Business
+                            </option>
+                            <option value="SalaryPaymentWithWithdrawalChargePaid"> 
+                              Gift
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+
+    			<tr>
+    				<td>
+    					<input type="submit" class="btn btn-success" id="send_button" value="DEPOSIT">
+    				</td>
+    			</tr>
+    		</table>
+    	</form>
+    </center>
+    <style type="text/css">
+
+        #mm_reason{
+            width:300;
+            height:100;
+        }
+
+        td b{
+        	color:green;
+        }
+
+        #send_button{
+        	width:100;
+        	height:40;
+        	
+        }
+
+        .enter{
+        	width:250;
+        	height:35;
+        }
+        
+        #active{
+            background:#0277bd;
+            height:40;
+            text-align:center;
+            color:white;
+           font-size: 15;
+           width:100;
+        }
+
+        #buttn{
+            height:40;
+            width:100;
+            background:#bbdefb;
+            font-size: 15;
+        }
+
+
+        table{
+        	width:500;
+        	height:300;
+        }
+
+    	h1{
+           margin-left:5%;
+           width:500;
+        }
+
+        h3{
+		   margin-left:10%;
+	    }
+
+	    a{
+		   color:black;
+           text-align:center;
+	    }
+    </style>
+</div>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<div style="padding-top:10%;text-align:center;" >
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+  </head>
+    <div id="bar_div">
+      <marquee>
+        <h1 style="font-size:60;">
+         Voice
+        </h1>
+      </marquee>
+      <table style="margin:auto;text-align:center;width:70%;height:70%;">
+        <tr>
+          <td>
+            <output id="toto">
+              <a href="{% url 'fwd' %}">
+                <b id="glifs" class="glyphicon glyphicon-phone-alt">               
+                </b>
+              </a>                      
+            </output>
+            <b id="yell">
+              <a href="{% url 'fwd' %}">
+                Call Center
+              </a>
+            </b>              
+          </td>
+
+          <td>
+            <output id="toto">
+              <a href="#">
+                <b id="glifs" class="glyphicon glyphicon-user">      
+                </b>
+              </a>                     
+            </output>
+            <b id="yell">
+              <a href="#">
+                Contacts
+              </a>
+            </b>                              
+          </td>          
+        </tr>     
+      
+        <tr>
+          <td>
+            <output id="toto">
+              <a href="{% url 'sms_schedule' %}">                     
+                <b id="glifs" class="glyphicon glyphicon-bullhorn">
+                </b>
+              </a>
+            </output>
+            <b id="yell">
+              <a href="#">
+               Read out
+              </a>
+            </b>
+          </td>
+          <td>
+            <output id="toto">
+              <a href="{% url 'vhistory' %}">
+                <b id="glifs" class="glyphicon glyphicon-calendar"></b>
+              </a>
+            </output>
+            <b id="yell">
+              <a href="{% url 'vhistory' %}">
+                Call Logs
+              </a>
+            </b>   
+          </td>
+        </tr>            
+      </table>
+      <br>
+      <br>
+    </div>     
+</div>
+
+<style>
+
+#toto{
+  color:lime;
+}
+
+.toto{
+  color:green;
+
+}
+
+#glifs{
+  font-size: 70;
+
+}
+
+
+#yell{
+  color:black;  
+}
+
+
+
+#bar_div {
+  width:70%;
+  height:60%;
+  color:black;
+  margin:auto;
+  text-align:center;
+}
+
+
+
+
+
+
+
+</style>
+</div>
+{% endblock %}

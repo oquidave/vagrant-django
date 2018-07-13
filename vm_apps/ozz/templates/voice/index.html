@@ -1,0 +1,49 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+<div style="padding-top:5%;">
+    <center>
+        <h1 style="color:green;">Voice Call</h1>
+        <form method="POST" action="{% url 'kol' %}">
+           {% csrf_token %}
+
+            <table>
+	            <tr>
+	                <td>
+	                   <b>Number:</b>
+	          	       <input id="num" placeholder="+2567*******" name="number">
+	                </td>
+	            </tr>
+	            <tr>
+	        	    <td>
+	        		  <input type="submit" id="kol" value="CALL">
+	        	    </td>
+	            </tr>  
+            </table>
+        </form>
+    </center>
+    <style type="text/css">
+    	table{
+    		margin-top:8%;
+    		margin:auto;
+    	}
+    	#num{
+    		width:300;
+    		height:40;
+    		margin-right:200;
+    	}
+    	#kol{
+    		width:70;
+    		height:30;
+    		margin-left:150;
+    		margin-top:50;
+    		color:green;
+    	}
+    </style>
+</div>
+{%endblock%}

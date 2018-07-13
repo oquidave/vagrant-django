@@ -1,0 +1,157 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+<div style="padding-top:2%;">
+    <br>
+    <h1>
+     SMS  
+    </h1>
+     <h3>
+        <a href="{% url 'send_sms' %}" id="buttn" class="btn btn-lg">
+          <b>SendSMS</b>
+        </a>
+        <a href="{% url 'bulks' %}" id="buttn" class="btn btn-lg">
+           <b>BulkSMS</b>
+        </a>
+        <a href="{% url 'sms_schedule' %}" id="active" class="btn btn-lg">
+           <b>Schedule</b>
+        </a>
+        <a href="{% url 'smshistory' %}" id="buttn" class="btn btn-lg">
+           <b>History</b>
+        </a>
+     </h3>
+	<center>
+	<div id="tad">
+			<form  name="formt" id="formt" action="{% url 'send_sms'  %}">
+				{% csrf_token %}
+			<table id="tebo">
+			    <tr>
+			    	<td>
+			    	   DATE
+			    	</td>
+			    </tr>
+
+			    <tr>
+			    	<td>
+			    	   
+			    	   <input type="date" style="color:blue;width:150;height:20;" name="send_date">
+			    	</td>
+			    </tr>
+			    
+			    <tr>
+			    	<td>
+			    	    TIME
+			    	</td>        
+			    </tr>
+			    	    
+			    <tr>
+			    	<td>
+			    	   <input style="color:red;width:150;height:20;" type="time" name="send_time">
+			    	</td>
+			    </tr>
+                
+               
+				<tr>
+					<td>
+						Attach (<i style="color:green;">Contacts.csv</i>)
+						<input type="file" name="add_csv">
+					</td>
+					<td>
+			            <a href="{% url 'sms_csv_download' %}" >
+		                    <b style="color:red;">
+		                      Download
+		                    </b>
+		                    (Contacts<i style="color:green;">.csv</i>)
+		                </a>
+		            </td>
+				</tr>
+				
+				<tr>
+					<td>
+						<textarea type="text" placeholder="Enter message here" id="messg" name="sms_message"
+						{% if form.name.value != None %}value="{{ form.name.value|stringformat:'s' }}"{% endif %} minlength="3" maxlength="99999999999910" required></textarea>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<button type="submit" formmethod="POST" class="btn btn-success" onclick="wait()" action="sms/sms.html">
+						<i><b>Schedule</b></i>
+					</button>
+					</td>
+				</tr>
+			</div>
+			</table>
+			</form>
+		</div>
+		<script type="text/javascript">
+			function wait(){
+				alert("Sending text");
+			}
+		</script>
+		<style type="text/css">
+
+		#active{
+          background:#0277bd;
+          height:40;
+          text-align:center;
+          color:white;
+          font-size: 15;
+          width:100;
+          text-align: center;
+        }
+
+       #buttn{
+       	  height:40;
+       	  width:100;
+       	  color:black;
+       	  font-size: 15;
+       	  background: #bbdefb;
+        }
+
+        #formt{
+        	
+        	margin-left:300;
+        	margin-right:300;
+        	text-align:center;
+        	margin-left:250;
+        }
+
+		h3{
+		  margin-left:10%;
+	    }
+
+	    
+		button{
+			width:80;
+			height:40;
+			color:green;
+		}
+
+		h1{
+            margin-left:5%;
+            width:500;
+        }
+
+		
+		#tebo{
+			margin: auto;
+			width:600px;
+			height: 400px;
+		}	
+
+		#messg{
+			height: 130;
+			width: 500;
+			margin:left;
+			text-align:left;			
+		}	
+		</style>
+</center>
+</div>
+{% endblock %}
+

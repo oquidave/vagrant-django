@@ -1,0 +1,36 @@
+<! DOCTYPE html>
+<div id="hed">
+  {% include 'includes/topnav.html' %}
+</div>
+<div>
+<body >
+{% block body_block%}
+{% endblock %}
+</body>
+</div>
+<div id="foot">
+  {% include 'includes/footer.html' %}
+</div>
+<style type="text/css">
+   h1{
+   	color:#0277bd;
+   }
+   body{
+   	background:#eeeeee; 
+   }
+	
+	
+	#hed{
+		width:100%;
+		position:fixed;
+	}
+
+	#foot{
+		width:100%;
+		color:black;
+		height:60;
+
+	}
+</style>
+</html>
+

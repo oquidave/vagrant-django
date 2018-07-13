@@ -1,0 +1,20 @@
+
+
+/* colors from https://mdbootstrap.com/css/colors/ */
+h3{
+  font-family: 'Cardo';
+  font-size: 15pt;
+  margin-right:200;
+  height:30;
+}
+
+body{
+	background:#ffebee;
+}
+
+h1{
+	font-family: 'Cardo';
+    font-size: 30pt;
+    color:#0277bd;
+}
+ 

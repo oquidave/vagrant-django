@@ -1,0 +1,111 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<div style="padding-top:10%;text-align:center;" >
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+  </head>
+    <div id="bar_div">
+      <marquee>
+        <h1 style="font-size:60;">
+         Payments
+        </h1>
+      </marquee>
+      <table style="margin:auto;text-align:center;width:70%;height:60%;">
+        <tr>
+          <td>
+            <output id="toto">
+              <a href="{% url 'payments' %}">
+                <b style="font-size: 50;" class="glyphicon glyphicon-import">               
+                </b>
+              </a>                      
+            </output>
+            <b id="yell">
+              <a href="{% url 'payments' %}">
+                Single Deposit
+              </a>
+            </b>              
+          </td>
+
+          <td>
+            <output id="toto">
+              <a href="{% url 'bulk_pay' %}">
+                <b style="font-size: 50;" class="glyphicon glyphicon-briefcase">      
+                </b>
+              </a>                     
+            </output>
+            <b id="yell">
+              <a href="{% url 'bulk_pay' %}">
+                BulkDeposit
+              </a>
+            </b>                              
+          </td>          
+        </tr>     
+      
+        <tr>
+          <td>
+            <output id="toto">
+              <a href="{% url 'schedule_pay' %}">                     
+                <b style="font-size: 50;" class="glyphicon glyphicon-time">
+                </b>
+              </a>
+            </output>
+            <b id="yell">
+              <a href="{% url 'schedule_pay' %}">
+                Schedule
+              </a>
+            </b>
+          </td>
+          <td>
+            <output id="toto">
+              <a href="{% url 'phistory' %}">
+                <b style="font-size: 50;" class="glyphicon glyphicon-calendar"></b>
+              </a>
+            </output>
+            <b id="yell">
+              <a href="{% url 'phistory' %}">
+                History
+              </a>
+            </b>   
+          </td>
+        </tr>            
+      </table>
+    </div>     
+</div>
+
+<style>
+
+#toto{
+  color:lime;
+}
+
+.toto{
+  color:green;
+
+}
+
+
+#yell{
+  color:black;  
+}
+
+
+
+#bar_div {
+  width:70%;
+  height:60%;
+  color:black;
+  margin:auto;
+}
+
+
+
+
+
+
+
+</style>
+</div>
+{% endblock %}

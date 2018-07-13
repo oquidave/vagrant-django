@@ -1,0 +1,265 @@
+{% extends 'includes/newbes.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+<div id="bud" style="padding-top:2%;">
+    <br>
+    <h1>
+          Airtime History 
+        </h1>
+        <h3>
+            <a class="btn btn-lg" id="buttn" href="{% url 'at_buy' %}">
+              <b>0zzBuy</b>
+            </a>
+
+            <a class="btn btn-lg" id="buttnx"  href="{% url 'airtime' %}">
+               <b>MobileMoneyBuy</b>
+            </a>
+
+            <a class="btn btn-lg" id="buttn" href="{% url 'atbulk' %}">
+                <b>BulkBuy</b>
+            </a>
+
+            <a class="btn btn-lg" id="buttn" href="{% url 'at_subscribe' %}">
+              <b>Subscribe</b>
+            </a>
+
+            <a href="{% url 'ozz_history' %}" id="buttn" class="btn btn-lg" >
+               <b>BuyHistory</b>
+            </a>
+
+            <a href="{% url 'mm_history' %}" id="active" class="btn btn-lg" >
+              <b>MobileMoneyHistory</b>
+            </a>
+            <a href="{% url 'bulkhist' %}" id="buttnx" class="btn btn-lg" >
+              <b>BulkHistory</b>
+            </a>
+        </h3>
+	<center>
+		{% if users %}
+			<table border="1" id="dbtable">
+			{% if messages %}
+                <ul class="messages" style="color:red;">
+                   {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                      <h3>{{ message }}</h3>
+                    </li>
+                   {% endfor %}
+                </ul>
+            {% endif %}
+            <div style="padding-bottom:10;">
+        	    <a href="{% url 'mmhist_delete' %}" onclick="warn()" id="clear">Delete all</a>
+            </div>
+            <br>
+            <br>
+			<tr class="fixed">
+				<td>
+				<b>
+				  Date
+				</b>
+				</td>
+				<td>
+			sss	<b>
+				  Amount
+				</b>
+				</td>
+				<td>
+				<b>
+				  Source
+				</b>
+				</td>
+				<td>
+				<b>
+				  Status
+				</b>
+				</td>
+				<td>
+				<b>
+				  Destination
+				</b>
+				</td>
+				<td>
+				<b>
+				  Action
+				</b>
+				</td>
+			</tr>
+			{% for user in users %}
+			<tr class="fixed1">
+				<td>{{user.date}}</td>
+				<td>{{user.amount}}</td>
+				<td>{{user.source}}</td>
+				<td>{{user.status}}</td>
+				<td>{{user.destination}}</td>
+				<td>
+				    <a href="/airtime/delit/{{user.id}}" onclick="warn()">
+				       <i style="color:red;">Delete</i>
+				    </a>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<div id="pag">
+		{% if users.has_other_pages %}
+		<ul class="pagination">
+		{% if users.has_previous %}
+		    <li>
+                <a href="?page={{ users.previous_page_number }}">
+                   &laquo;
+                </a>
+            </li>
+        {% else %}
+            <li class="disabled">
+                <span>
+                  &laquo;
+                </span>
+            </li>
+        {% endif %}
+        {% for i in users.paginator.page_range %}
+        {% if users.number == i %}
+            <li class="active">
+                <span class="sr-only">
+                    <b>{{ i }}</b> 
+                </span>
+            </li>
+       {% else %}
+            <li>
+               <a href="?page={{ i }}">
+                 <b>{{ i }}</b>
+               </a>
+            </li>
+        {% endif %}
+        {% endfor %}
+        {% if users.has_next %}
+            <li>
+                <a href="?page={{ users.next_page_number }}">
+                   &raquo;
+                </a>
+            </li>
+       {% else %}
+            <li class="disabled">
+                <span>
+                  &raquo;
+                </span>
+            </li>
+       {% endif %}
+        </ul>
+        {% endif %}
+        </div>
+		{% else %}
+			<p>Nothing to display</p>
+		{%endif %}
+	</center>
+	<script type="text/javascript">
+		function warn(){
+			alert("Item will be deleted");
+		}
+	</script>
+	<style type="text/css">
+        
+
+        h1{
+			margin-left:5%;
+			width:500;
+		}
+
+
+
+	  #active{
+    background:#0277bd;
+    height:40;
+    text-align:center;
+    color:white;
+    font-size: 15;
+    width:155;
+  }
+
+  #buttn{
+    height:40;
+    width:100;
+    background:#bbdefb;
+    font-size: 15;
+  }
+
+  #buttnx{
+    height:40;
+    width:150;
+    background:#bbdefb;
+    font-size: 15;
+  }
+
+  #xbuttnx{
+    height:40;
+    width:155;
+    background:#bbdefb;
+    font-size: 15;
+  }
+
+      
+        h2{
+        	margin-left:5%;
+        	width:150;
+        	background:green;
+        	padding:20;
+        	color:white;
+        }
+
+        h3{
+        	margin-left:10%;
+        }
+
+        a{
+        	color:black;
+        }
+
+	    #clear{
+	    	float:right;
+	    	margin-right:40;
+	    	padding:5;
+	    	width:100;
+	    	background:red;
+	    	color:white;
+	    }
+
+		#dbtable{
+			width:95%;
+			padding-top:5%;
+			border-collapse:collapse;			
+		}
+		
+		.fixed td {
+           overflow: hidden;
+            height: 10;
+            background-color:green;
+        }
+
+        .fixed1{
+			background-color:#B0E0E6;
+		}
+
+		#pag{
+			width:100%;
+			position:fixed;
+		}
+
+		.pagination a{
+			color:black;
+			margin-left:20%;
+		}
+
+		.pagination .active{
+			color:green;
+		}
+
+
+	</style>
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,126 @@
+{% load staticfiles %}
+<! DOCTYPE html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">     
+
+<style>
+body {margin: 0;}
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 60;
+    overflow: hidden;
+    border:solid;
+    border-color:#eeeeee;
+    background-color:#0277bd /* dark blue*/ ;  
+}
+
+ul.topnav li {float: left;}
+ul.topnav li.right {float: right;}
+
+
+
+@media screen and (max-width: 600px){
+    ul.topnav li.right, 
+
+    ul.topnav li {float: none;}    
+}
+ 
+#icons{
+  font-size:20;
+  color:white ;  
+}
+ 
+
+li a, .dropbtn {
+    display: inline-block;
+    color:#1de9b6;
+    text-align: left;
+    font-size:20;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+
+ul b{
+  color:white;
+}
+
+</style>
+
+</head>
+<body>
+<ul class="topnav" id="navy">
+  {% if request.user.is_authenticated %}
+  <li>
+    <a class="active" id="home"  href="{% url 'dashboard' %}">
+      <b style="" class="glyphicon glyphicon-home">                    
+      </b> 
+      <b>0zz</b>     
+    </a>
+  </li>
+
+
+    <li class="dropdown">
+      <a href="{% url 'sms_tiles' %}" class="dropbtn" href="javascript:void(0)">
+        <b id="icons" class="glyphicon glyphicon-comment">                    
+        </b>
+        <b>SMS</b>                
+      </a>        
+    </li>
+
+
+    <li class="dropdown">
+      <a href="{% url 'at_tiles' %}" class="dropbtn">
+        <b id="icons" class="glyphicon glyphicon-phone">          
+        </b>
+        <b>Airtime</b>
+      </a>
+    </li>  
+
+
+    <li class="right">
+      {% if request.user.is_authenticated %}
+        <span>
+          <b style="color:white;font-size:20;/* cyan>>>#1de9b6*/">
+            hello
+          </b>
+          <b style="color:white;font-size:20;">
+            {{ request.user.username }}
+          </b>
+        </span>
+      {% endif %}
+      <a href="{% url 'profile' %}">
+        <i  id="icons"  class="glyphicon glyphicon-user">          
+        </i>
+      </a>           
+    </li>  
+
+
+    <li class="dropdown">
+      <a href="{% url 'payment_tiles' %}" class="dropbtn">        
+        <i  id="icons"  class="glyphicon glyphicon-briefcase">          
+        </i>
+        <b>Payments</b>
+      </a>      
+    </li>
+
+
+    <li class="dropdown">
+      <a href="{% url 'voice_tiles' %}" class="dropbtn">
+        <i  id="icons"  class="glyphicon glyphicon-volume-up">          
+        </i>
+        <b>Voice</b>
+      </a>
+    </li>
+
+    {% endif %}
+  <div style="padding:0 16px;">
+  </div>
+</body>
+</html>

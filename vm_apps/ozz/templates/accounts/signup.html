@@ -1,0 +1,67 @@
+{% include "accounts/signnav.html" %}
+{% block body_block%}  
+<center>
+<form class="form-horizontal" action='/accounts/signup/' method="POST">
+ {% csrf_token %}
+ <table>
+  <tr>
+    <td>   <!-- first_name -->
+        <input type="text" id="first_name" name="first_name" placeholder="First name" class="input-xlarge" required>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <!-- last_name -->
+        <input type="text" id="last_name" name="last_name" placeholder="Last name" class="input-xlarge" required>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <!-- Username -->
+        <input type="text" id="username" name="username" placeholder="Username" class="input-xlarge" required>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <!-- E-mail -->
+        <input type="email" id="email" name="email" placeholder="E-mail" class="input-xlarge" required>
+      </td>
+  </tr>
+  
+  <tr>
+    <td>
+       <!-- Password-->
+        <input type="password" id="password" name="password" placeholder="Password" class="input-xlarge" required>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <!-- Password-->
+        <input type="password" id="password1" name="password" placeholder="Confirm Password" class="input-xlarge" required=password>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button class="btn btn-success">SignUp</button>
+    </td>
+  </tr>
+</table>
+</form>
+</center>
+<style type="text/css">
+  table{
+    margin-top:100;
+    margin-left:500;
+    margin-right:500;
+  }
+  .input-xlarge{
+    width:250;
+    height:40;
+  }
+  button{
+    width:100;
+    height:40;
+  }
+</style>
+{% endblock %}
+{% include 'includes/footer.html' %}
