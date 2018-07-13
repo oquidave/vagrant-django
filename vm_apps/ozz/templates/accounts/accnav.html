@@ -5,24 +5,23 @@
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">     
 	</head>
 	<nav class="navbar navbar-expand-sm bg-light navbar-light" >
-   <br>
-		<ul class="nav navbar-nav">      
+  	<ul>      
             
-            <li>
-                <a href="#"  class="btn btn-lg">
-                  About
+            <li id="navs">
+                <a href="#" >
+                  <b>About</b>
                 </a>
             </li>
-            <li><a class="sep" href="#"></a></li>
-            <li>
-                <a href="#"  class="btn btn-lg">
-                  Pricing
+            
+            <li id="navs" >
+                <a href="#" >
+                  <b>Pricing</b>
                 </a>
             </li>
-            <li><a class="sep" href="#"></a></li>            
-            <li>
-                <a id="navs" href="/accounts/signup/" class="btn btn-lg">
-                   Sign up
+                       
+            <li id="navsign" >
+                <a id="navs" href="/accounts/signup/">
+                  <b>SignUp</b>
                 </a>
             </li>
         </ul>        
@@ -30,11 +29,23 @@
 	<style type="text/css">
 		nav{
       background:#355C7D/* darkblue*/;
+      height:40;
       width: 100%;      
 		}
-		.btn{
-			color:white;
-			/*background:#990000;*/
-		}
+
+    #navs{
+      float:right;
+      margin-right:30;
+      font-size:20;
+      padding:10;      
+    }
+    #navsign{
+      float:right;
+      
+    }
+
+		b{
+      color:white;      
+    }
 	</style>
 </html>

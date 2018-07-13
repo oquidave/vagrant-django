@@ -41,21 +41,20 @@
 		    </td>
 	    </tr>
 
-      <tr>
-        <td>
-          <a style="width:100;" class="btn-success btn-lg" href="{% url 'sms_csv_download' %}" >          
-            <i style="color:green;">Sample.csv</i>
-          </a>
-        </td>
-      </tr>
-
+      
 	    <tr>
 	     	<td>
 		    	<b>
 		        <i style="color:black;" class="glyphicon glyphicon-paperclip"></i> Contacts 
 		      </b>
 		      <input type="file" name="browse" value="browse" accept=".csv">
-		    </td>		    
+          
+		    </td>	
+        <td>
+           <a style="width:100;" href="{% url 'sms_csv_download' %}" >
+            <i style="color:green;">Sample.csv</i>
+          </a>
+        </td>	    
 	    </tr>	
 	    
 	    <tr>
@@ -70,6 +69,7 @@
 		     <button type="submit" class="btn btn-success" formmethod="POST" action="sms/bulks.html">
            SEND
           </button>
+          <input  class="btn btn-success" style="height:40;width:90;" value="Schedule">
 		    </td>
 	    </tr>
 	</table>
