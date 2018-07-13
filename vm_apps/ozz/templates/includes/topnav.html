@@ -35,10 +35,23 @@ nav{
   margin-right:20;
   padding:10;
   font-size:20;
+
 }
+
+.left:hover{
+
+  background: #0277bd;  
+}
+
+#profile:hover{
+   background: #0277bd;
+}
+
+
 
 small{
   color:white;
+  padding: 10;
 }
 
 .left{
@@ -98,7 +111,7 @@ small{
        
   
 
-  <li class="right">
+  <li id="profile" class="right">
     <a href="{% url 'profile' %}" >
       <small>Profile</small>
       <i  id="icons"  class="glyphicon glyphicon-user">              
