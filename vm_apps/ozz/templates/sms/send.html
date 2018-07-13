@@ -6,12 +6,9 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
-<div style="padding-top:2%;">
+<div style="padding-top:5%;">
     <br>
-    <h1>
-     SMS  
-    </h1>
-     <h3>
+    <h3>
         <a href="{% url 'send_sms' %}" id="active" class="btn btn-lg">
           <b>SendSMS</b>
         </a>
@@ -24,7 +21,7 @@
         <a href="{% url 'smshistory' %}" id="buttn" class="btn btn-lg">
            <b>History</b>
         </a>
-     </h3>
+    </h3>
 	<center>
 	<div id="tad">
 			<form  name="formt" method="POST" action="{% url 'send_sms'  %}">
@@ -85,7 +82,7 @@
 		<style type="text/css">
 
 		#active{
-          background:#0277bd;
+          background:#ff6666;
           height:40;
           text-align:center;
           color:white;
@@ -97,11 +94,12 @@
         #buttn{
         	height:40;
         	width:100;
-        	color:black;
-        	background:#bbdefb;
+        	color:white;
+        	background:#808080;
         	font-size: 15;
         	text-align: center;
         }
+
         #tad{
         	
         	margin-left:250;
@@ -125,7 +123,8 @@
 
 
 		h3{
-		  margin-left:10%;
+		  float:right;
+		  margin-right:10%;
 	    }
 
 	    a{
@@ -140,7 +139,7 @@
 		}
 
 		h1{
-            margin-left:5%;
+            margin-left:7%;
             width:500;
         }
 

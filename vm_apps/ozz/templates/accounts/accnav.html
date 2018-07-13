@@ -1,154 +1,40 @@
-<! DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<style>
-body {margin: 0;}
-
-ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-ul.topnav li {float: left;}
-ul.topnav li.right {float: right;}
-
-ul.topnav a.active {background-color: green;}
-
-
-
-@media screen and (max-width: 600px){
-    ul.topnav li.right, 
-    ul.topnav li {float: none;}
-}
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
-}
-li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
-}
-
-li.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {background-color: green;}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-</style>
-</head>
-<body>
-
-<ul class="topnav" id="navy">
-  {% if request.user.is_authenticated %}
-  <li>
-    <a class="active" href="{% url 'dashboard' %}">
-      Home
-    </a>
-  </li>
-    <li class="dropdown">
-      <a href="#" class="dropbtn" href="javascript:void(0)">
-        SMS
-      </a>
-        <div class="dropdown-content">
-          <a href="{% url 'sms' %}">Send sms</a>
-          <a href="{% url 'bulks' %}">Bulk sms</a>
-          <a href="{% url 'smshistory' %}">History</a>
-        </div>
-    </li>
-    <li class="dropdown">
-      <a href="#" class="dropbtn">
-        Airtime
-      </a>
-      <div class="dropdown-content">
-        <a href="{% url 'airtime' %}">Buy</a>
-        <a href="{% url 'athistory' %}">History</a>
-      </div>
-    </li>
-    <li class="right">
-      <a href="{% url 'login' %}">
-        Signout
-      </a>
-    </li>  
-    <li class="right">
-      {% if request.user.is_authenticated %}
-        <strong style="color:white;">hello '{{ request.user.username }}'</strong>
-      {% endif %}
-      <a href="{% url 'profile' %}">
-        Profile
-      </a>
-    </li>  
-    <li class="dropdown">
-      <a href="#" class="dropbtn">
-        Payments
-      </a>
-      <div class="dropdown-content">
-        <a href="{% url 'payments' %}">Make Payments</a>
-        <a href="{% url 'phistory' %}">History</a>       
-      </div>
-    </li>  
-    <li class="dropdown">
-      <a href="#" class="dropbtn">
-        Voice
-      </a>
-      <div class="dropdown-content">
-        <a href="{% url 'voice' %}">Make Call</a>
-        <a href="{% url 'conf' %}">Conference Calls</a>
-        <a href="{% url 'vhistory' %}">History</a>       
-      </div>
-    </li>
-    {% endif %}
-    <li class="right" style="color:white;">
-      <a href="{% url 'signup' %}">
-        sign up
-      </a>
-      <a href="{% url 'login' %}">
-        sign in
-      </a>
-    </li>
-  </ul>
-
-<div style="padding:0 16px;">
-</div>
-<style type="text/css">
-  .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
-}
-</style>
-
-
-</body>
+	<head>
+       <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">     
+	</head>
+	<nav class="navbar navbar-expand-sm bg-light navbar-light" >
+   <br>
+		<ul class="nav navbar-nav">      
+            
+            <li>
+                <a href="#"  class="btn btn-lg">
+                  About
+                </a>
+            </li>
+            <li><a class="sep" href="#"></a></li>
+            <li>
+                <a href="#"  class="btn btn-lg">
+                  Pricing
+                </a>
+            </li>
+            <li><a class="sep" href="#"></a></li>            
+            <li>
+                <a id="navs" href="/accounts/signup/" class="btn btn-lg">
+                   Sign up
+                </a>
+            </li>
+        </ul>        
+	</nav>
+	<style type="text/css">
+		nav{
+      background:#355C7D/* darkblue*/;
+      width: 100%;      
+		}
+		.btn{
+			color:white;
+			/*background:#990000;*/
+		}
+	</style>
 </html>

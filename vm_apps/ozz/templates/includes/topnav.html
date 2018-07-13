@@ -8,26 +8,10 @@
 
 <style>
 body {margin: 0;}
-ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    height: 60;
-    overflow: hidden;
-    border:solid;
-    border-color:#eeeeee;
-    background-color:#0277bd /* dark blue*/ ;  
-}
-
-ul.topnav li {float: left;}
-ul.topnav li.right {float: right;}
-
-
 
 @media screen and (max-width: 600px){
-    ul.topnav li.right, 
-
-    ul.topnav li {float: none;}    
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}    
 }
  
 #icons{
@@ -36,91 +20,96 @@ ul.topnav li.right {float: right;}
 }
  
 
-li a, .dropbtn {
-    display: inline-block;
-    color:#1de9b6;
-    text-align: left;
-    font-size:20;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-
-
 ul b{
   color:white;
 }
 
-</style>
+nav{
+  background:#355C7D/* darkblue*/;
+  height:40;
+  width: 100%;      
+}
 
+.right{
+  float:right;
+  padding-left:150;
+  font-size:20;
+}
+
+.hello{
+  font-size:20;
+  padding-top:15;
+  padding-left:200;
+}
+
+.left{
+  float:left;
+  font-size:20;
+}
+
+</style>
 </head>
-<body>
-<ul class="topnav" id="navy">
+
+<nav class="navbar navbar-expand-bg bg-light" >
+<ul class="nav navbar-nav" id="navy">
   {% if request.user.is_authenticated %}
-  <li>
-    <a class="active" id="home"  href="{% url 'dashboard' %}">
-      <b style="" class="glyphicon glyphicon-home">                    
-      </b> 
-      <b>0zz</b>     
+
+  <li><a href="#" class="seperate"></a></li>
+  <li class="left">
+    <a " href="{% url 'dashboard' %}">      
+      <b " class="glyphicon glyphicon-home">       
+      </b>
+      Home      
     </a>
   </li>
 
+  <li class="left" >
+    <a href="{% url 'sms_tiles' %}"  href="javascript:void(0)">
+      <b id="icons" class="glyphicon glyphicon-comment">            
+      </b>
+      <b>SMS</b>                
+    </a>        
+  </li>
 
-    <li class="dropdown">
-      <a href="{% url 'sms_tiles' %}" class="dropbtn" href="javascript:void(0)">
-        <b id="icons" class="glyphicon glyphicon-comment">                    
-        </b>
-        <b>SMS</b>                
-      </a>        
-    </li>
+  <li class="left">
+    <a href="{% url 'at_tiles' %}">
+      <b id="icons" class="glyphicon glyphicon-phone">          
+      </b>
+      <b>Airtime</b>
+    </a>
+  </li> 
 
+  <li class="left">
+    <a  href="{% url 'payment_tiles' %}">        
+      <i  id="icons"  class="glyphicon glyphicon-briefcase">          
+      </i>
+      <b>Payments</b>
+    </a>      
+  </li>
 
-    <li class="dropdown">
-      <a href="{% url 'at_tiles' %}" class="dropbtn">
-        <b id="icons" class="glyphicon glyphicon-phone">          
-        </b>
-        <b>Airtime</b>
-      </a>
-    </li>  
+  <li class="left" >
+    <a  href="{% url 'voice_tiles' %}">
+      <i  id="icons"  class="glyphicon glyphicon-volume-up">          
+      </i>
+      <b>Voice</b>
+    </a>
+  </li>
 
+       
+  <li class="hello">      
+    <b>
+      hello {{ request.user.username }}
+    </b>                     
+  </li>
 
-    <li class="right">
-      {% if request.user.is_authenticated %}
-        <span>
-          <b style="color:white;font-size:20;/* cyan>>>#1de9b6*/">
-            hello
-          </b>
-          <b style="color:white;font-size:20;">
-            {{ request.user.username }}
-          </b>
-        </span>
-      {% endif %}
-      <a href="{% url 'profile' %}">
-        <i  id="icons"  class="glyphicon glyphicon-user">          
-        </i>
-      </a>           
-    </li>  
+  <li class="right">
+    <a href="{% url 'profile' %}" >
+      <b>Profile</b>
+      <i  id="icons"  class="glyphicon glyphicon-user">              
+      </i>
+    </a>
+  </li> 
 
-
-    <li class="dropdown">
-      <a href="{% url 'payment_tiles' %}" class="dropbtn">        
-        <i  id="icons"  class="glyphicon glyphicon-briefcase">          
-        </i>
-        <b>Payments</b>
-      </a>      
-    </li>
-
-
-    <li class="dropdown">
-      <a href="{% url 'voice_tiles' %}" class="dropbtn">
-        <i  id="icons"  class="glyphicon glyphicon-volume-up">          
-        </i>
-        <b>Voice</b>
-      </a>
-    </li>
-
-    {% endif %}
-  <div style="padding:0 16px;">
-  </div>
-</body>
+  {% endif %}  
+</nav>
 </html>

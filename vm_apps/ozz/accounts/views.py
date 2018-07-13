@@ -10,7 +10,7 @@ def index(request):
 	if request.user.is_authenticated():
 		return redirect('dashboard')
 	else:
-		return redirect('login')
+		return redirect('signup')
 
 #@logout_required
 def login(request):
