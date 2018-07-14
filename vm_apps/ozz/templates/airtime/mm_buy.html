@@ -6,11 +6,8 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
-<div style="padding-top:2%;">
+<div style="padding-top:60;">
     <br>
-	<h1>
-     Airtime  
-    </h1>
     <h3>
         <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-lg" >
           <b>0zzBuy</b>
@@ -28,14 +25,14 @@
           <b>History</b>
         </a>
     </h3>
-    <center>
+    
 	<div id="momo">
-	    <form method="POST" action="{% url 'at' %}" style="margin-left:300;margin-right:300;" name="sub">
+	    <form method="POST" action="{% url 'at' %}" style="margin-left:150;margin-right:300;margin-top:80;" name="sub">
 		{% csrf_token %}
 		<table id="tebo">
 			<tr>
 				<td>
-					MobileMoney No:
+					<b>MobileMoneyNo:</b>
 				</td>
 				<td>
 					<input name="chargephone" class="inz" placeholder="Enter charge No. here" minlength="13" maxlength="13" required>
@@ -43,7 +40,7 @@
 			</tr>
 			<tr>
 				<td>
-					Receiver:
+					<b>Receiver:</b>
 			    </td>
 			   	<td>
 			   		<input placeholder="Enter receiving no here" class="inz" name="phone"  required>
@@ -51,7 +48,7 @@
 			</tr>
 			<tr>
 				<td>
-				  Amount
+				  <b>Amount</b>
 				</td>
 				<td>
 					<input placeholder="Enter amount here" class="inz" name="amount" required>
@@ -59,13 +56,12 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" class="btn btn-success" id="mbuy" style="color:green;" name="Send" value="Buy">
+					<input type="submit" class="btn btn-success" style="height:40;width:80;" value="Buy">
 				</td>
 			</tr>
 		</table>
 	    </form>
 	</div>
-    </center>
 </div>
 <style type="text/css">
 
@@ -76,7 +72,7 @@
 
 
     #active{
-    background:#0277bd;
+    background:#ff6666;
     height:40;
     text-align:center;
     color:white;
@@ -88,22 +84,24 @@
   #buttn{
     height:40;
     width:100;
-    background:#bbdefb;
+    background:#808080;
     font-size: 15;
   }
 
   #buttnx{
     height:40;
     width:150;
-    background:#bbdefb;
+    background:#808080;
     font-size: 15;
   }
 
 
 	#tebo{
 		width:50%;
-		height:40%;
+		height:50%;
+    margin-left:20;
 	}
+
 	#mbuy{
 		width:80;
 		height:30;
@@ -121,11 +119,15 @@
 		width:200;
 		background:green;
 	}
+
 	h3{
-		margin-left:10%;
-	}
+      float:right;
+      margin-right:10%;
+      padding-top:1%;
+      }
+
 	a{
-		color:black;
+		color:white;
 	}
 </style>
 {% endblock %}

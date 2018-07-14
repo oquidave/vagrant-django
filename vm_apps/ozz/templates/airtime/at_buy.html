@@ -6,11 +6,9 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
-<div style="padding-top:2%;">
+<div style="padding-top:60;">
 <br>
 <h1>
-  Airtime  
-</h1>
 <h3>
   <a href="{% url 'at_buy' %}" id="active" class="btn btn-lg" >
     <b>0zzBuy</b>
@@ -31,7 +29,7 @@
 </h3>
 <center>
   <div id="at_buddy">
-   <form method="POST" action="{% url 'buy' %}" id="formt" style="margin-left:300;margin-right:300;" name="sub">
+   <form method="POST" action="{% url 'buy' %}" id="formt" style="margin-left:100;margin-right:300;" name="sub">
     {% csrf_token %}
     <table id="tebo">
       
@@ -49,7 +47,7 @@
       </tr>
       <tr>
         <td>
-          <input type="submit" id="send_button"  class="btn btn-success" name="Send" value="Buy">
+          <input type="submit" class="btn btn-success" style="height:40;width:80;" value="Buy">
         </td>
       </tr>
     </table>
@@ -72,7 +70,7 @@
 
 
    #active{
-    background:#0277bd;
+    background:#ff6666;
     height:40;
     text-align:center;
     color:white;
@@ -84,14 +82,14 @@
   #buttn{
     height:40;
     width:100;
-    background:#bbdefb;
+    background:#808080;
     font-size: 15;
   }
 
   #buttnx{
     height:40;
     width:150;
-    background:#bbdefb;
+    background:#808080;
     font-size: 15;
   }
 
@@ -116,14 +114,14 @@
   }
 
   a{
-    color:black;
+    color:white;
     text-align:center;
   }
 
+h3{
+      float:right;
+      margin-right:10%;
+      }
 
-  h3{
-    margin-left:10%;
-    color:teal;          
-  }
 </style>
 {% endblock %}

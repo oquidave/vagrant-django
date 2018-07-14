@@ -1,7 +1,7 @@
 {% extends 'includes/newbes.html' %}
 {% load staticfiles %}
 {% block body_block %}
-<div style="padding-top:2%;">
+<div style="padding-top:60;">
 <head>
     <link rel="stylesheet" href="{% static 'css/my.css' %}">
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
@@ -9,8 +9,6 @@
 </head>
 <br>
 <h1>
-  Airtime  
-</h1>
 <h3>
   <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-lg" >
     <b>0zzBuy</b>
@@ -48,9 +46,8 @@
     </tr>
     </table>
 </h2>
-<center>
 	<div style="margin bottom:500;">
-	<form method="POST" action="{% url 'atbulk' %}" style="margin-left:300;margin-right:300;" name="sub" enctype="multipart/form-data">
+	<form method="POST" action="{% url 'atbulk' %}" style="margin-left:150;margin-right:300;margin-top:80;" name="sub" enctype="multipart/form-data">
 		{% csrf_token %}
 		<table id="tebo">
  
@@ -79,7 +76,6 @@
 		</table>
 	</form>
     </div>
-</center>
 </div>
 <style type="text/css">
 
@@ -95,7 +91,7 @@
 
 
   #active{
-    background:#0277bd;
+    background:#ff6666;
     height:40;
     text-align:center;
     color:white;
@@ -107,26 +103,27 @@
   #buttn{
     height:40;
     width:100;
-    background:#bbdefb;
+    background:#808080;
     font-size: 15;
   }
 
   #buttnx{
     height:40;
     width:150;
-    background:#bbdefb;
+    background:#808080;
     font-size: 15;
   }
 
 
 
 
-    h3{
-		margin-left:10%;
-	}
+  h3{
+      float:right;
+      margin-right:10%;
+      }
 
 	a{
-		color:black;
+		color:white;
     text-align:center;
 	}
 

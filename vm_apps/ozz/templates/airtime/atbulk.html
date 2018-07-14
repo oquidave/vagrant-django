@@ -1,16 +1,12 @@
 {% extends 'includes/newbes.html' %}
 {% load staticfiles %}
 {% block body_block %}
-<div style="padding-top:2%;">
+<div style="padding-top:60;">
   <head>
     <link rel="stylesheet" href="{% static 'css/my.css' %}">
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   </head>
   <br>
-  <h1>
-    Airtime  
-  </h1>
-  
   <h3>
     <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-lg" >
       <b>0zzBuy</b>
@@ -29,8 +25,7 @@
       <b>History</b>
     </a>
   </h3>    
-  <center>
-    <form method="POST" action="{% url 'atbulk' %}" style="margin-left:300;margin-right:300;" name="sub" enctype="multipart/form-data">
+   <form method="POST" action="{% url 'atbulk' %}" style="margin-left:150;margin-right:300;margin-top:80;" name="sub" enctype="multipart/form-data">
 		  {% csrf_token %}
 		    <table id="tebo">
 
@@ -51,12 +46,11 @@
 
           <tr>
 				    <td>
-					    <input type="submit" style="color:white;" class="btn btn-success" name="Send" id="atbuy" value="Buy">
+					    <input type="submit" class="btn btn-success" style="height:40;width:80;" value="Buy">
 				    </td>
 			    </tr>
 		    </table>
-    </form>      
-  </center>
+    </form> 
 </div>
 <style type="text/css">
    
@@ -67,7 +61,7 @@
 
 
   #active{
-    background:#0277bd;
+    background:#ff6666;
     height:40;
     text-align:center;
     color:white;
@@ -79,25 +73,28 @@
   #buttn{
     height:40;
     width:100;
-    background:#bbdefb;
+    background:#808080;
     font-size: 15;
   }
 
   #buttnx{
     height:40;
     width:150;
-    background:#bbdefb;
+    background:#808080;
     font-size: 15;
   }
 
 
 
-    h3{
-		margin-left:10%;
-	}
+  h3{
+      float:right;
+      margin-right:10%;
+      padding-top:1%;
+      }
+
 
 	a{
-		color:black;
+		color:white;
     text-align: center;
 	}
 
@@ -114,6 +111,7 @@
 	#tebo{
 		width:50%;
 		height:50%;
+    margin-left:20;
 	}
 	
 </style>
