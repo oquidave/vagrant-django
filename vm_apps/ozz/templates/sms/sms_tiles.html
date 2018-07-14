@@ -20,11 +20,9 @@
                 </b>
               </a>                      
             </output>
-            <b id="yell">
-              <a href="{% url 'send_sms' %}">
-                Single receiver
-              </a>
-            </b>              
+              <a class="bronx" href="{% url 'send_sms' %}">
+                <b>Single receiver</b>
+              </a>           
           </td>
 
           <td>
@@ -34,11 +32,9 @@
                 </b>
               </a>                     
             </output>
-            <b id="yell">
-              <a href="{% url 'bulks' %}">
-                Multiple receivers
-              </a>
-            </b>                              
+              <a class="bronx" href="{% url 'bulks' %}">
+                <b>Multiple receivers</b>
+              </a>                           
           </td>          
         </tr>     
       
@@ -50,11 +46,9 @@
                 </b>
               </a>
             </output>
-            <b id="yell">
-              <a href="{% url 'sms_schedule' %}">
-                Schedule
+              <a class="bronx" href="{% url 'sms_schedule' %}">
+                <b>Schedule</b>
               </a>
-            </b>
           </td>
           <td>
             <output id="toto">
@@ -62,11 +56,9 @@
                 <b style="font-size: 50;" class="glyphicon glyphicon-calendar"></b>
               </a>
             </output>
-            <b id="yell">
-              <a href="{% url 'smshistory' %}">
-                History
+              <a class="bronx" href="{% url 'smshistory' %}">
+                <b>History</b>
               </a>
-            </b>   
           </td>
         </tr>            
       </table>
@@ -85,7 +77,7 @@
 }
 
 
-#yell{
+.bronx{
   color:black;  
 }
 
