@@ -6,9 +6,8 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head> 
-<div style="padding-top:2%;">
+<div style="padding-top:60;">
     <br>
-    <h1>Payments</h1>
     <h3>        
         <a href="{% url 'payments' %}" id="buttn" class="btn btn-lg">
           <b>Deposit</b>
@@ -26,7 +25,6 @@
           <b>History</b>
         </a>
     </h3>
-    <center>
     	<form method="POST" >
     	   {% csrf_token %}
     		<table style="text-align:center;">
@@ -82,7 +80,6 @@
     			</tr>
     		</table>
     	</form>
-    </center>
     <style type="text/css">
 
         #mm_reason{
@@ -104,7 +101,7 @@
         	width:250;height:40;
         }
         #active{
-            background:#0277bd;
+            background:#ff6666;
             height:40;
             text-align:center;
             color:white;
@@ -115,7 +112,7 @@
         #buttn{
             height:40;
             width:100;
-            background:#bbdefb;
+            background:#808080;
             font-size: 15;
         }
 
@@ -125,8 +122,9 @@
         }
         form{
            
-            margin-left:300;
-            margin-right:300;
+            margin-left:200;
+            padding-top:80;
+            margin-right:200;
         }
 
     	h1{
@@ -135,12 +133,14 @@
         }
 
         h3{
-		   margin-left:10%;
-	    }
+           float:right;
+           margin-right:10%;
+        }
 
 	    a{
-		   color:black;
-	    }
+           color:white;
+           text-align:center;
+        }
     </style>
 </div>
 {% endblock %}

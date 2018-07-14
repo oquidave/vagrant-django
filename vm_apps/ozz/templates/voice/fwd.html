@@ -1,7 +1,7 @@
 {% extends 'includes/newbes.html'%}
 {% load staticfiles %}
 {% block body_block %}
-<div style="padding-top:2%;">
+<div style="padding-top:60;">
 <head>
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -10,13 +10,9 @@
 </head>
 <center>
 <br>
-<h1>
-	Business Call Center
-</h1>
 <h3>
-    <b id="active" >Center</b>
-    |
-    <a href="{% url 'vhistory' %}">Call Logs</a>
+    <a id="active" class="btn btn-lg" >Center</b>
+    <a id="buttn" class="btn btn-lg" href="{% url 'vhistory' %}">Call Logs</a>
 </h3>
 
 
@@ -126,13 +122,21 @@
 <style type="text/css">
    
     #active{
-          background:#0277bd;
+          background:#ff6666;
           height:80;
           border:solid;
           color:white;
-          width:300;
+          width:100;
+          height: 40;
           padding:2;
           text-align:center;
+        }
+
+    #buttn{
+            height:40;
+            width:100;
+            background:#808080;
+            font-size: 15;
         }
 
 	#fwno{

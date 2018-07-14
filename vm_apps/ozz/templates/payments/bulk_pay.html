@@ -6,9 +6,8 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head> 
-<div style="padding-top:2%;">
+<div style="padding-top:60;">
     <br>
-    <h1>Payments</h1>
     <h3>        
         <a href="{% url 'payments' %}" id="buttn" class="btn btn-lg">
           <b>Deposit</b>
@@ -26,7 +25,6 @@
           <b>History</b>
         </a>
     </h3>
-    <center>
     	<form method="POST" action="{% url 'bulk_pay' %}" style="margin-left:300;margin-right:300;" name="sub" enctype="multipart/form-data">
     	   {% csrf_token %}
     		<table>
@@ -55,7 +53,6 @@
                 </tr>   			    			
     		</table>
     	</form>
-    </center>
     <style type="text/css">
 
         
@@ -76,7 +73,7 @@
         }
 
         #active{
-            background:#0277bd;
+            background:#ff6666;
             height:40;
             text-align:center;
             color:white;
@@ -87,7 +84,7 @@
         #buttn{
             height:40;
             width:100;
-            background:#bbdefb;
+            background:#808080;
             font-size: 15;
         }
 
@@ -101,11 +98,13 @@
            width:500;
         }
 
-        h3{
-		   margin-left:10%;
-	    }
+          h3{
+      float:right;
+      margin-right:10%;
+      }
         a{
-            color:black;
+           color:white;
+           text-align:center;
         }
 
 	    .page{
