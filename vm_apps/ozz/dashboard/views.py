@@ -7,7 +7,7 @@ import africastalking
 @login_required
 def index(request):
 	#return HttpResponse("Dashboard home page.")
-	return render(request, "dashboard/index.html")
+	return render(request, "includes/newbes.html")
 
 @login_required
 def sms(request):
