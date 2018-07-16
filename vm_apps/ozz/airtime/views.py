@@ -24,7 +24,7 @@ def csv_download(request):
 	import csv
 	""" Renders a csv list  """
 	response = HttpResponse(content_type='csv')
-	response['Content-Disposition'] = 'attachment; filename=receivers.csv'
+	response['Content-Disposition'] = 'attachment; filename=sample.csv'
 	writer = csv.writer(response, dialect=csv.excel)
 	writer.writerow(['Name', 'Contact','Amount'])
 	writer.writerow(['receiver_1', 'Contact_1','Amount_1'])
