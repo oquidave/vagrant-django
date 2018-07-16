@@ -51,7 +51,7 @@ nav{
   background: #0277bd;
 }
 
-#left:hover{
+.left:hover{
 
   background: #0277bd;  
 }
@@ -67,7 +67,7 @@ small{
   padding: 10;
 }
 
-#left{
+.left{
   float:left;
   padding:10;
   font-size:20;
@@ -82,7 +82,7 @@ small{
   {% if request.user.is_authenticated %}
 
   <li><a href="#" class="seperate"></a></li>
-  <li id="left">
+  <li id="home" class="left">
     <a class="butt" href="{% url 'dashboard' %}">      
       <b  class="glyphicon glyphicon-home">       
       </b>
@@ -90,7 +90,7 @@ small{
     </a>
   </li>
 
-  <li id="left" >
+  <li id="sms" class="left" >
     <a href="{% url 'sms_tiles' %}"  class="butt">
       <b id="icons" class="glyphicon glyphicon-comment">            
       </b>
@@ -98,7 +98,7 @@ small{
     </a>        
   </li>
 
-  <li id="left">
+  <li id="airtime" class="left">
     <a class="butt" href="{% url 'at_tiles' %}">
       <b id="icons" class="glyphicon glyphicon-phone">          
       </b>
@@ -106,7 +106,7 @@ small{
     </a>
   </li> 
 
-  <li id="left">
+  <li id="payments" class="left">
     <a class="butt" href="{% url 'payment_tiles' %}">        
       <i  id="icons"  class="glyphicon glyphicon-briefcase">          
       </i>
@@ -114,7 +114,7 @@ small{
     </a>      
   </li>
 
-  <li id="left" >
+  <li id="voice" class="left" >
     <a href="{% url 'voice_tiles' %}">
       <i  id="icons"  class="glyphicon glyphicon-volume-up">          
       </i>
