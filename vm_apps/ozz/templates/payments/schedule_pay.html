@@ -6,7 +6,7 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head> 
-<div style="padding-top:60;">
+<div style="padding-top:2%;">
     <br>
     <h3>        
         <a href="{% url 'payments' %}" id="buttn" class="btn btn-lg">
@@ -31,53 +31,22 @@
                 
                 <tr>
                     <td>                        
-                        <input type="date" style="color:blue;width:250;height:40;" name="send_date">
+                        DATE
                     </td>
-                </tr>
-
-               
-                <tr>
-                    <td>                        
-                        <input style="color:red;width:250;height:40;" type="time" name="send_time">                  
-                    </td>                    
-                </tr>
-
-                
-    			<tr>
-    				<td>                        
-    					<input  class="enter" placeholder="Enter receiver here" name="receiver" required>
-    				</td>
-    			</tr>
-                
-                
-    			<tr>
-    				<td>                        
-    					<input class="enter" placeholder="Enter amount here" name="amount" required>
-    				</td>
-    			</tr>
-                
-                
-                <tr>
                     <td>
-                        <select style="width:250;height:40;" name="mm_reason">
-                            <option value="SalaryPayment" >
-                              Salary
-                            </option>
-                            <option value="BusinessPayment">
-                              Business
-                            </option>
-                            <option value="SalaryPaymentWithWithdrawalChargePaid"> 
-                              Gift
-                            </option>
-                        </select>
+                        Name
                     </td>
-                </tr>
-
-    			<tr>
-    				<td>
-    					<input type="submit" class="btn btn-success" id="send_button" value="Schedule">
-    				</td>
-    			</tr>
+                    <td>
+                        Contact
+                    </td>
+                    <td>
+                        Amount
+                    </td>
+                    <td>
+                        TIME
+                    </td>
+                </tr>      
+                
     		</table>
     	</form>
     <style type="text/css">

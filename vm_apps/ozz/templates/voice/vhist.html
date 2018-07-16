@@ -6,7 +6,14 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
-<div style="padding-top:5%;">
+<div style="padding-top:2%;">
+<br>
+<h3>
+    <a id="buttn" href="/voice/fwd/" class="btn btn-lg" >Center</a>
+    <a id="active" class="btn btn-lg" href="{% url 'vhistory' %}">
+      History
+    </a>
+</h3>
 <center>
 	<body>
 		<h1>
@@ -15,4 +22,28 @@
 	</body>
 </center>
 </div>
+<style type="text/css">
+    h3{
+		margin-left:10%;
+		float:left;
+	}
+
+	#active{
+          background:#ff6666;
+          height:80;
+          color:white;
+          width:100;
+          height: 40;
+          text-align:center;
+          font-size: 15;
+        }
+
+    #buttn{
+            height:40;
+            width:100;
+            color:white;
+            background:#808080;
+            font-size: 15;
+        }
+</style>
 {% endblock %}

@@ -4,8 +4,7 @@
     <link rel="stylesheet" href="{% static 'css/my.css' %}">
     <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>     
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">     
 
 <style>
 body {margin: 0;}
@@ -39,19 +38,7 @@ nav{
 
 }
 
-#right{
-  float:right;
-  margin-right:20;
-  padding:10;
-  font-size:20;
-
-}
-
-.active{
-  background: #0277bd;
-}
-
-#left:hover{
+.left:hover{
 
   background: #0277bd;  
 }
@@ -67,55 +54,54 @@ small{
   padding: 10;
 }
 
-#left{
+.left{
   float:left;
   padding:10;
   font-size:20;
 }
 
-
 </style>
 </head>
 
-<nav  class="navbar navbar-expand-bg bg-light" >
-<ul id="nav_bar">
+<nav class="navbar navbar-expand-bg bg-light" >
+<ul>
   {% if request.user.is_authenticated %}
 
   <li><a href="#" class="seperate"></a></li>
-  <li id="left">
-    <a class="butt" href="{% url 'dashboard' %}">      
-      <b  class="glyphicon glyphicon-home">       
+  <li class="left">
+    <a " href="{% url 'dashboard' %}">      
+      <b " class="glyphicon glyphicon-home">       
       </b>
       <small>Home</small>      
     </a>
   </li>
 
-  <li id="left" >
-    <a href="{% url 'sms_tiles' %}"  class="butt">
+  <li class="left" >
+    <a href="{% url 'sms_tiles' %}"  href="javascript:void(0)">
       <b id="icons" class="glyphicon glyphicon-comment">            
       </b>
       <small>SMS</small>                
     </a>        
   </li>
 
-  <li id="left">
-    <a class="butt" href="{% url 'at_tiles' %}">
+  <li class="left">
+    <a href="{% url 'at_tiles' %}">
       <b id="icons" class="glyphicon glyphicon-phone">          
       </b>
       <small>Airtime</small>
     </a>
   </li> 
 
-  <li id="left">
-    <a class="butt" href="{% url 'payment_tiles' %}">        
+  <li class="left">
+    <a  href="{% url 'payment_tiles' %}">        
       <i  id="icons"  class="glyphicon glyphicon-briefcase">          
       </i>
       <small>Payments</small>
     </a>      
   </li>
 
-  <li id="left" >
-    <a href="{% url 'voice_tiles' %}">
+  <li class="left" >
+    <a  href="{% url 'voice_tiles' %}">
       <i  id="icons"  class="glyphicon glyphicon-volume-up">          
       </i>
       <small>Voice</small>
@@ -126,27 +112,17 @@ small{
   
 
   <li id="profile" class="right">
-    <a class="butt" href="{% url 'profile' %}" >
+    <a href="{% url 'profile' %}" >
       <small>Profile</small>
       <i  id="icons"  class="glyphicon glyphicon-user">              
       </i>
     </a>
   </li> 
 
-  <li id="right">
+  <li class="right">
     <small>hello {{ request.user.username }}</small>      
   </li>
 
   {% endif %}  
 </nav>
-<script>
-  $(document).ready({ function(){
-   $("nav li").click(function(e){
-    // A LI is clicked
-    // Set all other li's to not selected
-    $("nav li").removeClass("active");
-    // Add selected class to the clicked li
-    $(this).addClass("active");});
-  });
-</script>
 </html>

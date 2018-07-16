@@ -6,7 +6,7 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">	
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
-<div style="padding-top:60;">
+<div style="padding-top:2%;">
     <br>
     <h3>
         <a href="{% url 'at_buy' %}" id="buttn" class="btn btn-lg" >
@@ -27,29 +27,20 @@
     </h3>
     
 	<div id="momo">
-	    <form method="POST" action="{% url 'at' %}" style="margin-left:150;margin-right:300;margin-top:80;" name="sub">
+	    <form method="POST" action="{% url 'at' %}" style="margin-left:250;margin-right:300;margin-top:80;" name="sub">
 		{% csrf_token %}
 		<table id="tebo">
 			<tr>
 				<td>
-					<b>MobileMoneyNo:</b>
-				</td>
-				<td>
-					<input name="chargephone" class="inz" placeholder="Enter charge No. here" minlength="13" maxlength="13" required>
+					<input name="chargephone" class="inz" placeholder="Enter charge number here" minlength="13" maxlength="13" required>
 				</td>
 			</tr>
 			<tr>
-				<td>
-					<b>Receiver:</b>
-			    </td>
 			   	<td>
-			   		<input placeholder="Enter receiving no here" class="inz" name="phone"  required>
+			   		<input placeholder="Enter receiving number here" class="inz" name="phone"  required>
 			   	</td>
 			</tr>
 			<tr>
-				<td>
-				  <b>Amount</b>
-				</td>
 				<td>
 					<input placeholder="Enter amount here" class="inz" name="amount" required>
 				</td>
@@ -57,6 +48,7 @@
 			<tr>
 				<td>
 					<input type="submit" class="btn btn-success" style="height:40;width:80;" value="Buy">
+					<input  class="btn btn-success" style="height:40;width:90;" value="Schedule" readonly>
 				</td>
 			</tr>
 		</table>
@@ -107,8 +99,8 @@
 		height:30;
 	}
 	.inz{
-		width:200;
-		height:30;
+		width:250;
+		height:35;
 	}
 	#momo{
 		
@@ -123,7 +115,6 @@
 	h3{
       float:right;
       margin-right:10%;
-      padding-top:1%;
       }
 
 	a{

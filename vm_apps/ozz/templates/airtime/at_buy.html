@@ -6,9 +6,8 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> 
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
-<div style="padding-top:60;">
+<div style="padding-top:2%;">
 <br>
-<h1>
 <h3>
   <a href="{% url 'at_buy' %}" id="active" class="btn btn-lg" >
     <b>0zzBuy</b>
@@ -29,25 +28,24 @@
 </h3>
 <center>
   <div id="at_buddy">
-   <form method="POST" action="{% url 'buy' %}" id="formt" style="margin-left:100;margin-right:300;" name="sub">
+   <form method="POST" action="{% url 'buy' %}" id="formt" style="margin-left:90;margin-right:300;margin-top:80;" name="sub">
     {% csrf_token %}
     <table id="tebo">
       
       <tr>
         <td>
-           <b>Number:</b>
           <input placeholder="Enter phone number here" class="in" name="phone"  required>
         </td>
       </tr>
       <tr>
         <td>
-           <b>Amount:</b>
           <input placeholder="Enter amount here" class='in' name="amount" required>
         </td>
       </tr>
       <tr>
         <td>
           <input type="submit" class="btn btn-success" style="height:40;width:80;" value="Buy">
+          <input  class="btn btn-success" style="height:40;width:90;" value="Schedule" readonly>
         </td>
       </tr>
     </table>
