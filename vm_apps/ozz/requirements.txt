@@ -19,7 +19,7 @@ pipenv==2018.7.1
 prompt-toolkit==1.0.15
 psycopg2==2.7.5
 ptyprocess==0.5.2
-Pygments==2.2.0
+Pygments==2.7.4
 requests==2.19.1
 schema==0.6.8
 simplegeneric==0.8.1
